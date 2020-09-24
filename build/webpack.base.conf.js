@@ -7,7 +7,8 @@ const PATHS = { // объект PATHS для более удобного обр�
     dist: path.join(__dirname, '../dist'),
     assets: 'assets/'
 }
-
+const PAGES_DIR = `${PATHS.src}/pug/pages/`
+const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 module.exports = {
     externals: {
         paths: PATHS
@@ -36,14 +37,16 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)$/,
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[ext]'
+                    name: '[name].[ext]',
+                    outputPath: 'img/'
                 }
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "file-loader",
                 options: {
-                    name: "[name].[ext]"
+                    name: "[name].[ext]",
+                    outputPath: 'fonts/'
                 }
             },
             {
@@ -101,9 +104,9 @@ module.exports = {
                     to: 'static'
                 }
             ]),
-            new HtmlWebpackPlugin({
-                hash: false,
-                template: `${PATHS.source}/pug/pages/index.pug`,
-            })
+            ...PAGES.map(page => new HtmlWebpackPlugin({
+                template: `${PAGES_DIR}/${page}`,
+                filename: `./${page.replace(/\.pug/,'.html')}`
+              }))
         ]
 }
