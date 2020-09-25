@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const PATHS = { // объект PATHS для более удобного обращения с путями, да и краткости записей
-    source: path.join(__dirname, '../src'),
+    src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
     assets: 'assets/'
 }
@@ -15,7 +15,7 @@ module.exports = {
         paths: PATHS
     },
     entry: {    // app == [name] - ярлык точки входа
-        app: PATHS.source // т.к. точка входа одна (index.js), то можно не указывать конкретный файл '/index.js'
+        app: PATHS.src // т.к. точка входа одна (index.js), то можно не указывать конкретный файл '/index.js'
     },
     output: {
         // filename: '[name].js', //[name] == ярлыку из entry, т.е. каждой точке входа будет соответствовать свой файл
@@ -23,6 +23,18 @@ module.exports = {
         path: PATHS.dist,    // указываем каталог для создания output
         publicPath: '/' // каталог для webpack-dev-server, где он ищет index.html
     },
+    optimization: {
+        splitChunks: {
+          cacheGroups: {
+            vendor: {
+              name: 'vendors',
+              test: /node_modules/,
+              chunks: 'all',
+              enforce: true
+            }
+          }
+        }
+      },
     module: {
         rules: [ // на каждое расширение файла по правилу в виде объекта
             {
@@ -39,7 +51,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'img/'
+                    outputPath: 'assets/img/'
                 }
             },
             {
@@ -47,7 +59,7 @@ module.exports = {
                 loader: "file-loader",
                 options: {
                     name: "[name].[ext]",
-                    outputPath: 'fonts/'
+                    outputPath: 'assets/fonts/'
                 }
             },
             {
@@ -58,11 +70,11 @@ module.exports = {
                    {
                     loader: 'css-loader',
                     options: { sourceMap: true }
-                    },
+                    },/*
                    {
                     loader: 'postcss-loader',
                     options: { sourceMap: true, config: { path: `./postcss.config.js` }  }
-                    },
+                    },*/
                    {
                        loader: 'stylus-loader',
                        options: { sourceMap: true }
@@ -77,11 +89,11 @@ module.exports = {
                    {
                     loader: 'css-loader',
                     options: { sourceMap: true }
-                    },
+                    }/*,
                    {
                     loader: 'postcss-loader',
                     options: { sourceMap: true, config: { path: `./postcss.config.js` }  }
-                  }
+                  }*/
                  ]
            },
            
@@ -93,21 +105,21 @@ module.exports = {
             }),
             new CopyWebpackPlugin([
                 {
-                    from: `${PATHS.source}/img`,
+                    from: `${PATHS.src}/${PATHS.assets}img`,
                     to: `${PATHS.assets}img`
                 },
                 {
-                    from: `${PATHS.source}/fonts`,
+                    from: `${PATHS.src}/${PATHS.assets}fonts`,
                     to: `${PATHS.assets}fonts`
                 },
                 {
-                    from: `${PATHS.source}/static`,
+                    from: `${PATHS.src}/static`,
                     to: 'static'
                 }
             ]),
             ...PAGES.map(page => new HtmlWebpackPlugin({
                 template: `${PAGES_DIR}/${page}`,
-                filename: `./${page.replace(/\.pug/,'.html')}`
+                filename: `./${page.replace(/\.pug/,'.html')}` 
               }))
         ]
 }

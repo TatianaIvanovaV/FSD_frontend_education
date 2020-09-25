@@ -1,0 +1,47 @@
+extends ../layout/index.pug
+block content
+  .wrapper
+    header.header
+      .header__container
+        .header__logo
+          a.header__logo-link(href="/")
+            +picture("icons", "logo-group")
+        nav.header_nav
+          ul.header_list
+            li.header_item
+              a.header_link(href="#") О нас
+            li.header_item
+              a.header_link(href="#") Услуги
+              i(class="fas fa-angle-down")
+            li.header_item
+              a.header_link(href="#") Вакансии
+            li.header_item
+              a.header_link(href="#") Новости
+            li.header_item
+              a.header_link(href="#") Соглашения
+              i(class="fas fa-angle-down")
+            li.header_item
+              a.header_link.ent(href="#") войти
+            li.header_item
+              a.header_link.reg(href="#") зарегистрироваться
+      main.main
+        section.intro
+          .wrapper
+            .intro_form
+              h1.intro_title Найдём номера под ваши пожелания
+              form.search_form
+      footer.page_footer
+        .page_footer-inner
+          .wrapper
+            .page_footer-social
+              .footer_logo
+                a.footer_logo-link(href="/")
+                  +picture("icons", "logo")
+                a.footer_logo-link(href="/")
+                  img.footer_logo-pic(src="./imgs/svg/TOXIN.svg" alt="Найдём номера под ваши пожелания")
+              p.footer-tagline
+                | Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+        .page_footer-bottom
+          .wrapper
+            span.page_footer-copyright Copyright © 2018 Toxin отель. Все права зачищены.
+            span
