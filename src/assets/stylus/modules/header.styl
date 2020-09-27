@@ -1,0 +1,46 @@
+.header
+  &__content
+    height 70px
+    width 100%
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+    align-items center
+  &__logo
+    margin-top 2px
+  &__list 
+    display flex
+    font-size font-size
+    color dark_50
+  &__item
+    margin-right 20px
+  &__buttons
+    display flex   
+    &--user
+      display none
+  &__ent-btn
+    height 30px !important
+    width 85px
+    background white !important
+    margin 2px 20px 0 0
+    &::before
+      content ""
+      position absolute
+      z-index -1
+      top 0
+      right 0
+      bottom 0
+      left 0
+      margin -2px
+      border-radius inherit
+      background perple-gradient
+  &__reg-btn 
+    width 196px
+    height 34px !important
+  &__ent-link
+    color perple !important
+  &__btn-wrap
+    &:hover,
+    &:active,
+    &:focus
+      opacity 0.5

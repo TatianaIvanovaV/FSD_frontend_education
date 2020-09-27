@@ -1,7 +1,6 @@
 @import "utils/layout.styl"
 @import "modules/header.styl"
 @import "modules/footer.styl"
-/*@import '~font-awesome/css/font-awesome.css'*/
 
 html 
   line-height 24px
@@ -14,14 +13,14 @@ html
 		font-size 15px
   @media screen and (max-width: $phoneWidth) 
 		font-size 14px*/
-body 
-  margin 0
+body
   padding 0
   font-family font-Montserrat
-	font-size 1rem
+	font-size font-size
   font-weight 400
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
+  background white
 *
 *:before
 *:after 
@@ -44,6 +43,32 @@ li
   margin 0 auto
   min-height 100vh
 .container 
-  width 100%
-  flex 0 0 auto
-  position relative*/
+  width 1160px
+  margin 0 auto
+  position relative
+.btn
+  text-transform uppercase
+  display flex
+  justify-content center
+  align-items center
+  font-size 12px
+  font-weight 700
+  position relative
+  height 44px
+  border-radius 22px
+  transition .3s
+  cursor pointer
+  background perple-gradient
+  &:hover,
+  &:active,
+  &:focus  
+    opacity 0.5
+  >a
+    color white
+.btn.header__ent-btn 
+  &:hover,
+  &:active,
+  &:focus  
+    opacity 1
+.fa-angle-down
+  font-size 24px
