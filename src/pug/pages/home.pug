@@ -1,4 +1,5 @@
 extends ../layout/index.pug
+
 block content
   header.header
     .container 
@@ -13,7 +14,7 @@ block content
                 if (item == arr[1] | item == arr[4])
                   li.header__item
                     a.header__link(href="#") #{item}
-                    i.header__dropdown(class="fas fa-chevron-down")
+                      i.header__dropdown(class="fas fa-chevron-down")
                 else 
                   li.header__item
                     a.header__link(href="#") #{item}
@@ -27,23 +28,33 @@ block content
             .header__user
               a.header__user-link(href="#") | Юлий Цезарь
   main.main
-    section.intro
+    .intro
+      .container
+        .intro__content
+          .intro__booking-form
+            h1.intro__h1 Найдём номера под ваши пожелания
+            form.intro__form(action="" method="")
+              .intro__block-date
+                +dataInput("прибытие", "ДД.ММ.ГГГГ", "date-arrival", "intro__input--date")
+                +dataInput("выезд", "ДД.ММ.ГГГГ","date-departure", "intro__input--date")
+              .intro__block-guests
+                +dataInput("гости", "Сколько гостей","guests","intro__input--guests")
+              .intro__select-btn.btn
+                a.intro__link подобрать номер
+                  i.fas.fa-arrow-right
+          .intro__subtitle Лучшие номера для вашей работы,<br> отдыха и просто вдохновения  
+  footer.page_footer
+    .page_footer-inner
       .wrapper
-        .intro_form
-          h1.intro_title Найдём номера под ваши пожелания
-          form.search_form
-      footer.page_footer
-        .page_footer-inner
-          .wrapper
-            .page_footer-social
-              .footer_logo
-                a.footer_logo-link(href="/")
-                  +picture("icons", "logo")
-                a.footer_logo-link(href="/")
-                  img.footer_logo-pic(src="" alt="Найдём номера под ваши пожелания")
-              p.footer-tagline
-                | Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-        .page_footer-bottom
-          .wrapper
-            span.page_footer-copyright Copyright © 2018 Toxin отель. Все права зачищены.
-            span
+        .page_footer-social
+          .footer_logo
+            a.footer_logo-link(href="/")
+              +picture("icons", "logo")
+            a.footer_logo-link(href="/")
+              img.footer_logo-pic(src="" alt="Найдём номера под ваши пожелания")
+          p.footer-tagline
+            | Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+    .page_footer-bottom
+      .wrapper
+        span.page_footer-copyright Copyright © 2018 Toxin отель. Все права зачищены.
+        span
