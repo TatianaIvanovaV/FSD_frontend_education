@@ -13,19 +13,19 @@ block content
                 if (item == arr[1] | item == arr[4])
                   li.header__item
                     a.header__link(href="#") #{item}
-                    i.header__dropdown(class="fas fa-angle-down")
+                    i.header__dropdown(class="fas fa-chevron-down")
                 else 
                   li.header__item
                     a.header__link(href="#") #{item}
-        .header__buttons
-          .header__btn-wrap
-            .header__ent-btn.btn
-              a.header__ent-link(href="#") войти 
-          .header__reg-btn.btn
-            a.header__reg-link(href="#") зарегистрироваться 
-        .header__buttons--user
-          .header__user
-            a.header__user--link(href="#") Юлий Цезарь
+          .header__buttons
+            .header__btn-wrap
+              .header__ent-btn.btn
+                a.header__ent-link(href="#") войти 
+            .header__reg-btn.btn
+              a.header__reg-link(href="#") зарегистрироваться 
+          .header__buttons--user
+            .header__user
+              a.header__user-link(href="#") | Юлий Цезарь
   main.main
     section.intro
       .wrapper
@@ -40,7 +40,7 @@ block content
                 a.footer_logo-link(href="/")
                   +picture("icons", "logo")
                 a.footer_logo-link(href="/")
-                  img.footer_logo-pic(src="./imgs/svg/TOXIN.svg" alt="Найдём номера под ваши пожелания")
+                  img.footer_logo-pic(src="" alt="Найдём номера под ваши пожелания")
               p.footer-tagline
                 | Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
         .page_footer-bottom
