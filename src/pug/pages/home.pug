@@ -14,7 +14,7 @@ block content
                 if (item == arr[1] | item == arr[4])
                   li.header__item
                     a.header__link(href="#") #{item}
-                      i.header__dropdown(class="fas fa-chevron-down")
+                      i.material-icons.header__icon-down expand_more
                 else 
                   li.header__item
                     a.header__link(href="#") #{item}
@@ -41,7 +41,7 @@ block content
                 +dataInput("гости", "Сколько гостей","guests","intro__input--guests")
               .intro__select-btn.btn
                 a.intro__link подобрать номер
-                  i.fas.fa-arrow-right
+                  i.material-icons.intro__icon-arrow arrow_forward
           .intro__subtitle Лучшие номера для вашей работы,<br> отдыха и просто вдохновения  
   footer.page_footer
     .page_footer-inner
