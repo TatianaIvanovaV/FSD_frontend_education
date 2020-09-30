@@ -1,13 +1,17 @@
 .footer
   padding-top 100px
   &-upper
-    display flex
+    padding 0 0 81px
+    border-bottom 1px solid dark_25
+    &__wrap
+      display flex
     &__info
       display flex
       flex-direction column
       max-width 260px
     &__tagline
       margin-top 10px
+      color dark_75
     &__nav
       display flex
       justify-content space-between
@@ -22,12 +26,13 @@
       &-input
         width 100%
         margin-top 8px
+        color dark_75
         &::placeholder
           color dark_25
         &:hover,
         &:active,
         &:focus 
-          border 1px solid perple
+          border 1px solid dark_50
     &__submit
       &-wrap
         position relative
@@ -39,12 +44,27 @@
         border none
       &-arrow
         color perple
-/*.footer input[type="email"]
-  &::-moz-placeholder
-  &::-webkit-input-placeholder 
-  &:-ms-input-placeholder
-  &::-ms-input-placeholder 
-  &::placeholder
-    color dark_25*/
-
-
+  &-lower 
+    &__wrap
+      display flex
+      justify-content space-between
+      padding 25px 0 18px
+    &__copyright
+      color dark_75
+    &__social
+      display flex
+      margin 0 1px 1px 0
+    &__list
+      margin-left 23px
+    &__link
+      font-size 24px
+      background -webkit-gradient(linear,left top,left bottom,from(#bc9cff),to(#8ba4f9))
+      background: -o-linear-gradient(top,#bc9cff 0,#8ba4f9 100%)
+      background: linear-gradient(180deg,#bc9cff,#8ba4f9)
+      -webkit-background-clip text
+      background-clip: text
+      -webkit-text-fill-color: rgba(0,0,0,0)
+      &:hover,
+      &:active,
+      &:focus 
+        opacity .7
