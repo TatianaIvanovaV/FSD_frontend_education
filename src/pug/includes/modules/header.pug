@@ -1,0 +1,24 @@
+header.header
+    .container 
+      .header__content
+        +logoGroup("header__logo")
+        nav.header__nav
+          ul.header__list
+            - let arr = ["О нас", "Услуги", "Вакансии", "Новости", "Соглашения"]
+              each item in arr
+                if (item == arr[1] | item == arr[4])
+                  li.header__item
+                    a.header__link(href="#") #{item}
+                      i.material-icons.header__icon-down expand_more
+                else 
+                  li.header__item
+                    a.header__link(href="#") #{item}
+          .header__buttons
+            .header__btn-wrap
+              .header__ent-btn.btn
+                a.header__ent-link(href="#") войти 
+            .header__reg-btn.btn
+              a.header__reg-link(href="#") зарегистрироваться 
+          .header__buttons--user
+            .header__user
+              a.header__user-link(href="#") | Юлий Цезарь

@@ -1,32 +1,8 @@
 extends ../layout/index.pug
 
 block content
-  header.header
-    .container 
-      .header__content
-        .header__logo.logo-group
-          a.logo-group__link(href="/")
-            +picture("icons", "logo-group")
-        nav.header__nav
-          ul.header__list
-            - let arr = ["О нас", "Услуги", "Вакансии", "Новости", "Соглашения"]
-              each item in arr
-                if (item == arr[1] | item == arr[4])
-                  li.header__item
-                    a.header__link(href="#") #{item}
-                      i.material-icons.header__icon-down expand_more
-                else 
-                  li.header__item
-                    a.header__link(href="#") #{item}
-          .header__buttons
-            .header__btn-wrap
-              .header__ent-btn.btn
-                a.header__ent-link(href="#") войти 
-            .header__reg-btn.btn
-              a.header__reg-link(href="#") зарегистрироваться 
-          .header__buttons--user
-            .header__user
-              a.header__user-link(href="#") | Юлий Цезарь
+  include ../includes/modules/header.pug
+  
   main.main
     .intro
       .container
@@ -43,18 +19,36 @@ block content
                 a.intro__link подобрать номер
                   i.material-icons.intro__icon-arrow arrow_forward
           .intro__subtitle Лучшие номера для вашей работы,<br> отдыха и просто вдохновения  
-  footer.page_footer
-    .page_footer-inner
-      .wrapper
-        .page_footer-social
-          .footer_logo
-            a.footer_logo-link(href="/")
-              +picture("icons", "logo")
-            a.footer_logo-link(href="/")
-              img.footer_logo-pic(src="" alt="Найдём номера под ваши пожелания")
-          p.footer-tagline
-            | Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-    .page_footer-bottom
-      .wrapper
-        span.page_footer-copyright Copyright © 2018 Toxin отель. Все права зачищены.
-        span
+  footer.footer
+    .container
+      .footer-upper
+        .footer-upper__info
+          +logoGroup("footer-upper__logo")
+          p.footer-upper__tagline Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+        .footer-upper__nav
+          mixin footerNav(title, arr)
+            .footer-upper__nav-wrap
+              h3.footer-upper__nav-h3 #{title}
+              ul.footer-upper__nav-list
+                each item in arr
+                  if block
+                    li.footer-upper__nav-item #{item}
+                    block
+                  else 
+                    li.footer-upper__nav-item 
+                      a.footer-upper__nav-link(href="#") #{item}
+          +footerNav('навигация', ['О нас', 'Новости', 'Служба поддержки', 'Услуги'])
+          +footerNav('o нас', ['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы'])
+          +footerNav('Служба поддержки', ['Соглашения', 'Сообщества', 'Связь с нами'])
+          +footerNav('Подписка', ['Получайте специальные предложения и новости сервиса'] )
+            li.footer-upper__nav-item
+              form.footer-upper__nav-form(action="" method="")
+                input.footer-upper__nav-input(type="email" placeholder="Email" required)
+                span.footer-upper__submit-wrap
+                  button.footer-upper__submit-btn(type="submit")
+                    i.material-icons.footer-upper__submit-arrow arrow_forward
+
+
+      //-.footer-lower
+          span.page_footer-copyright Copyright © 2018 Toxin отель. Все права зачищены.
+          span

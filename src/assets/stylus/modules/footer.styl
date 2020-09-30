@@ -1,0 +1,50 @@
+.footer
+  padding-top 100px
+  &-upper
+    display flex
+    &__info
+      display flex
+      flex-direction column
+      max-width 260px
+    &__tagline
+      margin-top 10px
+    &__nav
+      display flex
+      justify-content space-between
+      &-wrap
+        margin-left 40px
+        flex 1
+        &:last-child
+          min-width 260px
+      &-h3
+      &-item
+        margin-bottom 14px
+      &-input
+        width 100%
+        margin-top 8px
+        &::placeholder
+          color dark_25
+        &:hover,
+        &:active,
+        &:focus 
+          border 1px solid perple
+    &__submit
+      &-wrap
+        position relative
+      &-btn
+        position absolute
+        right 4px
+        top -4px
+        background none
+        border none
+      &-arrow
+        color perple
+/*.footer input[type="email"]
+  &::-moz-placeholder
+  &::-webkit-input-placeholder 
+  &:-ms-input-placeholder
+  &::-ms-input-placeholder 
+  &::placeholder
+    color dark_25*/
+
+

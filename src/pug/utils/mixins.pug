@@ -3,9 +3,13 @@ mixin picture(directory, name, id)
     img(id=id src="./assets/img/" + directory + '/' + name + '.png', class=name + "-img", alt=name)
 mixin dataInput(title, placeholder, name, className)
   label.intro__label
-    .intro__title #{title}
+    h3.intro__h3 #{title}
     input.intro__input(
       class=className
       placeholder=placeholder
       name=name
       required )
+mixin logoGroup(className)
+  .logo-group(class=className)
+    a.logo-group__link(href="/")
+      img(src="./assets/img/icons/logo-group.png" alt="TOXIN")

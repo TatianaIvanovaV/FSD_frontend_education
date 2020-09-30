@@ -27,8 +27,15 @@ body
 *:before
 *:after 
   box-sizing border-box
-h1, h2, h3, h4, h5, h6 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 
   margin 0
+  font-family 'Open Sans'
+  color dark_100
 a 
   text-decoration none
   color dark_50
@@ -66,6 +73,20 @@ li
   text-rendering optimizeLegibility
   -moz-osx-font-smoothing grayscale
   font-feature-settings 'liga'
+input
+  &:hover,
+  &:active,
+  &:focus 
+    outline: 0 !important
+button,
+.btn
+  transition .3s
+  cursor pointer
+  &:hover,
+  &:active,
+  &:focus 
+    outline: 0 !important
+    opacity 0.5
 .btn
   text-transform uppercase
   display flex
@@ -76,16 +97,19 @@ li
   position relative
   height 44px
   border-radius 22px
-  transition .3s
-  cursor pointer
   background perple-gradient
-  &:hover,
-  &:active,
-  &:focus  
-    opacity 0.5
   >a
     color white
 h1
-  font-family 'Open Sans'
   font-size 24px
   line-height 30px
+h3
+  font-family font-Montserrat
+  font-size 12px
+  font-weight 700
+  text-transform uppercase
+input
+  height 44px 
+  border 1px solid dark_25
+  border-radius 4px
+  padding 0px 0 0 14px
