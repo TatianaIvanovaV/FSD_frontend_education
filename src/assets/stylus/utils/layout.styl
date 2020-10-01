@@ -100,6 +100,14 @@ button,
   background perple-gradient
   >a
     color white
+  &__link
+    position relative
+    width 100%
+    text-align center
+    padding-right 3px
+  &__icon-arrow 
+    position absolute
+    right 10px
 h1
   font-size 24px
   line-height 30px
@@ -113,3 +121,10 @@ input
   border 1px solid dark_25
   border-radius 4px
   padding 0px 0 0 14px
+  width 100%
+  &:hover,
+  &:active,
+  &:focus 
+    border 1px solid dark_50
+  &::placeholder
+    color dark_25

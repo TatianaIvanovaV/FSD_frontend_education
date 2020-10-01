@@ -1,0 +1,22 @@
+extends ../layout/index.pug
+
+block content
+  include ../includes/modules/header.pug
+  
+  main.main
+    .signin
+      .container
+        .signin__wrap
+          .signin__window
+            h1.signin__h1 Войти
+            form.signin__form(action="" method="")
+              .signin__input-mail
+                +dataInput("", "Email", "signin-email", "signin__input--mail")
+              .signin__input-password
+                +dataInput("", "Пароль", "password", "signin__input--password")
+            +linkButton("signin__enter", 'войти')
+            .signin__alter
+              span.signin__span Нет аккаунта на Toxin?
+
+
+  include ../includes/modules/footer.pug

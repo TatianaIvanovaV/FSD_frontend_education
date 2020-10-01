@@ -2,9 +2,9 @@
 mixin picture(directory, name, id)  
     img(id=id src="./assets/img/" + directory + '/' + name + '.png', class=name + "-img", alt=name)
 mixin dataInput(title, placeholder, name, className)
-  label.intro__label
-    h3.intro__h3 #{title}
-    input.intro__input(
+  label
+    h3 #{title}
+    input(
       class=className
       placeholder=placeholder
       name=name
@@ -13,3 +13,11 @@ mixin logoGroup(className)
   .logo-group(class=className)
     a.logo-group__link(href="/home.html")
       img(src="./assets/img/icons/logo-group.png" alt="TOXIN")
+mixin linkButton(className, text, link)     
+  .btn(class=className + "-btn")
+    a.btn__link(href="/" + link)=text
+      i.material-icons.btn__icon-arrow arrow_forward
+mixin borderButton      
+      .header__btn-wrap
+              .header__ent-btn.btn
+                a.header__ent-link(href="/sign-in.html") войти 
