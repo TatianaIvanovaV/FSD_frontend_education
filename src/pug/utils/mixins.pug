@@ -13,11 +13,17 @@ mixin logoGroup(className)
   .logo-group(class=className)
     a.logo-group__link(href="/home.html")
       img(src="./assets/img/icons/logo-group.png" alt="TOXIN")
-mixin linkButton(className, text, link)     
+//-mixin buttonWhithArrow(className, text, link)     
   .btn(class=className + "-btn")
     a.btn__link(href="/" + link)=text
       i.material-icons.btn__icon-arrow arrow_forward
-mixin borderButton      
-      .header__btn-wrap
-              .header__ent-btn.btn
-                a.header__ent-link(href="/sign-in.html") войти 
+//-mixin buttonWhithBorder(className, text, link)      
+  .header__btn-wrap
+    .header__ent-btn.btn
+      a.header__ent-link(href="/sign-in.html") войти 
+mixin buttons(className, text, link)
+  if (className === "btn--arrow")
+    a.btn(class=className href="/"+ link) #{text}
+      i.material-icons arrow_forward
+  else
+    a.btn(class=className href="/"+ link) #{text}

@@ -14,9 +14,8 @@ block content
                 +dataInput("", "Email", "signin-email", "signin__input--mail")
               .signin__input-password
                 +dataInput("", "Пароль", "password", "signin__input--password")
-            +linkButton("signin__enter", 'войти')
+            +buttons("btn--arrow signin__btn-ent", "войти", "")  
             .signin__alter
               span.signin__span Нет аккаунта на Toxin?
-
-
+              +buttons("btn--border signin__btn-create", "создать", "")
   include ../includes/modules/footer.pug

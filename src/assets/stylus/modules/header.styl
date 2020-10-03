@@ -26,38 +26,11 @@
   &__icon-down
     float right
   &__buttons
-    display flex   
+    display flex
+    justify-content space-between 
+    >.btn
+      height 34px 
+      &:first-of-type
+        margin-right 20px 
     &--user
       display none
-  &__ent-btn
-    height 30px
-    width 84px
-    background white 
-    margin 2px 22px 0 0
-    &::before
-      content ""
-      position absolute
-      z-index -1
-      top 0
-      right 0
-      bottom 0
-      left 0
-      margin -2px
-      border-radius inherit
-      background perple-gradient
-    &:hover,
-    &:active,
-    &:focus  
-      opacity 1
-  &__reg-btn 
-    width 196px
-    height 34px
-  &__ent-link
-    color perple !important
-  &__btn-wrap
-    &:hover,
-    &:active,
-    &:focus
-      opacity 0.5
-
-  

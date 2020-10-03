@@ -1,0 +1,35 @@
+button,
+.btn
+  transition .3s
+  cursor pointer
+  &:hover,
+  &:active,
+  &:focus 
+    outline: 0 !important
+    opacity 0.5
+.btn
+  text-transform uppercase
+  display flex
+  justify-content center
+  align-items center
+  font-size 12px
+  font-weight 700
+  position relative
+  height 44px
+  border-radius 22px
+  background perple-gradient
+  color white
+  width 196px
+.btn--border
+  width 87px
+  color: perple
+  border: solid 2px transparent;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), perple-gradient
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow 0px 1000px 0px #fff inset;
+.btn--arrow
+  width 100%
+  >.material-icons
+    position absolute
+    right 8px

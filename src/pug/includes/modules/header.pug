@@ -14,11 +14,8 @@ header.header
                   li.header__item
                     a.header__link(href="#") #{item}
           .header__buttons
-            .header__btn-wrap
-              .header__ent-btn.btn
-                a.header__ent-link(href="/sign-in.html") войти 
-            .header__reg-btn.btn
-              a.header__reg-link(href="/registred.html") зарегистрироваться 
+            +buttons("btn--border", "войти", "")
+            +buttons("", "зарегистрироваться", "") 
           .header__buttons--user
             .header__user
               a.header__user-link(href="#") | Юлий Цезарь
