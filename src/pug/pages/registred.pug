@@ -9,6 +9,27 @@ block content
         .registred__wrap
           .registred__window
             h1.registred__h1 Регистрация аккаунта
-            .registred__form
-            
+            form.registred__form(action="" method="")
+              .registred__input-name
+                +dataInput("", "Имя", "input-name", "signin__input--name")
+              .registred__input-surname
+                +dataInput("", "Фамилия", "input-surname", "signin__input--surname")
+              .registred__input-gender.radio
+                input.radio__input(type="radio" id="choice1"  name="gender" value="male" checked)
+                label.radio__label(for="choice1") Мужчина 
+                input.radio__input(type="radio" id="choice2"  name="gender" value="female")
+                label.radio__label(for="choice2") Женщина
+              .registred__input-birthday
+                +dataInput("дата рождения", "ДД.ММ.ГГГГ", "input-surname", "signin__input--surname")
+              .registred__input-mail
+                +dataInput("данные для входа в сервис", "Email", "signin-email", "signin__input--mail")
+              .registred__input-password
+                +dataInput("", "Пароль", "password", "signin__input--password")
+              .registred__input-toggle.checkbox
+                label.checkbox__label 
+                  input.checkbox__input(type="checkbox" id="toggle")
+                  span.checkbox__round
+                  //-|Получать спецпредложения
   include ../includes/modules/footer.pug
+  //-title, placeholder, name, className
+    
