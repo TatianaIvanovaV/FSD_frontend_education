@@ -24,13 +24,26 @@
       margin-bottom 19px
     &-birthday
       margin-bottom 16px
-    
-
+    &-password
+      margin-bottom 6px
+    &-toggle
+      margin-bottom 22px
+  &__pay
+    margin-bottom 31px
+  &__after
+    display flex
+    justify-content space-between
+    align-items center
+  &__btn-create
+    width 99px
+  &__span
+    color dark_100
 .radio
   display flex
   align-items flex-start
   &__label 
     margin -3px 20px 0 10px
+    cursor pointer
   &__input
     appearance none
     border-radius 50%
@@ -46,39 +59,38 @@
       background-clip content-box, border-box
       box-shadow 0px 0px 0px 3px #fff inset
       & + .radio__label
-        color dark_75
-  
+        color dark_75 
 .checkbox
-  &__label
-    position: relative;
-    width: 60px;
-    height: 34px;
   &__input
     display none
-  &__round
-    position: absolute;
-    cursor: pointer;
-    border-radius: 34px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    &:before 
-      position: absolute;
-      content: "";
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      -webkit-transition: .4s;
-      transition: .4s
-      border-radius: 50%;
-  &__input:checked + .round 
-      background-color: #2196F3;
-  &__input:focus + .round 
-      box-shadow: 0 0 1px #2196F3;
-  &__input:checked + .round:before 
-      transform: translateX(26px);
+    & + .checkbox__label 
+      position: relative;
+      padding-left 50px
+      cursor: pointer;
+      color dark_75
+      &::before 
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0;
+        width: 40px;
+        height: 20px;
+        border 1px solid dark_25
+        border-radius 10px
+        transition: .2s;
+      &::after 
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 12px;
+        height: 12px;
+        border-radius 50%
+        background dark_25
+        transition: .2s
+    &:checked + .checkbox__label
+      &::after 
+        background perple-gradient
+        left 24px
+      &::before
+        border 1px solid perple

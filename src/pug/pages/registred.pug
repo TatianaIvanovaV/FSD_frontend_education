@@ -26,10 +26,13 @@ block content
               .registred__input-password
                 +dataInput("", "Пароль", "password", "signin__input--password")
               .registred__input-toggle.checkbox
-                label.checkbox__label 
-                  input.checkbox__input(type="checkbox" id="toggle")
-                  span.checkbox__round
-                  //-|Получать спецпредложения
+                input.checkbox__input(type="checkbox" id="toggle")
+                label.checkbox__label(for="toggle") Получать спецпредложения
+            .registred__pay
+              +buttons("btn--arrow", "перейти к оплате", "")
+            .registred__after
+              span.registred__span Уже есть аккаунт на Toxin
+              +buttons("btn--border registred__btn-create", "войти", "sign-in.html")
   include ../includes/modules/footer.pug
   //-title, placeholder, name, className
     
