@@ -1,0 +1,17 @@
+extends ../layout/index.pug
+block content
+  include ../includes/modules/header.pug
+  
+  main.main
+    .catalog
+      .container
+        .catalog__wrap
+          aside.catalog__filter.filter
+            form.filter__form(action="" method="")
+              .filter__date
+                +dataInput("даты пребывания в отеле", "ДД.ММ.ГГГГ", "input-dropdown", "filter__input--date", "", '19 авг - 23 авг')
+              .filter__guests
+                +dataInput("гости", "Сколько гостей", "input-dropdown","filter__input--guests", "", '3 гостя, 1 младенец')
+              .filter__range
+          section.catalog__rooms
+  include ../includes/modules/footer.pug

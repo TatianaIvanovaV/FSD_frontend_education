@@ -1,15 +1,29 @@
 
 mixin picture(directory, name, id)  
     img(id=id src="./assets/img/" + directory + '/' + name + '.png', class=name + "-img", alt=name)
-mixin dataInput(title, placeholder, name, className, type)
-  label
-    h3 #{title}
-    input(
-      class=className
-      type=type
-      placeholder=placeholder
-      name=name
-      required )
+mixin dataInput(title, placeholder, name, className, type,value)
+  if (name === "input-dropdown")
+    label
+      h3 #{title}
+      input(
+        class=className
+        type=type
+        placeholder=placeholder
+        name=name
+        value=value
+        required )
+      span.dropdown
+        button.dropdown__btn(type="button")
+          i.material-icons.dropdown__icon expand_more
+  else        
+    label
+      h3 #{title}
+      input(
+        class=className
+        type=type
+        placeholder=placeholder
+        name=name
+        required )
 mixin logoGroup(className)
   .logo-group(class=className)
     a.logo-group__link(href="/home.html")

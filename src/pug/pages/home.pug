@@ -11,10 +11,10 @@ block content
             h1.intro__h1 Найдём номера под ваши пожелания
             form.intro__form(action="" method="")
               .intro__block-date
-                +dataInput("прибытие", "ДД.ММ.ГГГГ", "date-arrival", "intro__input--date")
-                +dataInput("выезд", "ДД.ММ.ГГГГ","date-departure", "intro__input--date")
+                +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "intro__input--date")
+                +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "intro__input--date")
               .intro__block-guests
-                +dataInput("гости", "Сколько гостей","guests","intro__input--guests")
-              +buttons("btn--arrow", "подобрать номер", "") 
+                +dataInput("гости", "Сколько гостей","input-dropdown","intro__input--guests")
+              +buttons("btn--arrow", "подобрать номер", "rooms-filter.html") 
           .intro__subtitle Лучшие номера для вашей работы,<br> отдыха и просто вдохновения  
   include ../includes/modules/footer.pug
