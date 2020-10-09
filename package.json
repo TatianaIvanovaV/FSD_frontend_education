@@ -39,7 +39,7 @@
     "@fortawesome/fontawesome-free": "^5.14.0",
     "jquery": "^3.5.1",
     "material-design-icons": "^3.0.1",
-    "rangeslider-js": "^3.2.5",
+    "nouislider": "^14.6.2",
     "slick-carousel": "^1.8.1"
   }
 }

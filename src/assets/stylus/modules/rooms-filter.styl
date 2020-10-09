@@ -8,3 +8,41 @@
     width 100%
 .filter
   padding 26px 4px 0 0
+  &__date
+    margin-bottom 16px
+  &__guests
+    margin-bottom 26px
+  &__range
+    font-size 12px
+    &-title
+      display flex
+      justify-content space-between
+      margin-bottom 18px
+    &-subtitle
+      margin-top 10px
+#unconstrained
+  height 6px
+  border 1px solid dark_25
+  
+.noUi
+  &-target,
+  &-handle
+    box-shadow none
+  &-horizontal .noUi-handle
+    height 16px
+    width 16px
+    background green-gradient
+    border 2px solid white
+    border-radius 50%
+    margin-right 10px
+    padding-top 2px
+    cursor pointer
+    &:hover,
+    &:active,
+    &:focus
+      outline none
+    &::before,
+    &::after
+      display none
+  &-connect
+    background green-gradient

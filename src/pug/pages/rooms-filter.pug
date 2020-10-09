@@ -13,5 +13,21 @@ block content
               .filter__guests
                 +dataInput("гости", "Сколько гостей", "input-dropdown","filter__input--guests", "", '3 гостя, 1 младенец')
               .filter__range
+                .filter__range-title
+                  h3 Диапазон цены
+                  span#unconstrained-values
+                #unconstrained
+                p.filter__range-subtitle Стоимость за сутки пребывания в номере
+              .filter__rules
+                h3 правила дома
+                ul.filter__rules-list
+                  each item in inputRules
+                    - let inputRules = [{id="option1",title="Можно курить"}, {id="option2",title="Можно с питомцами"}, {id="option1",title="Можно пригласить гостей (до 10 человек)"}]
+                      li
+                        input( 
+                          type="checkbox" name="option2"
+                          id=id )
+                        label(for=id)=title
+
           section.catalog__rooms
   include ../includes/modules/footer.pug
