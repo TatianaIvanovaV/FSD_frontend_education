@@ -22,11 +22,62 @@
     &-subtitle
       margin-top 10px
   &__rules
+    margin-bottom 28px
     &-h3,
     &-item
       margin-bottom 12px
     &-item
       line-height 18px
+  &__access
+    margin-bottom 25px
+    &-h3
+      margin-bottom 12px
+    &-item
+      margin-bottom 10px
+    &-title
+      font-size 14px
+      text-transform none
+      margin-top -2px
+      color dark_75
+    &-sublabel
+      margin-top 2px
+      margin-bottom 0px
+      line-height 14px
+      font-size 12px
+  &__value
+    margin-bottom 27px
+    >label>span>button
+      color dark_75 
+  &__input--value
+    border-radius 4px 4px 0 0
+    
+  &__add
+    &-details[open] summary::after 
+      transform rotate(-180deg)
+      transition .2s
+    &-summary
+      list-style none
+      display: flex;
+      justify-content space-between
+      align-items: center;
+      cursor: pointer;
+      margin-bottom 10px
+      &::after
+        content: '\e313';
+        font-family: 'Material Icons';
+        font-size 24px
+        margin-right 9px
+      &::-webkit-details-marker
+        display: none
+      &:hover,
+      &:active,
+      &:focus
+        outline none
+    &-item
+      margin-bottom 6.3px
+/*details[open] summary::after 
+  transform rotate(-180deg)
+  transition .3s*/
 #unconstrained
   height 6px
   border 1px solid dark_25 

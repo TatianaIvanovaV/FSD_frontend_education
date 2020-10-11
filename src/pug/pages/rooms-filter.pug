@@ -21,7 +21,7 @@ block content
               .filter__rules
                 h3.filter__rules-h3 правила дома
                 ul.filter__rules-list
-                  - let inputRules = [{id:"option1",title:"Можно курить"}, {id:"option2",title:"Можно с питомцами",checked:"true"}, {id:"option3",title:"Можно пригласить гостей(до 10 человек)",checked:"true"}]
+                  - let inputRules = [{id:"rule1",title:"Можно курить"}, {id:"rule2",title:"Можно с питомцами",checked:"true"}, {id:"rule3",title:"Можно пригласить гостей(до 10 человек)",checked:"true"}]
                     each item in inputRules
                       li.checkbox.filter__rules-item
                         input.checkbox__input(
@@ -31,6 +31,37 @@ block content
                           checked= item.checked
                           )
                         label.checkbox__label.filter__rules-label(for= item.id)= item.title
-
-          section.catalog__rooms
+              .filter__access
+                h3.filter__access-h3 доступность
+                ul.filter__access-list
+                  - let inputAccess = [{id:"access1",title:"Широкий коридор", subtitle:"Ширина коридоров в номере не менее 91 см."}, {id:"access2",title:"Помощник для инвалидов", subtitle:"На 1 этаже вас встретит специалист  и проводит до номера."}]
+                    each item in inputAccess
+                      li.checkbox.filter__access-item
+                        input.checkbox__input.filter__access-input(
+                          class="" 
+                          type="checkbox"
+                          id= item.id
+                          checked= item.checked
+                          )
+                        label.checkbox__label.filter__access-label(for= item.id)
+                          h3.filter__access-title=item.title
+                          p.filter__access-sublabel=item.subtitle
+              .filter__value
+                +dataInput("удобства номера", "Сколько гостей", "input-dropdown","filter__input--value", "", '2 спальни, 2 кровати...') 
+              .filter__add
+                details.filter__add-details
+                  summary.filter__add-summary 
+                    h3 дополнительные удобства
+                  ul.filter__add-list
+                    - let inputAdd = [{id:"add1",title:"Завтрак"}, {id:"add2",title:"Письменный стол",checked:"true"},{id:"add3",title:"Стул для кормления",checked:"true"},{id:"add4",title:"Кроватка",checked:"true"},{id:"add5",title:"Телевизор"},{id:"add6",title:"Шампунь"}]
+                    each item in inputAdd
+                      li.checkbox.filter__add-item
+                        input.checkbox__input.filter__add-input(
+                          class="" 
+                          type="checkbox"
+                          id= item.id
+                          checked= item.checked
+                          )
+                        label.checkbox__label.filter__access-label(for= item.id)=item.title       
+          section.catalog__rooms  
   include ../includes/modules/footer.pug
