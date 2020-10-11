@@ -19,15 +19,18 @@ block content
                 #unconstrained
                 p.filter__range-subtitle Стоимость за сутки пребывания в номере
               .filter__rules
-                h3 правила дома
+                h3.filter__rules-h3 правила дома
                 ul.filter__rules-list
-                  each item in inputRules
-                    - let inputRules = [{id="option1",title="Можно курить"}, {id="option2",title="Можно с питомцами"}, {id="option1",title="Можно пригласить гостей (до 10 человек)"}]
-                      li
-                        input( 
-                          type="checkbox" name="option2"
-                          id=id )
-                        label(for=id)=title
+                  - let inputRules = [{id:"option1",title:"Можно курить"}, {id:"option2",title:"Можно с питомцами",checked:"true"}, {id:"option3",title:"Можно пригласить гостей(до 10 человек)",checked:"true"}]
+                    each item in inputRules
+                      li.checkbox.filter__rules-item
+                        input.checkbox__input(
+                          class="" 
+                          type="checkbox"
+                          id= item.id
+                          checked= item.checked
+                          )
+                        label.checkbox__label.filter__rules-label(for= item.id)= item.title
 
           section.catalog__rooms
   include ../includes/modules/footer.pug

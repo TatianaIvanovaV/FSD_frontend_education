@@ -60,10 +60,10 @@
       box-shadow 0px 0px 0px 3px #fff inset
       & + .radio__label
         color dark_75 
-.checkbox
+.togglebox
   &__input
     display none
-    & + .checkbox__label 
+    & + .togglebox__label 
       position: relative;
       padding-left 50px
       cursor: pointer;
@@ -88,7 +88,7 @@
         border-radius 50%
         background dark_25
         transition: .2s
-    &:checked + .checkbox__label
+    &:checked + .togglebox__label
       &::after 
         background perple-gradient
         left 24px

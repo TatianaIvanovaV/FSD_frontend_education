@@ -23,3 +23,32 @@ input
     background none
     border none
     color dark_50
+.checkbox
+  padding-left 30px
+  &__input
+    display none
+    & + .checkbox__label 
+      position: relative;
+      cursor: pointer;
+      &::before 
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: -30px;
+        width: 20px;
+        height: 20px;
+        border 1px solid dark_25
+        border-radius 4px
+    &:checked + .checkbox__label
+      &::before 
+        border 1px solid perple
+      &::after 
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: -23px;
+        width 6px
+        height 8px
+        border-bottom 2px solid perple
+        border-right 2px solid perple
+        transform: rotate(45deg)
