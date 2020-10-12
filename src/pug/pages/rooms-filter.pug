@@ -63,5 +63,41 @@ block content
                           checked= item.checked
                           )
                         label.checkbox__label.filter__access-label(for= item.id)=item.title       
-          section.catalog__rooms  
+          section.catalog__rooms.rooms
+            h1.rooms__h1 Номера, которые мы для вас подобрали
+            ul.rooms__list
+              li.rooms__card
+                .rooms__photos
+                  +picture("search-rooms", "888")
+                  +picture("search-rooms", "888")
+                  +picture("search-rooms", "888")
+                  +picture("search-rooms", "888")
+                a.rooms__details(href="room-details")
+                  .rooms__details--wrap
+                    .rooms__value
+                      .rooms__appartment 
+                        span.rooms__num № 888
+                        span.rooms__status люкс
+                      .rooms__coast <span>9 990₽</span> в сутки
+                    .rooms__reiting
+                      .rooms__stars
+                      .rooms__reviews <span>145</span> Отзывов
+              li.rooms__card
+                .rooms__photos
+                  +picture("search-rooms", "840")
+                  +picture("search-rooms", "352")
+                  +picture("search-rooms", "444")
+                  +picture("search-rooms", "352")
+              li.rooms__card
+                .rooms__photos
+                  +picture("search-rooms", "980")
+                  +picture("search-rooms", "352")
+                  +picture("search-rooms", "444")
+                  +picture("search-rooms", "352")
+              li.rooms__card
+                .rooms__card-wrap
+              li.rooms__card
+                .rooms__card-wrap
+              li.rooms__card
+                .rooms__card-wrap  
   include ../includes/modules/footer.pug

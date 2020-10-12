@@ -7,7 +7,7 @@
   &__rooms
     width 100%
 .filter
-  padding 26px 4px 0 0
+  padding-top 26px
   &__date
     margin-bottom 16px
   &__guests
@@ -75,9 +75,6 @@
         outline none
     &-item
       margin-bottom 6.3px
-/*details[open] summary::after 
-  transform rotate(-180deg)
-  transition .3s*/
 #unconstrained
   height 6px
   border 1px solid dark_25 
@@ -103,3 +100,99 @@
       display none
   &-connect
     background green-gradient
+.rooms
+  padding 30px 0 0 60px
+  &__list
+    display flex
+    justify-content space-between
+    margin-top 20px
+    flex-wrap wrap
+  &__card
+    position relative
+    width 270px
+    height 257px
+    box-shadow 0px 10px 20px rgba(31, 32, 65, 0.05)
+    border-radius 4px
+    margin-bottom 20px
+    overflow hidden
+  &__photos
+    height 151px
+    >.slick-prev
+      left 0px 
+      &::before
+        content: '\e314'
+    >.slick-next 
+      right 0px
+      &::before
+        content: '\e315'
+        color transparent
+    &:hover,
+    &:active,
+    &:focus
+      >.slick-prev,
+      .slick-next 
+        position: absolute;
+        top: 50%
+        z-index 2
+        cursor: pointer;
+        width 42px
+        height 100%
+        &::before
+          font-family 'Material Icons'
+          opacity 1
+          color white
+      &::before,
+      &::after
+        content ""
+        position absolute
+        top 0
+        z-index 1
+        width 42px
+        height 100%
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%)
+        transition 0.3s
+      &::after
+        right 0
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+      &::before
+        left 0
+    >.slick-dots 
+      bottom 15px 
+      text-align: end
+      padding-right 16px
+      & li 
+        width 1px
+        height 1px
+        paddind-left 4px
+        z-index 4
+        & button
+          padding 0px
+          width 0
+          height 0
+          &:before 
+            width 7.5px
+            height 7.5px
+            border-radius 50%
+            top: 0;
+            left: 0;
+            width 7.5px
+            height 7.5px
+            content: '';
+            border 1px solid white 
+            opacity: 1;
+        &.slick-active button:before
+          background white
+          box-shadow: 0px 5px 5px rgba(31, 32, 65, 0.3)
+          opacity: 1;
+  &__details--wrap
+    margin 20px
+  &__value,
+  &__reiting
+    display flex
+    justify-content space-between
+  &__reiting
+    border-top 1px solid dark_25
+  &__num
+    font-weight bold
+    color dark_100
+    font-size 14px

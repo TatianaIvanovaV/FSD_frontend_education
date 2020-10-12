@@ -28,3 +28,11 @@ noUiSlider.create(unconstrainedSlider, {
 unconstrainedSlider.noUiSlider.on('update', function (values) {;
   unconstrainedValues.innerHTML = values.join(' - ');
 });
+
+
+/*--- carousel-in-cards  --*/
+$('.rooms__photos').slick({
+  dots: true,
+  speed: 200,
+  arrows: true
+});
