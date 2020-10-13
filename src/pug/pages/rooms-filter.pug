@@ -1,5 +1,6 @@
 extends ../layout/index.pug
 block content
+- roomsImgs = [{imgList:["img(src="./assets/img/search-rooms/888.png")","img(src="./assets/img/search-rooms/888.png")","img(src="./assets/img/search-rooms/888.png")","img(src="./assets/img/search-rooms/888.png")"}]
   include ../includes/modules/header.pug
   
   main.main
@@ -65,7 +66,56 @@ block content
                         label.checkbox__label.filter__access-label(for= item.id)=item.title       
           section.catalog__rooms.rooms
             h1.rooms__h1 Номера, которые мы для вас подобрали
-            ul.rooms__list
+            mixin roomCard(roomOptions)
+              - roomOptions = {imgList = [], number = 0, isLux = false, cost = 0, rate = 0, reviewCount = 0}
+              ul.rooms__list
+                li.rooms__card
+                  .rooms__photos
+                    for img in imgList
+                      .rooms__photos--wrap=img
+                  a.rooms__details(href="room-details")
+                    .rooms__details--wrap
+                      .rooms__value
+                        p.rooms__appartment  № 
+                          span.rooms__num 888
+                          span.rooms__status люкс
+                        p.rooms__coast
+                          span.rooms__price 9 990₽
+                          |  в сутки
+                      .rooms__rating
+                        +starsRating(5)
+                        p.rooms__reviews 
+                          span.rooms__reviews-amount 145 
+                          | Отзывов
+            +roomCard(roomOptions)
+              - roomOptions = {imgList = roomsImgs[0], number = 888, isLux = true, cost = 9990, rate = 5, reviewCount = 145}
+  //-mixin roomCard(roomOptions)
+    - var {imgList = [], number = 0, isLux = false, cost = 0, rate = 0, reviewCount = 0} = roomOptions;
+
+    .room-card
+      .room-card__gallery
+        for img in imgList
+          img.room-card__gallery-item(src= img)
+      a.room-card__description(href="room.html")
+        .room-card__description-row.room-card__description-row--underlined
+          p.room-card__title
+            | № 
+            span.room-card__title--big= number
+            if isLux 
+              span.room-card__type= ` Люкс`
+          p.room-card__info
+            span.room-card__info-item.room-card__info-item--bold
+              +numberWithSpaces(cost)
+              | ₽ 
+            span.room-card__info-item.room-card__info-item--small в сутки
+        .room-card__description-row
+          .room-card__rate
+            +rate(rate)
+          p.room-card__info
+            span.room-card__info-item.room-card__info-item--bold= `${reviewCount} `
+            | Отзывов
+  include ../includes/modules/footer.pug
+  //-ul.rooms__list
               li.rooms__card
                 .rooms__photos
                   +picture("search-rooms", "888")
@@ -75,29 +125,14 @@ block content
                 a.rooms__details(href="room-details")
                   .rooms__details--wrap
                     .rooms__value
-                      .rooms__appartment 
-                        span.rooms__num № 888
+                      p.rooms__appartment  № 
+                        span.rooms__num 888
                         span.rooms__status люкс
-                      .rooms__coast <span>9 990₽</span> в сутки
-                    .rooms__reiting
-                      .rooms__stars
-                      .rooms__reviews <span>145</span> Отзывов
-              li.rooms__card
-                .rooms__photos
-                  +picture("search-rooms", "840")
-                  +picture("search-rooms", "352")
-                  +picture("search-rooms", "444")
-                  +picture("search-rooms", "352")
-              li.rooms__card
-                .rooms__photos
-                  +picture("search-rooms", "980")
-                  +picture("search-rooms", "352")
-                  +picture("search-rooms", "444")
-                  +picture("search-rooms", "352")
-              li.rooms__card
-                .rooms__card-wrap
-              li.rooms__card
-                .rooms__card-wrap
-              li.rooms__card
-                .rooms__card-wrap  
-  include ../includes/modules/footer.pug
+                      p.rooms__coast
+                        span.rooms__price 9 990₽
+                        |  в сутки
+                    .rooms__rating
+                      +starsRating(5)
+                      p.rooms__reviews 
+                        span.rooms__reviews-amount 145 
+                        | Отзывов

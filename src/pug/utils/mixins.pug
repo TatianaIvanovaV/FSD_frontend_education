@@ -34,3 +34,10 @@ mixin buttons(className, text, link)
       i.material-icons arrow_forward
   else
     a.btn(class=className href="/"+ link) #{text}
+mixin starsRating(rate=0)
+  .stars-rating
+    - for (let i=0; i<5; i++)
+      if rate>i
+        i.material-icons star
+      else 
+        i.material-icons star_border
