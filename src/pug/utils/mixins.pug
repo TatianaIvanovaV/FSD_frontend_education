@@ -41,3 +41,5 @@ mixin starsRating(rate=0)
         i.material-icons star
       else 
         i.material-icons star_border
+mixin numWithSpaces(num)
+  != num.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ')

@@ -20,7 +20,7 @@ noUiSlider.create(unconstrainedSlider, {
           return parseInt(value);
         },
     to: function(value) {
-          return parseInt(value)+ "₽";
+          return parseInt(value).toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ')+ "₽";
         }
     },
     

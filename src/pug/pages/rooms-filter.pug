@@ -1,6 +1,5 @@
 extends ../layout/index.pug
 block content
-- roomsImgs = [{imgList:["img(src="./assets/img/search-rooms/888.png")","img(src="./assets/img/search-rooms/888.png")","img(src="./assets/img/search-rooms/888.png")","img(src="./assets/img/search-rooms/888.png")"}]
   include ../includes/modules/header.pug
   
   main.main
@@ -66,73 +65,33 @@ block content
                         label.checkbox__label.filter__access-label(for= item.id)=item.title       
           section.catalog__rooms.rooms
             h1.rooms__h1 Номера, которые мы для вас подобрали
-            mixin roomCard(roomOptions)
-              - roomOptions = {imgList = [], number = 0, isLux = false, cost = 0, rate = 0, reviewCount = 0}
-              ul.rooms__list
-                li.rooms__card
+            .rooms__list
+              - var roomsList = [{imgList:["888", "888", "888", "888"],number: 888, isLux: true, cost: 9990, rate: 5, reviewCount: 145},{imgList:["840", "840", "840", "840"],  number: 840, isLux: false, cost: 9900, rate: 4, reviewCount: 65},{imgList: ["980", "980", "980", "980"], number: 980, isLux: true, cost: 8500, rate: 3, reviewCount: 35},{imgList: ["856", "856", "856", "856"], number: 856, isLux: false, cost: 7300, rate: 5, reviewCount: 19},{imgList: ["740", "740", "740", "740"], number: 740, isLux: false, cost: 6000, rate: 4, reviewCount: 44},{imgList: ["982", "982", "982", "982"], number: 982, isLux: false, cost: 5800, rate: 3, reviewCount: 56},{imgList: ["678", "678", "678", "678"], number: 678, isLux: false, cost: 5500, rate: 5, reviewCount: 45},{imgList: ["450", "450", "450", "450"], number: 450, isLux: false, cost: 5300, rate: 4, reviewCount: 39},{imgList: ["350", "350", "350", "350"], number: 350, isLux: false, cost: 5000, rate: 3, reviewCount: 77},{imgList: ["666", "666", "666", "666"], number: 666, isLux: false, cost: 5000, rate: 5, reviewCount: 25},{imgList: ["444", "444", "444", "444"], number: 444, isLux: false, cost: 5000, rate: 3, reviewCount: 15},{imgList: ["352", "352", "352", "352"], number: 352, isLux: false, cost: 5000, rate: 3, reviewCount: 55}]; 
+              mixin roomCard({imgList = [], number = 0, isLux = false, cost = 0, rate = 0, reviewCount = 0})
+                .rooms__card
                   .rooms__photos
                     for img in imgList
-                      .rooms__photos--wrap=img
-                  a.rooms__details(href="room-details")
+                      mixin pictureRoom(img)  
+                        img(src="./assets/img/search-rooms/" + img + '.png', class="rooms__img", alt="photo interier")
+                      +pictureRoom(img)
+                  a.rooms__details(href="room-details.html")
                     .rooms__details--wrap
                       .rooms__value
                         p.rooms__appartment  № 
-                          span.rooms__num 888
-                          span.rooms__status люкс
+                          span.rooms__num #{number}
+                          if isLux 
+                            span.rooms__status= 'люкс'
                         p.rooms__coast
-                          span.rooms__price 9 990₽
+                          span.rooms__price
+                            +numWithSpaces(cost)
                           |  в сутки
                       .rooms__rating
-                        +starsRating(5)
+                        +starsRating(rate)
                         p.rooms__reviews 
-                          span.rooms__reviews-amount 145 
-                          | Отзывов
-            +roomCard(roomOptions)
-              - roomOptions = {imgList = roomsImgs[0], number = 888, isLux = true, cost = 9990, rate = 5, reviewCount = 145}
-  //-mixin roomCard(roomOptions)
-    - var {imgList = [], number = 0, isLux = false, cost = 0, rate = 0, reviewCount = 0} = roomOptions;
-
-    .room-card
-      .room-card__gallery
-        for img in imgList
-          img.room-card__gallery-item(src= img)
-      a.room-card__description(href="room.html")
-        .room-card__description-row.room-card__description-row--underlined
-          p.room-card__title
-            | № 
-            span.room-card__title--big= number
-            if isLux 
-              span.room-card__type= ` Люкс`
-          p.room-card__info
-            span.room-card__info-item.room-card__info-item--bold
-              +numberWithSpaces(cost)
-              | ₽ 
-            span.room-card__info-item.room-card__info-item--small в сутки
-        .room-card__description-row
-          .room-card__rate
-            +rate(rate)
-          p.room-card__info
-            span.room-card__info-item.room-card__info-item--bold= `${reviewCount} `
-            | Отзывов
-  include ../includes/modules/footer.pug
-  //-ul.rooms__list
-              li.rooms__card
-                .rooms__photos
-                  +picture("search-rooms", "888")
-                  +picture("search-rooms", "888")
-                  +picture("search-rooms", "888")
-                  +picture("search-rooms", "888")
-                a.rooms__details(href="room-details")
-                  .rooms__details--wrap
-                    .rooms__value
-                      p.rooms__appartment  № 
-                        span.rooms__num 888
-                        span.rooms__status люкс
-                      p.rooms__coast
-                        span.rooms__price 9 990₽
-                        |  в сутки
-                    .rooms__rating
-                      +starsRating(5)
-                      p.rooms__reviews 
-                        span.rooms__reviews-amount 145 
-                        | Отзывов
+                          span.rooms__reviews-amount #{reviewCount}
+                          |  Отзывов 
+              -for (let i=0; i<roomsList.length; i++) 
+                +roomCard(roomsList[i])
+       
+  
+  include ../includes/modules/footer.pug 
