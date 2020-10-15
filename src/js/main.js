@@ -4,6 +4,9 @@
 import $ from 'jquery'
 import 'slick-carousel'
 import noUiSlider from 'nouislider'
+import 'air-datepicker'
+
+
 /*-- range-slider --*/
 var unconstrainedSlider = document.getElementById('unconstrained');
 var unconstrainedValues = document.getElementById('unconstrained-values');
@@ -36,3 +39,9 @@ $('.rooms__photos').slick({
   speed: 200,
   arrows: true
 });
+
+
+/*--- air-datepicker calendar --*/
+$('.datepicker-here ').datepicker({
+  multipleDates: 2,
+})

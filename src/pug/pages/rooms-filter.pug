@@ -64,7 +64,7 @@ block content
                           )
                         label.checkbox__label.filter__access-label(for= item.id)=item.title       
           section.catalog__rooms.rooms
-            h1.rooms__h1 Номера, которые мы для вас подобрали
+            h1.rooms__h1 Номера<span class="quicksand">,</span> которые мы для вас подобрали
             .rooms__list
               - var roomsList = [{imgList:["888", "888", "888", "888"],number: 888, isLux: true, cost: 9990, rate: 5, reviewCount: 145},{imgList:["840", "840", "840", "840"],  number: 840, isLux: false, cost: 9900, rate: 4, reviewCount: 65},{imgList: ["980", "980", "980", "980"], number: 980, isLux: true, cost: 8500, rate: 3, reviewCount: 35},{imgList: ["856", "856", "856", "856"], number: 856, isLux: false, cost: 7300, rate: 5, reviewCount: 19},{imgList: ["740", "740", "740", "740"], number: 740, isLux: false, cost: 6000, rate: 4, reviewCount: 44},{imgList: ["982", "982", "982", "982"], number: 982, isLux: false, cost: 5800, rate: 3, reviewCount: 56},{imgList: ["678", "678", "678", "678"], number: 678, isLux: false, cost: 5500, rate: 5, reviewCount: 45},{imgList: ["450", "450", "450", "450"], number: 450, isLux: false, cost: 5300, rate: 4, reviewCount: 39},{imgList: ["350", "350", "350", "350"], number: 350, isLux: false, cost: 5000, rate: 3, reviewCount: 77},{imgList: ["666", "666", "666", "666"], number: 666, isLux: false, cost: 5000, rate: 5, reviewCount: 25},{imgList: ["444", "444", "444", "444"], number: 444, isLux: false, cost: 5000, rate: 3, reviewCount: 15},{imgList: ["352", "352", "352", "352"], number: 352, isLux: false, cost: 5000, rate: 3, reviewCount: 55}]; 
               mixin roomCard({imgList = [], number = 0, isLux = false, cost = 0, rate = 0, reviewCount = 0})
@@ -92,6 +92,6 @@ block content
                           |  Отзывов 
               -for (let i=0; i<roomsList.length; i++) 
                 +roomCard(roomsList[i])
-       
+            .rooms__paginator.paginator
   
   include ../includes/modules/footer.pug 

@@ -1,18 +1,21 @@
 
 mixin picture(directory, name, id)  
     img(id=id src="./assets/img/" + directory + '/' + name + '.png', class=name + "-img", alt=name)
-mixin dataInput(title, placeholder, name, className, type,value)
+mixin dataInput(title, placeholder, name, className, type, value)
   if (name === "input-dropdown")
     label
       h3 #{title}
-      input(
-        class=className
-        type=type
-        placeholder=placeholder
-        name=name
-        value=value
-        required )
-      span.dropdown
+      span.dropdown.datepicker-here 
+        button.dropdown__btn(type="button")
+          i.material-icons.dropdown__icon expand_more
+        input(
+          class=className
+          type=type
+          placeholder=placeholder
+          name=name
+          value=value
+          required )
+      //-span.dropdown
         button.dropdown__btn(type="button")
           i.material-icons.dropdown__icon expand_more
   else        
@@ -42,4 +45,4 @@ mixin starsRating(rate=0)
       else 
         i.material-icons star_border
 mixin numWithSpaces(num)
-  != num.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ')
+  != num.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ')+ "₽"
