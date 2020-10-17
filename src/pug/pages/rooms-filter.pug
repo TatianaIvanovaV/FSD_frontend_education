@@ -70,7 +70,7 @@ block content
               mixin roomCard({imgList = [], number = 0, isLux = false, cost = 0, rate = 0, reviewCount = 0})
                 .rooms__card
                   .rooms__photos
-                    for img in imgList
+                    each img in imgList
                       mixin pictureRoom(img)  
                         img(src="./assets/img/search-rooms/" + img + '.png', class="rooms__img", alt="photo interier")
                       +pictureRoom(img)

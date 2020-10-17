@@ -1,0 +1,39 @@
+extends ../layout/index.pug
+
+block content
+  include ../includes/modules/header.pug
+  
+  main.main
+    .details
+      .details__intro
+        .details__gallery--main
+          +picture("background","room-exemple1")
+        .details__gallery--up
+          +picture("background","room-exemple2")
+        .details__gallery--low
+          +picture("background","room-exemple3")
+      .details__info
+        .container
+          .details__columns
+            .details__columns-right
+              .details__boost
+                .details__intelligence.intelligence
+                  h2.intelligence__h2 Сведения о номере
+                  mixin intelligenceList({icon="", descrTitle="", descrParagraph=""})
+                      ul.intelligence__list 
+                          li.intelligence__item
+                            .intelligence__emogy
+                              i.material-icons.intelligence__icon= icon
+                            .intelligence__decr
+                              h3.intelligence__descr-h3= descrTitle
+                              p.intelligence__decr-p= descrParagraph 
+                  - let intelligenceItems = [{icon: "tag_faces", descrTitle: "Комфорт", descrParagraph: "Шумопоглощающие стены"},{icon: "location_city", descrTitle: "Удобство", descrParagraph: "Окно в каждой из спален"}, {icon: "whatshot", descrTitle: "Уют", descrParagraph: "Номер оснащён камином"}]
+                  -for (let i=0; i<intelligenceItems.length; i++)       
+                    +intelligenceList(intelligenceItems[i])
+                .details__chart.chart
+                  .chart__wrap
+                    canvas.chart__main(id="don")
+              .details__
+            .details__columns-left
+  include ../includes/modules/footer.pug 
+  

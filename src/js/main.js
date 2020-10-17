@@ -5,7 +5,26 @@ import $ from 'jquery'
 import 'slick-carousel'
 import noUiSlider from 'nouislider'
 import 'air-datepicker'
+import Chart from 'chart.js'
 
+/*--- chart --*/
+
+  var myDoughnut = new Chart( document.getElementById('don'), 
+  {	
+    type: 'doughnut',
+    data: {
+      datasets: [{
+        data: [25, 25, 50],
+        labels: [
+          'Red',
+          'Yellow',
+          'Blue'
+      ],backgroundColor: [
+      ],
+      }],
+    },
+    options: {
+  }});
 
 /*-- range-slider --*/
 var unconstrainedSlider = document.getElementById('unconstrained');
@@ -42,6 +61,10 @@ $('.rooms__photos').slick({
 
 
 /*--- air-datepicker calendar --*/
-$('.datepicker-here ').datepicker({
+/*$('.datepicker-here').datepicker({
+  inline: true,
   multipleDates: 2,
-})
+  
+})*/
+
+

@@ -5,19 +5,16 @@ mixin dataInput(title, placeholder, name, className, type, value)
   if (name === "input-dropdown")
     label
       h3 #{title}
-      span.dropdown.datepicker-here 
-        button.dropdown__btn(type="button")
-          i.material-icons.dropdown__icon expand_more
         input(
           class=className
           type=type
           placeholder=placeholder
           name=name
           value=value
-          required )
-      //-span.dropdown
-        button.dropdown__btn(type="button")
-          i.material-icons.dropdown__icon expand_more
+          required )  
+        span.dropdown
+          button.dropdown__btn(type="button")
+            i.material-icons.dropdown__icon expand_more
   else        
     label
       h3 #{title}
