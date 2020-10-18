@@ -5,11 +5,11 @@ import $ from 'jquery'
 import 'slick-carousel'
 import noUiSlider from 'nouislider'
 import 'air-datepicker'
-import Chart from 'chart.js'
+/*import Chart from 'chart.js'*/
 
 /*--- chart --*/
 
-  var myDoughnut = new Chart( document.getElementById('don'), 
+ /* var myDoughnut = new Chart( document.getElementById('don'), 
   {	
     type: 'doughnut',
     data: {
@@ -24,7 +24,7 @@ import Chart from 'chart.js'
       }],
     },
     options: {
-  }});
+  }});*/
 
 /*-- range-slider --*/
 var unconstrainedSlider = document.getElementById('unconstrained');
@@ -68,3 +68,12 @@ $('.rooms__photos').slick({
 })*/
 
 
+/*---  like ---*/
+/*document.addEventListener('click', ({ target: t }) => {
+  if (t.classList.contains('.reviews__like')) {
+    const index = [...document.querySelectorAll('.reviews__like')].indexOf(t);
+    const count = document.querySelectorAll('.reviews__like-num')[index];
+    count.classList.toggle('.active');
+    count.textContent -= [ 1, -1 ][+count.classList.contains('.active')];
+  }
+});*/

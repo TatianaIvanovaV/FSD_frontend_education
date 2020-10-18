@@ -24,13 +24,118 @@
         height 100%
         object-fit cover
   &__columns
+    padding-top 70px
     display flex
-    &-right,
+    &-right
+      width 38.8%
+      display flex
+      justify-content flex-end
     &-left
-      width 50%
-  &__boost
+      width 61.2%
+  &__boost,
+  &__end
+    padding-top 8px
     display flex
+  &__rules,
+  &__cancel
+    width 50%
+  &__rules
+    &-h2
+      padding-left 20px
+    &-item
+      position relative
+      padding-left 20px
+      &:before
+        content ""
+        position absolute 
+        top 7px
+        left 0px
+        width: 10.43px;
+        height: 10px;
+        border-radius 50%
+        background dark_25
 .intelligence
   width 50%
+  &__list 
+    max-width 280px
+  &__item
+    border-bottom 1px solid dark_10
+    padding-bottom 6px
+    display flex
+    margin-top 20px
+    &:last-of-type
+      border-bottom none
+  &__icon
+    font-size 48px
+    background perple-gradient
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: initial;
+  &__descr
+    margin-left 10px
+    &-h3
+      text-transform none
+      font-size 14px
+      margin-bottom -14px
 .chart
   width 50%
+  /*border 1px solid red*/
+.reviews
+  padding-top 13px
+  &__titie
+    display flex
+    justify-content space-between
+  &__quantity
+    padding-top 3px
+  &__item
+    display flex
+    justify-content space-between
+    padding-top 17px
+    margin-bottom 7px
+  &__avatar
+    width 58px
+    >img
+      position relative
+      bottom 11px
+      right 21px
+  &__like
+    display flex
+    align-items center
+    position relative
+    bottom 35px
+    left 2px
+    background white
+    width: 40px;
+    height: 20px;
+    border-radius 10px
+    border: 1px solid dark_25
+    cursor pointer
+    color dark_25
+    &:hover,
+    &:active,
+    &:focus 
+      border: 1px solid dark_50
+    /*>.active
+      color perple
+      border solid 1px transparent
+      background linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), perple-gradient
+      background-origin border-box
+      background-clip content-box, border-box
+      box-shadow 0px 1000px 0px #fff inset*/
+  &__icon
+    font-size 10px
+    padding-left 6px
+    margin-right 5px
+  &__like-num
+    font-size 10px
+  &__name
+    text-transform none
+    font-size 14px
+  &__p
+    margin 10px 0 0
+.total
+  width: 380px;
+  height: 511px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;

@@ -15,25 +15,57 @@ block content
       .details__info
         .container
           .details__columns
-            .details__columns-right
+            .details__columns-left
               .details__boost
                 .details__intelligence.intelligence
                   h2.intelligence__h2 Сведения о номере
-                  mixin intelligenceList({icon="", descrTitle="", descrParagraph=""})
-                      ul.intelligence__list 
-                          li.intelligence__item
-                            .intelligence__emogy
-                              i.material-icons.intelligence__icon= icon
-                            .intelligence__decr
-                              h3.intelligence__descr-h3= descrTitle
-                              p.intelligence__decr-p= descrParagraph 
-                  - let intelligenceItems = [{icon: "tag_faces", descrTitle: "Комфорт", descrParagraph: "Шумопоглощающие стены"},{icon: "location_city", descrTitle: "Удобство", descrParagraph: "Окно в каждой из спален"}, {icon: "whatshot", descrTitle: "Уют", descrParagraph: "Номер оснащён камином"}]
-                  -for (let i=0; i<intelligenceItems.length; i++)       
-                    +intelligenceList(intelligenceItems[i])
+                  ul.intelligence__list
+                    mixin intelligenceList({icon="", descrTitle="", descrParagraph=""})
+                      li.intelligence__item
+                        .intelligence__emogy
+                          i.material-icons.intelligence__icon= icon
+                        .intelligence__descr
+                          h3.intelligence__descr-h3= descrTitle
+                          p.intelligence__decr-p= descrParagraph 
+                    - let intelligenceItems = [{icon: "tag_faces", descrTitle: "Комфорт", descrParagraph: "Шумопоглощающие стены"},{icon: "location_city", descrTitle: "Удобство", descrParagraph: "Окно в каждой из спален"}, {icon: "whatshot", descrTitle: "Уют", descrParagraph: "Номер оснащён камином"}]
+                    -for (let i=0; i<intelligenceItems.length; i++)       
+                      +intelligenceList(intelligenceItems[i])
                 .details__chart.chart
                   .chart__wrap
                     canvas.chart__main(id="don")
-              .details__
-            .details__columns-left
+              .details__reviews.reviews
+                - let reviewsItems= [{customerNum:1, likeNum:12, customerName:"Мурад Сарафанов",wrightAgo:"5 дней назад", paragraph:"Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."},{customerNum:2, likeNum:2, customerName:"Патрисия Стёклышкова",wrightAgo:"Неделю назад", paragraph:"Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент"}]
+                .reviews__titie
+                  h2.reviews__h2 Отзывы посетителей номера
+                  span.reviews__quantity
+                    !=(reviewsItems.length) + "&nbsp;"
+                    +declOfNum(reviewsItems.length, ["отзыв", "отзыва", "отзывов"])
+                ul.reviews__list
+                  mixin reviewsList({ customerNum=0, likeNum=0, customerName="",wrightAgo="", paragraph=""})  
+                    li.reviews__item
+                      .reviews__avatar
+                        +picture("customers", "customer" + customerNum)
+                        .reviews__like
+                          i.material-icons.reviews__icon favorite_border
+                          span.reviews__like-num= likeNum
+                      .reviews__main
+                        h3.reviews__name= customerName
+                        span.reviews__ago= wrightAgo
+                        p.reviews__p= paragraph 
+                -for (let i=0; i<reviewsItems.length; i++)       
+                   +reviewsList(reviewsItems[i])
+              .details__end
+                .details__rules
+                  h2.details__rules-h2 Правила
+                  ul.details__rules-list
+                    -let rulesList=["Нельзя с питомцами","Без вечеринок и мероприятий","Время прибытия — после 13:00, а выезд до 12:00"]
+                    - for (let i=0; i<rulesList.length; i++) 
+                      li.details__rules-item= rulesList[i]
+                .details__cancel
+                  h2.details__cancel-h2 Отмена
+                  .details__cancel-p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+            .details__columns-right
+              .details__total.total
+
   include ../includes/modules/footer.pug 
   
