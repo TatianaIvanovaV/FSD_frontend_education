@@ -34,20 +34,25 @@ block content
                   .chart__wrap
                     canvas.chart__main(id="don")
               .details__reviews.reviews
-                - let reviewsItems= [{customerNum:1, likeNum:12, customerName:"Мурад Сарафанов",wrightAgo:"5 дней назад", paragraph:"Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."},{customerNum:2, likeNum:2, customerName:"Патрисия Стёклышкова",wrightAgo:"Неделю назад", paragraph:"Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент"}]
+                - let reviewsItems= [{customerNum:1, count:12, liked:true, customerName:"Мурад Сарафанов",wrightAgo:"5 дней назад", paragraph:"Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."},{customerNum:2, count:2, liked:false, customerName:"Патрисия Стёклышкова",wrightAgo:"Неделю назад", paragraph:"Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент"}]
                 .reviews__titie
                   h2.reviews__h2 Отзывы посетителей номера
                   span.reviews__quantity
                     !=(reviewsItems.length) + "&nbsp;"
                     +declOfNum(reviewsItems.length, ["отзыв", "отзыва", "отзывов"])
                 ul.reviews__list
-                  mixin reviewsList({ customerNum=0, likeNum=0, customerName="",wrightAgo="", paragraph=""})  
+                  mixin reviewsList({customerNum=0, count=0, liked=false, customerName="", wrightAgo="", paragraph=""})  
                     li.reviews__item
                       .reviews__avatar
                         +picture("customers", "customer" + customerNum)
-                        .reviews__like
-                          i.material-icons.reviews__icon favorite_border
-                          span.reviews__like-num= likeNum
+                        if liked == false
+                          .reviews__like
+                            i.material-icons.reviews__icon favorite_border
+                            span.reviews__like-num= count
+                        else
+                          .reviews__like.reviews__like--active
+                            i.material-icons.reviews__icon favorite
+                            span.reviews__like-num= count
                       .reviews__main
                         h3.reviews__name= customerName
                         span.reviews__ago= wrightAgo
@@ -66,6 +71,60 @@ block content
                   .details__cancel-p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
             .details__columns-right
               .details__total.total
-
+                -let totalValue={cost:9990,days:4,roomNum:888}
+                  .total__identi
+                    p.total__room № 
+                      span.total__room-num= totalValue.roomNum
+                        span.total__room-status люкс
+                    p.total__room-coast
+                      span.total__room-price
+                        +numWithSpaces(totalValue.cost)
+                      |  в сутки
+                  form.total__form(action="" method="")
+                    .total__date
+                      +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "total__input--date")
+                      +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "total__input--date")
+                    .total__guests
+                      +dataInput("гости", "Сколько гостей","input-dropdown","total__input--guests")
+                    .total__count
+                      mixin totalCount(cost, days, servicesCost, add)
+                        - let summCost = cost * days
+                        - let total = summCost + servicesCost + add
+                          table.total__count-table
+                            tbody.total__count-tbody
+                              tr.total__count-tr
+                                td.total__count-td1
+                                  +numWithSpaces(cost)
+                                  ="x" + days
+                                  //-= '₽ х ${days}'
+                                  +declOfNum(days, ["сутки", "суток", "суток"])
+                                td.total__count-td2
+                                  +numWithSpaces(summCost)
+                              tr.total__count-tr
+                                td.total__count-td1 Сбор за услуги
+                                  if servicesCost < 0
+                                  | : скидка&nbsp;
+                                  +numWithSpaces(servicesCost)
+                                  .total__count-hint
+                                    span Скидка за подписку
+                                td.total__count-td2
+                                  if servicesCost > 0
+                                    +numWithSpaces(servicesCost)
+                                  else
+                                    | 0₽
+                              tr.total__count-tr
+                                td.total__count-td1 Сбор за дополнительные услуги
+                                  .total__count-hint
+                                    span Дополнительные удобства
+                                td.total__count-td2
+                                  +numWithSpaces(add)
+                            tfoot.total__count-tfoot
+                              tr.total__count-tr
+                                td.total__count-td1 Итого
+                                td.total__count-td2
+                                  +numWithSpaces(total)
+                      +totalCount(totalValue.cost, totalValue.days, -2179, 300)
+                    +buttons("btn--arrow", "забронировать", "#")
+               
   include ../includes/modules/footer.pug 
-  
+  //--let tableCounts=[tbody{left:"9 990 х 4 суток",right:"39 960₽"},{left:"Сбор за услуги: скидка 2 179₽",right:"0₽"},{left:"Сбор за дополнительные услуги",right:"300₽"}], tfoot[{left:"Итого",right:"38 081₽"}]]

@@ -66,14 +66,3 @@ $('.rooms__photos').slick({
   multipleDates: 2,
   
 })*/
-
-
-/*---  like ---*/
-/*document.addEventListener('click', ({ target: t }) => {
-  if (t.classList.contains('.reviews__like')) {
-    const index = [...document.querySelectorAll('.reviews__like')].indexOf(t);
-    const count = document.querySelectorAll('.reviews__like-num')[index];
-    count.classList.toggle('.active');
-    count.textContent -= [ 1, -1 ][+count.classList.contains('.active')];
-  }
-});*/
