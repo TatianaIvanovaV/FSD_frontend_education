@@ -71,21 +71,22 @@ block content
                   .details__cancel-p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
             .details__columns-right
               .details__total.total
-                -let totalValue={cost:9990,days:4,roomNum:888}
+                -let totalValue={cost:9990,days:4,roomNum:888,isLux:true}
                   .total__identi
                     p.total__room № 
                       span.total__room-num= totalValue.roomNum
-                        span.total__room-status люкс
-                    p.total__room-coast
+                      if totalValue.isLux
+                        span.total__room-status= "люкс"
+                    p.total__room-cost
                       span.total__room-price
                         +numWithSpaces(totalValue.cost)
                       |  в сутки
                   form.total__form(action="" method="")
                     .total__date
-                      +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "total__input--date")
-                      +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "total__input--date")
+                      +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "total__input--date","","19.08.2019")
+                      +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "total__input--date","","23.08.2019")
                     .total__guests
-                      +dataInput("гости", "Сколько гостей","input-dropdown","total__input--guests")
+                      +dataInput("гости", "Сколько гостей","input-dropdown","total__input--guests","","3 гостя")
                     .total__count
                       mixin totalCount(cost, days, servicesCost, add)
                         - let summCost = cost * days
@@ -93,35 +94,32 @@ block content
                           table.total__count-table
                             tbody.total__count-tbody
                               tr.total__count-tr
-                                td.total__count-td1
+                                td.total__count-td
                                   +numWithSpaces(cost)
-                                  ="x" + days
-                                  //-= '₽ х ${days}'
+                                  =" x " + days + " "
                                   +declOfNum(days, ["сутки", "суток", "суток"])
-                                td.total__count-td2
+                                td.total__count-td
                                   +numWithSpaces(summCost)
                               tr.total__count-tr
-                                td.total__count-td1 Сбор за услуги
+                                td.total__count-td Сбор за услуги
                                   if servicesCost < 0
                                   | : скидка&nbsp;
-                                  +numWithSpaces(servicesCost)
-                                  .total__count-hint
-                                    span Скидка за подписку
-                                td.total__count-td2
+                                  +numWithSpaces(-servicesCost)
+                                  +hint("Скидка за подписку")
+                                td.total__count-td
                                   if servicesCost > 0
                                     +numWithSpaces(servicesCost)
                                   else
                                     | 0₽
                               tr.total__count-tr
-                                td.total__count-td1 Сбор за дополнительные услуги
-                                  .total__count-hint
-                                    span Дополнительные удобства
-                                td.total__count-td2
+                                td.total__count-td Сбор за дополнительные<br> услуги
+                                  +hint("Дополнительные удобства")
+                                td.total__count-td
                                   +numWithSpaces(add)
                             tfoot.total__count-tfoot
                               tr.total__count-tr
-                                td.total__count-td1 Итого
-                                td.total__count-td2
+                                td.total__count-td Итого
+                                td.total__count-td
                                   +numWithSpaces(total)
                       +totalCount(totalValue.cost, totalValue.days, -2179, 300)
                     +buttons("btn--arrow", "забронировать", "#")
