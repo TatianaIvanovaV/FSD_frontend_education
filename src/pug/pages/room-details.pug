@@ -71,15 +71,17 @@ block content
                   .details__cancel-p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
             .details__columns-right
               .details__total.total
-                -let totalValue={cost:9990,days:4,roomNum:888,isLux:true}
+                mixin totalCalc(dailyCost,days,roomNum,isLux,servicesCost, add)
+                  - let summCost = dailyCost * days
+                  - let total = summCost + servicesCost + add
                   .total__identi
                     p.total__room № 
-                      span.total__room-num= totalValue.roomNum
-                      if totalValue.isLux
-                        span.total__room-status= "люкс"
+                      span.total__room-num= roomNum
+                        if isLux
+                          span.total__room-status= "люкс"
                     p.total__room-cost
                       span.total__room-price
-                        +numWithSpaces(totalValue.cost)
+                        +numWithSpaces(dailyCost)
                       |  в сутки
                   form.total__form(action="" method="")
                     .total__date
@@ -88,41 +90,41 @@ block content
                     .total__guests
                       +dataInput("гости", "Сколько гостей","input-dropdown","total__input--guests","","3 гостя")
                     .total__count
-                      mixin totalCount(cost, days, servicesCost, add)
-                        - let summCost = cost * days
-                        - let total = summCost + servicesCost + add
-                          table.total__count-table
-                            tbody.total__count-tbody
-                              tr.total__count-tr
-                                td.total__count-td
-                                  +numWithSpaces(cost)
-                                  =" x " + days + " "
-                                  +declOfNum(days, ["сутки", "суток", "суток"])
-                                td.total__count-td
-                                  +numWithSpaces(summCost)
-                              tr.total__count-tr
-                                td.total__count-td Сбор за услуги
-                                  if servicesCost < 0
-                                  | : скидка&nbsp;
-                                  +numWithSpaces(-servicesCost)
-                                  +hint("Скидка за подписку")
-                                td.total__count-td
-                                  if servicesCost > 0
-                                    +numWithSpaces(servicesCost)
-                                  else
-                                    | 0₽
-                              tr.total__count-tr
-                                td.total__count-td Сбор за дополнительные<br> услуги
-                                  +hint("Дополнительные удобства")
-                                td.total__count-td
-                                  +numWithSpaces(add)
-                            tfoot.total__count-tfoot
-                              tr.total__count-tr
-                                td.total__count-td Итого
-                                td.total__count-td
-                                  +numWithSpaces(total)
-                      +totalCount(totalValue.cost, totalValue.days, -2179, 300)
+                      table.total__count-table
+                        tbody.total__count-tbody
+                          tr.total__count-tr
+                            td.total__count-td
+                              +numWithSpaces(dailyCost)
+                              =" x " + days + " "
+                              +declOfNum(days, ["сутки", "суток", "суток"])
+                            td.total__count-td
+                              +numWithSpaces(summCost)
+                          tr.total__count-tr
+                            td.total__count-td Сбор за услуги
+                              if servicesCost < 0 
+                                | : скидка&nbsp;
+                                +numWithSpaces(-servicesCost)
+                                +hint("Скидка за подписку") 
+                            td.total__count-td
+                              if servicesCost > 0
+                                +numWithSpaces(servicesCost)
+                              else
+                                | 0₽
+                          tr.total__count-tr
+                            td.total__count-td Сбор за дополнительные<br> услуги
+                              if add > 0
+                                +hint("Дополнительные удобства")
+                            td.total__count-td
+                              +numWithSpaces(add)
+                        tfoot.total__count-tfoot
+                          tr.total__count-tr
+                            td.total__count-td  Итого
+                              .total__count-dashed 
+                            td.total__count-td
+                              +numWithSpaces(total)
+                      //-+totalCount(totalValue.cost, totalValue.days, -2179, 300)
                     +buttons("btn--arrow", "забронировать", "#")
+                +totalCalc(9990,4,888,true,-2179, 300)
+                  
                
   include ../includes/modules/footer.pug 
-  //--let tableCounts=[tbody{left:"9 990 х 4 суток",right:"39 960₽"},{left:"Сбор за услуги: скидка 2 179₽",right:"0₽"},{left:"Сбор за дополнительные услуги",right:"300₽"}], tfoot[{left:"Итого",right:"38 081₽"}]]
