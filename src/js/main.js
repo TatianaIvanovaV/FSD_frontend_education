@@ -5,31 +5,13 @@ import $ from 'jquery'
 import 'slick-carousel'
 import noUiSlider from 'nouislider'
 import 'air-datepicker'
-/*import Chart from 'chart.js'*/
-
-/*--- chart --*/
-
- /* var myDoughnut = new Chart( document.getElementById('don'), 
-  {	
-    type: 'doughnut',
-    data: {
-      datasets: [{
-        data: [25, 25, 50],
-        labels: [
-          'Red',
-          'Yellow',
-          'Blue'
-      ],backgroundColor: [
-      ],
-      }],
-    },
-    options: {
-  }});*/
 
 /*-- range-slider --*/
-var unconstrainedSlider = document.getElementById('unconstrained');
-var unconstrainedValues = document.getElementById('unconstrained-values');
-noUiSlider.create(unconstrainedSlider, {
+$( document ).ready(function() {
+  var slider = document.getElementById('unconstrained');
+  var sliderValues = document.getElementById('unconstrained-values');
+  
+  noUiSlider.create(slider, {
   start: [5000, 10000],
   behaviour: 'unconstrained-tap',
   connect: true,
@@ -46,10 +28,13 @@ noUiSlider.create(unconstrainedSlider, {
         }
     },
     
+  });
+  slider.noUiSlider.on('update', function (values) {
+    sliderValues.innerHTML = values.join(' - ');
+  });
 });
-unconstrainedSlider.noUiSlider.on('update', function (values) {;
-  unconstrainedValues.innerHTML = values.join(' - ');
-});
+
+
 
 
 /*--- carousel-in-cards  --*/
@@ -66,3 +51,4 @@ $('.rooms__photos').slick({
   multipleDates: 2,
   
 })*/
+

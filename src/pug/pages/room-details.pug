@@ -31,8 +31,12 @@ block content
                     -for (let i=0; i<intelligenceItems.length; i++)       
                       +intelligenceList(intelligenceItems[i])
                 .details__chart.chart
+                  h2.chart__h2 Впечатления от номера
                   .chart__wrap
-                    canvas.chart__main(id="don")
+                    canvas.chart__main(id="canvas")
+                    .chart__inner 
+                      span.chart__inner-value 260
+                      span.chart__inner-vois голосов 
               .details__reviews.reviews
                 - let reviewsItems= [{customerNum:1, count:12, liked:true, customerName:"Мурад Сарафанов",wrightAgo:"5 дней назад", paragraph:"Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."},{customerNum:2, count:2, liked:false, customerName:"Патрисия Стёклышкова",wrightAgo:"Неделю назад", paragraph:"Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент"}]
                 .reviews__titie
