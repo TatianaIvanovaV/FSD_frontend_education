@@ -4,25 +4,27 @@ input
   border-radius 4px
   padding 0px 0 0 14px
   width 100%
+  font-size 14px
   &:hover,
   &:active,
-  &:focus 
-    border 1px solid dark_50
-  &::placeholder
-    color dark_25
-  &:hover,
-  &:active,
-  &:focus 
+  &:focus
+    border 1px solid dark_50  
     outline: 0 !important
-.dropdown
-  position relative
-  &__btn
+  &::placeholder
+    color dark_25 
+.input
+  &__wrap 
+    position relative     
+  &__dropdown
     position absolute
-    right 4px
-    top -4px
-    background none
-    border none
+    right 9px
+    top 11px
     color dark_50
+    cursor pointer
+    &:hover,
+    &:active,
+    &:focus 
+      opacity 0.5
 .checkbox
   padding-left 30px
   &__input

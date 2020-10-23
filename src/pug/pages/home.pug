@@ -10,7 +10,7 @@ block content
           .intro__booking-form
             h1.intro__h1 Найдём номера под ваши пожелания
             form.intro__form(action="" method="")
-              .intro__block-date
+              .intro__block-date.double-datepicker
                 +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "intro__input--date")
                 +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "intro__input--date")
               .intro__block-guests

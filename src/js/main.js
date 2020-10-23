@@ -8,8 +8,8 @@ import 'air-datepicker'
 
 /*-- range-slider --*/
 $( document ).ready(function() {
-  var slider = document.getElementById('unconstrained');
-  var sliderValues = document.getElementById('unconstrained-values');
+  var slider = document.querySelector('#unconstrained');
+  var sliderValues = document.querySelector('#unconstrained-values');
   
   noUiSlider.create(slider, {
   start: [5000, 10000],
@@ -32,6 +32,35 @@ $( document ).ready(function() {
   slider.noUiSlider.on('update', function (values) {
     sliderValues.innerHTML = values.join(' - ');
   });
+
+  /*--- air-datepicker calendar --*/
+  $('.date').datepicker({
+    multipleDates: 2,
+    minDate: new Date(),
+    range: true,
+    multipleDatesSeparator: ' - ',
+    toggleSelected: true,
+    language: {
+    monthsShort: ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'],
+    dateFormat: 'dd' + ' ' + 'M',
+    },
+    clearButton: true,
+    navTitles: {
+      days: 'MM <i>yyyy</i>'
+    },
+  })
+  let datepickersBtns = $('.datepicker--buttons');
+  let btnApply = $(
+    '<span class="datepicker--button" data-action="select">применить</span>'
+    );
+    btnApply.appendTo(datepickersBtns);
+
+  /*$('double-datepicker').datepicker({ 
+    onSelect: function (fd, d, picker) { 
+      $("#start_one").val(fd.split("-")[0]);
+      $("#end_one").val(fd.split("-")[1]);
+    }
+  });*/
 });
 
 
@@ -45,10 +74,5 @@ $('.rooms__photos').slick({
 });
 
 
-/*--- air-datepicker calendar --*/
-/*$('.datepicker-here').datepicker({
-  inline: true,
-  multipleDates: 2,
-  
-})*/
+
 

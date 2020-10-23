@@ -175,7 +175,10 @@ var myChart = new Chart(ctx, {
       },
       layout: {
         padding: {
-           right: 42,
+            right: 41,
+            top: 0,
+            left: 0,
+            botoom: 0
         }
     },
       animation: {
