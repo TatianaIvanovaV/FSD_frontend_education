@@ -1,0 +1,73 @@
+.datepicker
+  max-width: 320px;
+  font-family font-Montserrat
+  font-size 12px
+  font-weight 400
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  color dark_50
+  &--pointer
+   visibility hidden
+  &--nav-action,
+  &--button
+    color perple
+    &:hover,
+    &:active,
+    &:focus
+      opacity 0.5
+      color perple
+      background none
+  &--button
+    font-weight 700
+    text-transform uppercase
+    justify-content flex-start
+  &--button[data-action="hide"]
+    justify-content flex-end
+  &--nav-title,
+  &--nav-title i
+    font-family font-Sans
+    font-weight 700
+    font-size 19px
+    color dark_100
+    &:hover,
+    &:active,
+    &:focus
+      background none
+  &--cell
+    border-radius 50%
+    font-weight 700
+    &.-current-
+      font-weight 700
+      color white/*background perple-gradient*/
+      background green-gradient
+    &.-current-.-focus-
+      color white
+    &.-current-.-in-range-
+      color white
+    &.-in-range-
+      background linear-gradient(180deg,rgba(188,156,255,.25),rgba(139,164,249,.25))
+      color dark_50
+      border-radius 0
+    &.-in-range-.-focus-
+      background linear-gradient(180deg,rgba(188,156,255,.5),rgba(139,164,249,.5))
+    &.-range-from-,
+    &.-range-to-
+      border-radius: 50% 0 0 50%
+      background linear-gradient(180deg,rgba(188,156,255,.25),rgba(139,164,249,.25))
+    &.-range-to-
+      border-radius: 0 50% 50% 0
+
+
+
+
+  &--cell-day.-other-month-, 
+  &--cell-year.-other-decade- 
+    color dark_25
+
+
+  /*font-weight: bold;
+  font-size: 12px;
+  color perple  */
+  
+

@@ -36,7 +36,8 @@ $( document ).ready(function() {
   /*--- air-datepicker calendar --*/
   $('.date').datepicker({
     multipleDates: 2,
-    minDate: new Date(),
+    inline: true,
+    /*minDate: new Date(),*/
     range: true,
     multipleDatesSeparator: ' - ',
     toggleSelected: true,
@@ -48,12 +49,13 @@ $( document ).ready(function() {
     navTitles: {
       days: 'MM <i>yyyy</i>'
     },
+    prevHtml: '<span class="material-icons">arrow_back</span>',
+    nextHtml: '<span class="material-icons">arrow_forward</span>'
   })
-  let datepickersBtns = $('.datepicker--buttons');
-  let btnApply = $(
-    '<span class="datepicker--button" data-action="select">применить</span>'
-    );
-    btnApply.appendTo(datepickersBtns);
+  let applyButton = '<span class="datepicker--button" data-action="hide">Применить</span>';
+  $('.datepicker--button[data-action="clear"]').each(function( index ) { $(applyButton).insertAfter($(this)); });
+ 
+ 
 
   /*$('double-datepicker').datepicker({ 
     onSelect: function (fd, d, picker) { 
@@ -61,6 +63,33 @@ $( document ).ready(function() {
       $("#end_one").val(fd.split("-")[1]);
     }
   });*/
+
+  /*---- 2 инпута
+  
+  let applyButtons = document.querySelectorAll('.apply-button');
+    let datepickers = document.querySelectorAll('.datepicker');
+    let dateDropdowns = document.querySelectorAll('.datedropdown__container');
+    for (let i = 0; i < dateDropdowns.length; i++) {
+
+        dateDropdowns[i].addEventListener('click', (e) => {
+            if (!e.target.classList.contains('input__label') && e.target != dateDropdowns[i]) {
+                dateDropdowns[i].querySelector('.datedropdown__input_first').focus();
+            }
+        })
+
+        applyButtons[i].addEventListener('click', () => {
+            datepickers[i].classList.remove('active');
+            datepickers[i].style.left = '-100000px';
+            datepickers[i].style.top = '1601px';
+        })
+
+        $('.datedropdown__input_first').eq(i).datepicker({ 
+            onSelect: function (fd, d, picker) { 
+              $('.datedropdown__input_first').eq(i).val(fd.split(",")[0]);
+              $('.datedropdown__input_second').eq(i).val(fd.split(",")[1]);
+            }
+        });
+    }*/
 });
 
 
