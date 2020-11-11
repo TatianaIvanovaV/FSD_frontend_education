@@ -10,9 +10,9 @@ block content
           .intro__booking-form
             h1.intro__h1 Найдём номера под ваши пожелания
             form.intro__form(action="" method="")
-              .intro__block-date.double-datepicker
-                +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "intro__input--date")
-                +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "intro__input--date")
+              .intro__block-date
+                  +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown","start-one "+"intro__input--date")
+                  +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "end-one "+"intro__input--date")
               .intro__block-guests
                 +dataInput("гости", "Сколько гостей","input-dropdown","intro__input--guests")
               +buttons("btn--arrow", "подобрать номер", "rooms-filter.html") 

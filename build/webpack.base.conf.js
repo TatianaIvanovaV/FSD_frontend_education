@@ -113,8 +113,8 @@ module.exports = {
                     to: `${PATHS.assets}fonts`
                 },
                 {
-                    from: `${PATHS.src}/static`,
-                    to: 'static'
+                    from: `${PATHS.src}/favicons`,
+                    to: 'favicons'
                 }
             ]),
             ...PAGES.map(page => new HtmlWebpackPlugin({
