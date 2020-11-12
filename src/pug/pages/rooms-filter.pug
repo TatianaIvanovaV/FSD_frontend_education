@@ -21,7 +21,7 @@ block content
               .filter__rules
                 h3.filter__rules-h3 правила дома
                 ul.filter__rules-list
-                  - let inputRules = [{id:"rule1",title:"Можно курить"}, {id:"rule2",title:"Можно с питомцами",checked:"true"}, {id:"rule3",title:"Можно пригласить гостей(до 10 человек)",checked:"true"}]
+                  - let inputRules = [{id:"rule1",title:"Можно курить"}, {id:"rule2",title: "Можно с питомцами",checked:"true"}, {id:"rule3",title: "Можно пригласить гостей (до&nbsp;10&nbsp;человек)", checked:"true"}]
                     each item in inputRules
                       li.checkbox.filter__rules-item
                         input.checkbox__input(
@@ -30,11 +30,11 @@ block content
                           id= item.id
                           checked= item.checked
                           )
-                        label.checkbox__label.filter__rules-label(for= item.id)= item.title
+                        label.checkbox__label.filter__rules-label(for= item.id) !{item.title}
               .filter__access
                 h3.filter__access-h3 доступность
                 ul.filter__access-list
-                  - let inputAccess = [{id:"access1",title:"Широкий коридор", subtitle:"Ширина коридоров в номере не менее 91 см."}, {id:"access2",title:"Помощник для инвалидов", subtitle:"На 1 этаже вас встретит специалист  и проводит до номера."}]
+                  - let inputAccess = [{id:"access1",title:"Широкий коридор", subtitle:"Ширина коридоров в номере <br>не менее 91 см."}, {id:"access2",title:"Помощник для инвалидов", subtitle:"На 1 этаже вас встретит специалист <br>и проводит до номера."}]
                     each item in inputAccess
                       li.checkbox.filter__access-item
                         input.checkbox__input.filter__access-input(
@@ -45,7 +45,7 @@ block content
                           )
                         label.checkbox__label.filter__access-label(for= item.id)
                           h3.filter__access-title=item.title
-                          p.filter__access-sublabel=item.subtitle
+                          p.filter__access-sublabel !{item.subtitle}
               .filter__value
                 +dataInput("удобства номера", "Сколько гостей", "input-dropdown","filter__input--value", "", '2 спальни, 2 кровати...') 
               .filter__add
@@ -78,7 +78,7 @@ block content
                     .rooms__details--wrap
                       .rooms__value
                         p.rooms__appartment  № 
-                          span.rooms__num #{number}
+                          span.rooms__num=number
                           if isLux 
                             span.rooms__status= 'люкс'
                         p.rooms__cost
@@ -86,12 +86,47 @@ block content
                             +numWithSpaces(cost)
                           |  в сутки
                       .rooms__rating
+                        mixin starsRating(rate)
+                          .stars-rating
+                            - for (let i=0; i<5; i++)
+                              if rate>i
+                                i.material-icons star
+                              else 
+                                i.material-icons star_border
                         +starsRating(rate)
                         p.rooms__reviews 
-                          span.rooms__reviews-amount #{reviewCount}
-                          |  Отзывов 
-              -for (let i=0; i<roomsList.length; i++) 
+                          span.rooms__reviews-amount!= reviewCount
+                            +declOfNum(reviewCount, [" Отзыв", " Отзыва", " Отзывов"]) 
+              - for (let i=0; i<roomsList.length; i++) 
                 +roomCard(roomsList[i])
-            .rooms__paginator.paginator
-  
+            .rooms__paginator
+              mixin paginator(countOnPage,countTotal, currentPage)
+                - let roundCount = (countTotal >= 100) ? '100+' : countTotal
+                - let pagesCount = Math.ceil(countTotal / countOnPage)
+                .paginator
+                  ul.paginator__list
+                    if currentPage !== 1
+                      li.paginator__item
+                        a.paginator__page.paginator__arrow(href="javascript:void(0)")
+                          i.material-icons arrow_back
+                    - for (var i = 1; i <= pagesCount; i++)
+                      - let utmostPage = (i === 1 || i === pagesCount)
+                      - let neighborPage = (i <= currentPage + 2 && i >= currentPage - 2)
+                        if i === currentPage
+                          li.paginator__item
+                            span.paginator__page.paginator__page--active(href="javascript:void(0)")= i
+                        else if utmostPage || neighborPage
+                          li.paginator__item
+                            a.paginator__page.paginator__page--inactive(href="javascript:void(0)")= i
+                        else if i === currentPage + 3 || i === currentPage - 3
+                          li.paginator__item
+                            span.paginator__page ...
+                    if currentPage !== pagesCount
+                      li.paginator__item
+                        a.paginator__page.paginator__arrow(href="javascript:void(0)")
+                          i.material-icons arrow_forward
+                  - let startCount = currentPage === 1 ? currentPage : currentPage * countOnPage
+                  - let endCount = countOnPage * currentPage
+                  p.paginator__caption= `${startCount} – ${endCount} из ${roundCount} вариантов аренды`
+              +paginator(12,180,1)
   include ../includes/modules/footer.pug 

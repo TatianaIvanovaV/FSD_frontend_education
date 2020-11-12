@@ -64,9 +64,34 @@ $('.date').datepicker({
     days: 'MM <i>yyyy</i>'
   },
   prevHtml: '<span class="material-icons">arrow_back</span>',
-  nextHtml: '<span class="material-icons">arrow_forward</span>'
+  nextHtml: '<span class="material-icons">arrow_forward</span>',
+  
 });
 
+
+
+
+$('.start-one').datepicker({ 
+  onSelect: function (fd, d, picker) { 
+    $(".start-one").val(fd.split("-")[0]);
+    $(".end-one").val(fd.split("-")[1]);
+  },
+  offset: 5,
+  range: true,
+  multipleDatesSeparator: ' - ',
+  language: {
+    dateFormat: 'dd.mm.yyyy'
+    },
+  clearButton: true,
+  navTitles: {
+    days: 'MM <i>yyyy</i>'
+  },
+  prevHtml: '<span class="material-icons">arrow_back</span>',
+  nextHtml: '<span class="material-icons">arrow_forward</span>'
+});
+let applyButton = '<span class="datepicker--button apply-button" data-action="hide">Применить</span>';
+$('.datepicker--button[data-action="clear"]').each(function( index ) { $(applyButton).insertAfter($(this)); 
+});
 
 
 /*let applyButtons = document.querySelectorAll('.apply-button');
@@ -94,24 +119,22 @@ let dateDropdowns = document.querySelectorAll('.datedropdown__container');
       });
   }*/
 
-$('.start-one').datepicker({ 
-  onSelect: function (fd, d, picker) { 
-    $(".start-one").val(fd.split("-")[0]);
-    $(".end-one").val(fd.split("-")[1]);
-  },
-  offset: 5,
-  range: true,
-  multipleDatesSeparator: ' - ',
-  language: {
-    dateFormat: 'dd.mm.yyyy'
-    },
-  clearButton: true,
-  navTitles: {
-    days: 'MM <i>yyyy</i>'
-  },
-  prevHtml: '<span class="material-icons">arrow_back</span>',
-  nextHtml: '<span class="material-icons">arrow_forward</span>'
-});
-let applyButton = '<span class="datepicker--button apply-button" data-action="hide">Применить</span>';
-$('.datepicker--button[data-action="clear"]').each(function( index ) { $(applyButton).insertAfter($(this)); 
-});
+  /*
+  var $start = $('.start-one'),
+$end = $('.end-one');
+
+$start.datepicker({
+  onSelect: function (fd, date) {
+    $end.data('datepicker')
+    .update('minDate', date);
+
+    $end.focus();
+  }
+})
+$end.datepicker({
+  onSelect: function (fd, date) {
+    $start.data('datepicker')
+    .update('maxDate', date)
+  }
+})
+*/
