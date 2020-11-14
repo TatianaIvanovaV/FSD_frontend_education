@@ -70,7 +70,7 @@ block content
                             = item
                   +pieChart(130,65,65,0)
               .details__reviews.reviews
-                - let reviewsItems= [{customerNum:1, count:12, liked:true, customerName:"Мурад Сарафанов",wrightAgo:"5 дней назад", paragraph:"Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."},{customerNum:2, count:2, liked:false, customerName:"Патрисия Стёклышкова",wrightAgo:"Неделю назад", paragraph:"Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент"}]
+                - let reviewsItems= [{customerNum:1, count:11, customerName:"Мурад Сарафанов",wrightAgo:"5 дней назад", paragraph:"Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."},{customerNum:2, count:2, customerName:"Патрисия Стёклышкова",wrightAgo:"Неделю назад", paragraph:"Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент"}]
                 .reviews__titie
                   h2.reviews__h2 Отзывы посетителей номера
                   span.reviews__quantity
@@ -81,14 +81,9 @@ block content
                     li.reviews__item
                       .reviews__avatar
                         +picture("customers", "customer" + customerNum)
-                        if liked == false
-                          .reviews__like
-                            i.material-icons.reviews__icon favorite_border
-                            span.reviews__like-num= count
-                        else
-                          .reviews__like.reviews__like--active
-                            i.material-icons.reviews__icon favorite
-                            span.reviews__like-num= count
+                        .reviews__like
+                          i.material-icons.reviews__icon="favorite_border"
+                          span.reviews__like-num= count
                       .reviews__main
                         h3.reviews__name= customerName
                         span.reviews__ago= wrightAgo
