@@ -1,4 +1,7 @@
 extends ../layout/index.pug
+
+include ../includes/modules/dropdown-select-counters.pug
+
 block content
   include ../includes/modules/header.pug
   
@@ -11,7 +14,8 @@ block content
               .filter__date
                 +dataInput("даты пребывания в отеле", "ДД.ММ.ГГГГ", "input-dropdown", "date", "", '19 авг - 23 авг')
               .filter__guests
-                +dataInput("гости", "Сколько гостей", "input-dropdown","filter__input--guests", "", '3 гостя, 1 младенец')
+                - let guestItems = [{title: "Взрослые", count: 2, countWord: "Гости"},{title: "Дети", count: 1, countWord: "Гости"},{title: "Младенцы", count: 1}]
+                +dropdownSelect(guestItems, withButtons = false, "гости", "Сколько гостей", '3 гостя, 1 младенец')
               .filter__range
                 .filter__range-title
                   h3 Диапазон цены
@@ -47,7 +51,8 @@ block content
                           h3.filter__access-title=item.title
                           p.filter__access-sublabel !{item.subtitle}
               .filter__value
-                +dataInput("удобства номера", "Сколько гостей", "input-dropdown","filter__input--value", "", '2 спальни, 2 кровати...') 
+                - let comfortItems = [{title: "спальни", count: 2, countWord: "спальни"},{title: "кровати", count: 2, countWord: "кровати"},{title: "ванные комнаты", count: 0, countWord: "ванные комнаты"}]
+                +dropdownSelect(comfortItems, withButtons = false, "удобства номера", "Выберите удобства", '2 спальни, 2 кровати...') 
               .filter__add
                 details.filter__add-details
                   summary.filter__add-summary 

@@ -12,15 +12,17 @@ input
     outline: 0 !important
   &::placeholder
     color dark_25 
+  &[name="input-dropdown"]
+     cursor pointer
 .input
-  &__wrap 
-    position relative     
-  &__dropdown
+  &__area 
+    position relative   
+  &__icon-down
+    cursor pointer
     position absolute
     right 9px
     top 11px
-    color dark_50
-    cursor pointer
+    color dark_50 
     &:hover,
     &:active,
     &:focus 

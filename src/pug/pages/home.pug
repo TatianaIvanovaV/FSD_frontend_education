@@ -1,5 +1,5 @@
 extends ../layout/index.pug
-
+include ../includes/modules/dropdown-select-counters.pug
 block content
   include ../includes/modules/header.pug
   
@@ -14,7 +14,8 @@ block content
                   +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown","start-one "+"intro__input--date")
                   +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "end-one "+"intro__input--date")
               .intro__block-guests
-                +dataInput("гости", "Сколько гостей","input-dropdown","intro__input--guests")
+                - let guestItems = [{title: "Взрослые", count: 0, countWord: "Гости"},{title: "Дети", count: 0, countWord: "Гости"},{title: "Младенцы", count: 0}]
+                +dropdownSelect(guestItems, withButtons = true, "гости", "Сколько гостей", "")
               +buttons("btn--arrow", "подобрать номер", "rooms-filter.html") 
           .intro__subtitle Лучшие номера для вашей работы,<br> отдыха и просто вдохновения  
   include ../includes/modules/footer.pug

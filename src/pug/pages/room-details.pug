@@ -1,5 +1,5 @@
 extends ../layout/index.pug
-
+include ../includes/modules/dropdown-select-counters.pug
 block content
   include ../includes/modules/header.pug
   
@@ -116,10 +116,11 @@ block content
                       |  в сутки
                   form.total__form(action="" method="")
                     .total__date
-                      +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "total__input--date","","19.08.2019")
-                      +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "total__input--date","","23.08.2019")
+                      +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "start-one "+"total__input--date","","19.08.2019")
+                      +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "start-end "+"total__input--date","","23.08.2019")
                     .total__guests
-                      +dataInput("гости", "Сколько гостей","input-dropdown","total__input--guests","","3 гостя")
+                      - let guestItems = [{title: "Взрослые", count: 2, countWord: "Гости"},{title: "Дети", count: 1, countWord: "Гости"},{title: "Младенцы", count: 0}]
+                      +dropdownSelect(guestItems, withButtons = true, "гости", "Сколько гостей", '3 гостя')
                     .total__count
                       table.total__count-table
                         tbody.total__count-tbody
@@ -154,7 +155,7 @@ block content
                             td.total__count-td
                               +numWithSpaces(total)
                       //-+totalCount(totalValue.cost, totalValue.days, -2179, 300)
-                    +buttons("btn--arrow", "забронировать", "#")
+                    +buttons("btn--arrow", "забронировать", "")
                 +totalCalc(9990,4,888,true,-2179, 300)
                   
                

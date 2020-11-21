@@ -4,9 +4,10 @@ mixin picture(directory, name, id)
 mixin dataInput(title, placeholder, name, className, type, value)
   label
     h3 #{title}
-      if (name === "input-dropdown")
-        .input__wrap
-          span.input__dropdown
+    if (name == "input-dropdown")
+      .input__select-layer
+        .input__area
+          span.input__icon-down
             i.material-icons expand_more
           input(
             class=className
@@ -16,13 +17,14 @@ mixin dataInput(title, placeholder, name, className, type, value)
             value=value
             required
             autocomplete="off")          
-      else 
-        input(
-          class=className
-          type=type
-          placeholder=placeholder
-          name=name
-          required)
+    else 
+      input(
+        class=className
+        type=type
+        placeholder=placeholder
+        name=name
+        required)
+
 mixin logoGroup(className)
   .logo-group(class=className)
     a.logo-group__link(href="/home.html")
