@@ -2,9 +2,10 @@ input
   height 44px 
   border 1px solid dark_25
   border-radius 4px
-  padding 0px 0 0 14px
+  padding 13px 15px
   width 100%
   font-size 14px
+  text-overflow ellipsis
   &:hover,
   &:active,
   &:focus
@@ -14,6 +15,7 @@ input
     color dark_25 
   &[name="input-dropdown"]
      cursor pointer
+     padding-right 36px
 .input
   &__area 
     position relative   
@@ -27,6 +29,17 @@ input
     &:active,
     &:focus 
       opacity 0.5
+    &--dark
+      color dark_75
+  &__select
+    width 100%
+    position relative  
+    &--expanded 
+      & .dropdown
+        display block
+      & input
+        border-radius 4px 4px 0 0 
+        border 1px solid dark_50
 .checkbox
   padding-left 30px
   &__input

@@ -5,18 +5,17 @@ mixin dataInput(title, placeholder, name, className, type, value)
   label
     h3 #{title}
     if (name == "input-dropdown")
-      .input__select-layer
-        .input__area
-          span.input__icon-down
-            i.material-icons expand_more
-          input(
-            class=className
-            type=type
-            placeholder=placeholder
-            name=name
-            value=value
-            required
-            autocomplete="off")          
+      .input__area
+        span.input__icon-down
+          i.material-icons expand_more
+        input(
+          class=className
+          type=type
+          placeholder=placeholder
+          name=name
+          value=value
+          required
+          autocomplete="off")          
     else 
       input(
         class=className
