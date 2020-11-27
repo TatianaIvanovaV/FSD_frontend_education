@@ -15,7 +15,7 @@ block content
                   +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "end-one "+"intro__input--date")
               .intro__block-guests
                 - let guestItems = [{title: "Взрослые", count: 0, countWord: "Гости"},{title: "Дети", count: 0, countWord: "Гости"},{title: "Младенцы", count: 0}]
-                +dropdownSelect(guestItems, withButtons = true, "гости", "Сколько гостей", "")
+                +dropdownSelect({items: guestItems, withButtons: true, inputTitle: "гости", inputPlaceholder: "Сколько гостей", inputValue: ""})
               +buttons("btn--arrow", "подобрать номер", "rooms-filter.html") 
           .intro__subtitle Лучшие номера для вашей работы,<br> отдыха и просто вдохновения  
   include ../includes/modules/footer.pug

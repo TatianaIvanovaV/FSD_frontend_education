@@ -2,17 +2,17 @@
 const $selects = $('.input__select');
 [...$selects].forEach((select) => {initSelectCounter(select)})
 
-let initialItems = [];
-let items = [];
-
 function initSelectCounter(select) {
   $(select).on('click', showDropdown);
-  $('.input__input', $(select)).on('focus', function(e) {$(e.currentTarget).blur()});
+ 
+
+let initialItems = [];
+let items = [];
 
 function showDropdown(e) {
   if (!$(e.currentTarget).hasClass('input__select--expanded')) {
     $(e.currentTarget).addClass('input__select--expanded');
-    $(document, $(e.currentTarget)).on('click', hideDropdown);
+    $(document).on('click', hideDropdown);
     addChangeEvents($(e.currentTarget))
   }
 }
@@ -149,26 +149,23 @@ function getCountData(dataItems) {
   })
   return countData;
 }
-
 function getCountString(countData) {
   const filteredCountData = countData.filter((countItem) => countItem.count !== 0)
   const value = filteredCountData.reduce((string, countItem, index) => {
     const declOfCount = declOfNum(countItem.count, findDeclArray(countItem.countWord));
     const stringOfCount = `${countItem.count} ${declOfCount}`;
-    return index === (filteredCountData.length - 1)
-      ? `${string}${stringOfCount}`
-      : `${string}${stringOfCount}, `;
+    return index === (filteredCountData.length - 1) ? `${string}${stringOfCount}` : `${string}${stringOfCount}, `;
   }, '')
   return value.toLowerCase();
 }
-function declOfNum(n, titles) {
-  return titles[n % 10 === 1 && n % 100 !== 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2];
+function declOfNum(number, titles) {
+  return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(number % 10 < 5) ? number % 10: 5]];
 }
 function findDeclArray(word) {
   const dictionary = {
     'Гости': ['Гость', 'Гостя', 'Гостей'],
     'Младенцы': ['Младенец', 'Младенца', 'Младенцев'],
-    'Спальни': ['Спальня', 'Спальни', 'Спален'],
+    "спальни": ['Спальня', 'Спальни', 'Спален'],
     'Кровати': ['Кровать', 'Кровати', 'Кроватей'],
     'Ванные комнаты': ['Ванная комната', 'Ванные комнаты', 'Ванных комнат'],
   };

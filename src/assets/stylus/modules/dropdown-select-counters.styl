@@ -26,7 +26,7 @@
     cursor pointer
     width 92px
   &__select-count-btn
-    border 1px solid dark_25
+    border 1px solid dark_50
     border-radius 50%
     width 30px
     height 30px
@@ -35,12 +35,16 @@
     font-weight 400
     text-align center
     padding-top 3px
+    background transparent
     &:hover,
     &:active,
     &:focus
       color perple
       border 1px solid perple
-      /*background rgba(188,156,255,.15);*/
+      opacity 1
+    &[disabled]
+      color dark_25
+      border 1px solid dark_25
   &__footer
     display flex 
     justify-content space-between
@@ -59,4 +63,4 @@
   &__buttons--hide
     & button
       color transparent
-      cursor auto 
+      pointer-events: none;

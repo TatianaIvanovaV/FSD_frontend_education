@@ -1,5 +1,10 @@
 
-mixin dropdownSelect(items, withButtons, inputTitle, inputPlaceholder, inputValue)
+mixin dropdownSelect({items, withButtons, inputTitle, inputPlaceholder, inputValue})
+  - var isEachCountNull = true
+  for item, index in items
+    if item.count > 0
+      - isEachCountNull = false
+     
   .input__select
     mixin dropdownInput(title, placeholder, value)
       label
@@ -11,7 +16,6 @@ mixin dropdownSelect(items, withButtons, inputTitle, inputPlaceholder, inputValu
             placeholder=placeholder
             name="input-dropdown"
             value=value
-            required
             autocomplete="off") 
     +dropdownInput(inputTitle, inputPlaceholder, inputValue)
     .dropdown
@@ -20,13 +24,16 @@ mixin dropdownSelect(items, withButtons, inputTitle, inputPlaceholder, inputValu
           li.dropdown__item(data-countword= item.countWord || "" data-index= index)
             span.dropdown__title= item.title
             .dropdown__counter
-              .dropdown__select-count-btn(data-action="desc" disabled= item.count === 0) -
+              button.dropdown__select-count-btn(type="button" data-action="desc" disabled= item.count == 0) -
               span.dropdown__count= item.count
-              .dropdown__select-count-btn(data-action="asc" disabled= item.count >= 5) +
+              button.dropdown__select-count-btn(type="button" data-action="asc" disabled= item.count >= 5) +
       if withButtons
         .dropdown__footer
-          mixin dropdownButton(name, className)
-            .dropdown__buttons
-              button(class= className, type="button")&attributes(attributes)= name
-          +dropdownButton("Очистить", "dropdown__button-clear")(data-action="clear")
-          +dropdownButton("Применить", "dropdown__button-apply")(data-action="hide")
+          - var clearClasses = "dropdown__buttons"
+            if isEachCountNull
+              - clearClasses = `${clearClasses} dropdown__buttons--hide`
+          div(class= clearClasses)
+            button.dropdown__button-clear(type="button" data-action="clear") Очистить
+          .dropdown__buttons
+            button.dropdown__button-apply(type="button" data-action="hide") Применить
+          

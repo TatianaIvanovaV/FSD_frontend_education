@@ -1,6 +1,7 @@
 
 mixin picture(directory, name, id)  
     img(id=id src="./assets/img/" + directory + '/' + name + '.png', class=name + "-img", alt=name)
+    
 mixin dataInput(title, placeholder, name, className, type, value)
   label
     h3 #{title}
@@ -14,7 +15,6 @@ mixin dataInput(title, placeholder, name, className, type, value)
           placeholder=placeholder
           name=name
           value=value
-          required
           autocomplete="off")          
     else 
       input(
@@ -28,18 +28,21 @@ mixin logoGroup(className)
   .logo-group(class=className)
     a.logo-group__link(href="/home.html")
       img(src="./assets/img/icons/logo-group.png" alt="TOXIN")
+      
 mixin buttons(className, text, link)
   if (className === "btn--arrow")
-    a.btn(class=className href="/"+ link) #{text}
+    a.btn(class=className href="/"+ link)= text
       i.material-icons arrow_forward
   else
-    a.btn(class=className href="/"+ link) #{text}
+    a.btn(class=className href="/"+ link)= text
 
 mixin numWithSpaces(num)
   != num.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ')+ "₽"
+
 mixin declOfNum(number, words)  
-  = words[(number % 100 > 4 && number % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(number % 10 < 5) ? number % 10: 5]]  
-mixin hint(i)
+  = words[(number % 100 > 4 && number % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(number % 10 < 5) ? number % 10: 5]] 
+
+mixin hint(text)
   .hint 
     span.hint__inner i
-    .hint__buble= i
+    .hint__buble= text
