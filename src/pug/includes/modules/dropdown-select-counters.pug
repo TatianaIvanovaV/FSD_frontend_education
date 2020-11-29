@@ -1,27 +1,24 @@
 
-mixin dropdownSelect({items, withButtons, inputTitle, inputPlaceholder, inputValue})
+mixin dropdownSelect(items=[], withButtons, inputTitle, inputPlaceholder, inputValue)
   - var isEachCountNull = true
   for item, index in items
     if item.count > 0
-      - isEachCountNull = false
-     
+      - isEachCountNull = false   
   .input__select
-    mixin dropdownInput(title, placeholder, value)
-      label
-        h3= title
-        .input__area
-          span.input__icon-down.input__icon-down--dark
-            i.material-icons expand_more
-          input.input__input(
-            placeholder=placeholder
-            name="input-dropdown"
-            value=value
-            autocomplete="off") 
-    +dropdownInput(inputTitle, inputPlaceholder, inputValue)
+    label
+      h3= inputTitle
+      .input__area
+        span.input__icon-down.input__icon-down--dark
+          i.material-icons expand_more
+        input.input__input(
+          placeholder=inputPlaceholder
+          name="input-dropdown"
+          value=inputValue
+          autocomplete="off") 
     .dropdown
       ul.dropdown__list
         for item, index in items
-          li.dropdown__item(data-countword= item.countWord || "" data-index= index)
+          li.dropdown__item(data-countword= item.countWord data-index= index)
             span.dropdown__title= item.title
             .dropdown__counter
               button.dropdown__select-count-btn(type="button" data-action="desc" disabled= item.count == 0) -

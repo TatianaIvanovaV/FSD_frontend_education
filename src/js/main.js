@@ -68,9 +68,6 @@ $('.date').datepicker({
   
 });
 
-
-
-
 $('.start-one').datepicker({ 
   onSelect: function (fd, d, picker) { 
     $(".start-one").val(fd.split("-")[0]);

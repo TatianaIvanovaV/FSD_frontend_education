@@ -4,10 +4,8 @@ const $selects = $('.input__select');
 
 function initSelectCounter(select) {
   $(select).on('click', showDropdown);
- 
-
-let initialItems = [];
-let items = [];
+  let initialItems = [];
+  let items = [];
 
 function showDropdown(e) {
   if (!$(e.currentTarget).hasClass('input__select--expanded')) {
@@ -155,7 +153,7 @@ function getCountString(countData) {
     const declOfCount = declOfNum(countItem.count, findDeclArray(countItem.countWord));
     const stringOfCount = `${countItem.count} ${declOfCount}`;
     return index === (filteredCountData.length - 1) ? `${string}${stringOfCount}` : `${string}${stringOfCount}, `;
-  }, '')
+  },"")
   return value.toLowerCase();
 }
 function declOfNum(number, titles) {

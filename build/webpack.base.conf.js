@@ -89,7 +89,7 @@ module.exports = {
                    {
                     loader: 'css-loader',
                     options: { sourceMap: true }
-                    }/*,
+                    },/*
                    {
                     loader: 'postcss-loader',
                     options: { sourceMap: true, config: { path: `./postcss.config.js` }  }
@@ -100,26 +100,26 @@ module.exports = {
         ]
     },
     plugins: [ 
-            new MiniCssExtractPlugin({
-                filename: `${PATHS.assets}css/[name].[hash].css`,
-            }),
-            new CopyWebpackPlugin([
-                {
-                    from: `${PATHS.src}/${PATHS.assets}img`,
-                    to: `${PATHS.assets}img`
-                },
-                {
-                    from: `${PATHS.src}/${PATHS.assets}fonts`,
-                    to: `${PATHS.assets}fonts`
-                },
-                {
-                    from: `${PATHS.src}/favicons`,
-                    to: 'favicons'
-                }
-            ]),
-            ...PAGES.map(page => new HtmlWebpackPlugin({
-                template: `${PAGES_DIR}/${page}`,
-                filename: `./${page.replace(/\.pug/,'.html')}` 
-              }))
+        new MiniCssExtractPlugin({
+            filename: `${PATHS.assets}css/[name].[hash].css`,
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: `${PATHS.src}/${PATHS.assets}img`,
+                to: `${PATHS.assets}img`
+            },
+            {
+                from: `${PATHS.src}/${PATHS.assets}fonts`,
+                to: `${PATHS.assets}fonts`
+            },
+            {
+                from: `${PATHS.src}/favicons`,
+                to: 'favicons'
+            }
+        ]),
+        ...PAGES.map(page => new HtmlWebpackPlugin({
+            template: `${PAGES_DIR}/${page}`,
+            filename: `./${page.replace(/\.pug/,'.html')}` 
+            }))
         ]
 }

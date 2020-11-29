@@ -4,18 +4,18 @@ header.header
         +logoGroup("header__logo")
         nav.header__nav
           ul.header__list
-            - let arr = ["О нас", "Услуги", "Вакансии", "Новости", "Соглашения"]
-              each item in arr
-                if (item == arr[1] | item == arr[4])
+            - let navList = ["О нас", "Услуги", "Вакансии", "Новости", "Соглашения"]
+              each item in navList
+                if (item == navList[1] | item == navList[4])
                   li.header__item
-                    a.header__link(href="#") #{item}
+                    a.header__link(href="#")= item
                       i.material-icons.header__icon-down expand_more
                 else 
                   li.header__item
-                    a.header__link(href="#") #{item}
+                    a.header__link(href="#")= item
           .header__buttons
             +buttons("btn--border", "войти", "sign-in.html")
             +buttons("", "зарегистрироваться", "registred.html") 
-          .header__buttons--user
+          .header__buttons.header__buttons--user
             .header__user
               a.header__user-link(href="#") | Юлий Цезарь
