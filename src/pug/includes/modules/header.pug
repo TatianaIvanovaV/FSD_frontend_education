@@ -1,21 +1,41 @@
+include ./hamburger-menu.pug
+- let navList = [{ title: "О нас", href: "#" },{ title: "Услуги", href: "#", children: [{ title: "Баня и сауна", href: "#" },{ title: "SPA-программа", href: "#" },{ title: "Массаж", href: "#" },{ title: "Бассейн", href: "#" }] },{ title: "Вакансии", href: "#" },{ title: "Новости", href: "#" },{ title: "Соглашения", href: "#", children: [{ title: "Соглашение об обработке персональных данных", href: "#" },{ title: "Публичная оферта", href: "#" }] },]
+mixin getNavItem(navItem)
+  li.header__item           
+    a.header__link(href= navItem.href )= navItem.title
+      if navItem.children
+        i.material-icons.header__icon-down expand_more 
+        //-ul.header__sub-list
+          for child in navItem.children
+            li.header__sub-item
+              a.header__sub-link(href= child.href)= child.title     
+mixin getNavigation(navList)
+  ul.header__list
+    for navItem in navList
+      +getNavItem(navItem)
 header.header
-    .container 
-      .header__content
-        +logoGroup("header__logo")
-        nav.header__nav
-          ul.header__list
-            - let navList = ["О нас", "Услуги", "Вакансии", "Новости", "Соглашения"]
-              each item in navList
-                if (item == navList[1] | item == navList[4])
-                  li.header__item
-                    a.header__link(href="#")= item
-                      i.material-icons.header__icon-down expand_more
-                else 
-                  li.header__item
-                    a.header__link(href="#")= item
-          .header__buttons
-            +buttons("btn--border", "войти", "sign-in.html")
-            +buttons("", "зарегистрироваться", "registred.html") 
-          .header__buttons.header__buttons--user
-            .header__user
-              a.header__user-link(href="#") | Юлий Цезарь
+  .container 
+    .header__content
+      +logoGroup("header__logo")
+      nav.header__nav
+        +getNavigation(navList)
+        .header__buttons
+          +buttons("btn--border", "войти", "sign-in.html")
+          +buttons("", "зарегистрироваться", "registred.html") 
+        .header__buttons.header__buttons--user
+          .header__user
+            a.header__user-link(href="#") | Юлий Цезарь
+      +hamburger-menu
+      .header__sidebar
+        .header__overlay
+        .header__side-menu
+          .header__menu-head
+            +logoGroup("header__logo")
+            .header__close
+              span.header__close-button.material-icons clear
+          nav.header__sidebar-nav
+            +getNavigation(navList)
+            .header__buttons
+              +buttons("btn--border", "войти", "sign-in.html")
+              +buttons("", "зарегистрироваться", "registred.html") 
+        
