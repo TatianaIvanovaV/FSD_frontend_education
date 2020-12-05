@@ -1,3 +1,5 @@
+
+
 footer.footer
     .footer-upper
       .container
@@ -6,27 +8,24 @@ footer.footer
             +logoGroup("footer-upper__logo")
             p.footer-upper__tagline Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
           .footer-upper__nav
-            mixin footerNav(title, arr)
-              .footer-upper__nav-wrap
-                h3.footer-upper__nav-h3 #{title}
-                ul.footer-upper__nav-list
-                  each item in arr
-                    if block
-                      li.footer-upper__nav-item #{item}
-                      block
-                    else 
-                      li.footer-upper__nav-item 
-                        a.footer-upper__nav-link(href="#") #{item}
-            +footerNav('навигация', ['О нас', 'Новости', 'Служба поддержки', 'Услуги'])
-            +footerNav('o нас', ['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы'])
-            +footerNav('Служба поддержки', ['Соглашения', 'Сообщества', 'Связь с нами'])
-            +footerNav('Подписка', ['Получайте специальные предложения и новости сервиса'] )
-              li.footer-upper__nav-item
-                form.footer-upper__nav-form(action="" method="")
-                  input.footer-upper__nav-input(type="email" placeholder="Email" required)
-                  span.footer-upper__submit-wrap
-                    button.footer-upper__submit-btn(type="submit")
-                      i.material-icons.footer-upper__submit-arrow arrow_forward
+            - let footerItems = [{title:'навигация', links:['О нас', 'Новости', 'Служба поддержки', 'Услуги']}, {title:'o нас', links:['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']}, {title:'Служба поддержки', links:['Соглашения', 'Сообщества', 'Связь с нами']}, {title:'Подписка', links:['Получайте специальные предложения и новости сервиса'],mail:true}]
+            mixin footerNav(footer)
+              for col in footer
+                .footer-upper__nav-wrap
+                  h3.footer-upper__nav-h3= col.title
+                  ul.footer-upper__nav-list
+                    for item in col.links
+                      if col.mail
+                        li.footer-upper__nav-item= item
+                          form.footer-upper__nav-form(action="" method="")
+                            input.footer-upper__nav-input(type="email" placeholder="Email" required)
+                            span.footer-upper__submit-wrap
+                              button.footer-upper__submit-btn(type="submit")
+                                i.material-icons.footer-upper__submit-arrow arrow_forward
+                      else 
+                        li.footer-upper__nav-item 
+                          a.footer-upper__nav-link(href="#")= item
+            +footerNav(footerItems)         
     .footer-lower
       .container
         .footer-lower__wrap
