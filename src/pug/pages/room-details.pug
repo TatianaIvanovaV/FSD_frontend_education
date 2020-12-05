@@ -2,16 +2,15 @@ extends ../layout/index.pug
 include ../includes/modules/dropdown-select-counters.pug
 block content
   include ../includes/modules/header.pug
-  
+  - var roomDetails = [{className:"details__gallery--main",name:"room-exemple1",alt:""},{className:"details__gallery--up",name:"room-exemple2",alt:""},{className:"details__gallery--low",name:"room-exemple3",alt:""}]
   main.main
     .details
       .details__intro
-        .details__gallery--main
-          +picture("background","room-exemple1")
-        .details__gallery--up
-          +picture("background","room-exemple2")
-        .details__gallery--low
-          +picture("background","room-exemple3")
+        mixin fotoRoomDetails()
+          each photo in roomDetails
+            .details__gallery(class=photo.className)
+              img(src="./assets/img/background/" + photo.name + '.png', alt=photo.alt)
+        +fotoRoomDetails()
       .details__info
         .container
           .details__columns
