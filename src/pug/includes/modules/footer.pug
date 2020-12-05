@@ -1,44 +1,38 @@
+- let footerItems = [{title:'навигация', links:['О нас', 'Новости', 'Служба поддержки', 'Услуги']}, {title:'o нас', links:['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']}, {title:'Служба поддержки', links:['Соглашения', 'Сообщества', 'Связь с нами']}, {title:'Подписка', links:['Получайте специальные предложения и новости сервиса'],mail:true}]
 
+- let socialLinks = [{net:"twitter",http:"https://www.twitter.com/"}, {net:"facebook-square",http:"https://www.facebook.com/"}, {net:"instagram",http:"https://www.instagram.com/"}]
 
 footer.footer
-    .footer-upper
-      .container
-        .footer-upper__wrap
-          .footer-upper__info
-            +logoGroup("footer-upper__logo")
-            p.footer-upper__tagline Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-          .footer-upper__nav
-            - let footerItems = [{title:'навигация', links:['О нас', 'Новости', 'Служба поддержки', 'Услуги']}, {title:'o нас', links:['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']}, {title:'Служба поддержки', links:['Соглашения', 'Сообщества', 'Связь с нами']}, {title:'Подписка', links:['Получайте специальные предложения и новости сервиса'],mail:true}]
-            mixin footerNav(footer)
-              for col in footer
-                .footer-upper__nav-wrap
-                  h3.footer-upper__nav-h3= col.title
-                  ul.footer-upper__nav-list
-                    for item in col.links
-                      if col.mail
-                        li.footer-upper__nav-item= item
-                          form.footer-upper__nav-form(action="" method="")
-                            input.footer-upper__nav-input(type="email" placeholder="Email" required)
-                            span.footer-upper__submit-wrap
-                              button.footer-upper__submit-btn(type="submit")
-                                i.material-icons.footer-upper__submit-arrow arrow_forward
-                      else 
-                        li.footer-upper__nav-item 
-                          a.footer-upper__nav-link(href="#")= item
-            +footerNav(footerItems)         
-    .footer-lower
-      .container
-        .footer-lower__wrap
-          span.footer-lower__copyright Copyright © 2018 Toxin отель. Все права зачищены.
-          span
-          ul.footer-lower__social
-            - let socialLinks = ["twitter", "facebook-square", "instagram"]
-              each item in socialLinks
-                if (item === "facebook-square")
-                  li.footer-lower__list
-                    a.footer-lower__link(href="https://www.facebook.com/" target="_blank")
-                      i.fab(class="fa-" + item)
-                else
-                  li.footer-lower__list
-                    a.footer-lower__link(href="https://www." + item + ".com/" target="_blank")
-                      i.fab(class="fa-" + item)
+  .footer-upper
+    .container
+      .footer-upper__wrap
+        .footer-upper__info
+          +logoGroup("footer-upper__logo")
+          p.footer-upper__tagline Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+        .footer-upper__nav
+          mixin footerNav()
+            for col in footerItems
+              .footer-upper__nav-wrap
+                h3.footer-upper__nav-h3= col.title
+                ul.footer-upper__nav-list
+                  for item in col.links
+                    li.footer-upper__nav-item 
+                      a.footer-upper__nav-link(href="#")= item
+                    if col.mail
+                      form.footer-upper__nav-form(action="" method="")
+                        input.footer-upper__nav-input(type="email" placeholder="Email" required)
+                        span.footer-upper__submit-wrap
+                          button.footer-upper__submit-btn(type="submit")
+                            i.material-icons.footer-upper__submit-arrow arrow_forward
+          +footerNav()         
+  .footer-lower
+    .container
+      .footer-lower__wrap
+        span.footer-lower__copyright Copyright © 2018 Toxin отель. Все права зачищены.
+        ul.footer-lower__social
+          mixin socialMedia()
+            each item in socialLinks
+              li.footer-lower__list
+                a.footer-lower__link(href=item.http target="_blank")
+                  i.fab(class="fa-" + item.net)
+          +socialMedia()
