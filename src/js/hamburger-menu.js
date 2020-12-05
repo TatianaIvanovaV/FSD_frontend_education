@@ -1,5 +1,5 @@
 
-$('.hamburger-menu').on('click', function (e) {
+$('.hamburger__menu').on('click', function (e) {
   $(e.currentTarget).closest('.header')
     .find('.header__sidebar')
     .toggleClass('header__sidebar--visible')

@@ -1,6 +1,7 @@
 extends ../layout/index.pug
 
 include ../includes/modules/dropdown-select-counters.pug
+include ../includes/modules/filter-button.pug
 
 block content
   include ../includes/modules/header.pug
@@ -9,7 +10,9 @@ block content
       .container
         .catalog__wrap
           aside.catalog__filter.filter
-            form.filter__form(action="" method="")
+            +filterButton()
+            .filter__wrapper
+              form.filter__form(action="" method="")
               .filter__date
                 +dataInput("даты пребывания в отеле", "ДД.ММ.ГГГГ", "input-dropdown", "date", "", '19 авг - 23 авг')
               .filter__guests
