@@ -1,0 +1,19 @@
+mixin reviewsList() 
+  .details__reviews.reviews
+    .reviews__titie
+      h2.reviews__h2 Отзывы посетителей номера
+      span.reviews__quantity
+        !=(reviewsItems.length) + "&nbsp;"
+        +declOfNum(reviewsItems.length, ["отзыв", "отзыва", "отзывов"])
+    ul.reviews__list
+      for item, index in reviewsItems
+        li.reviews__item
+          .reviews__avatar 
+            img(src="./assets/img/customers/customer"+ (index+1) + '.png',alt=item.customerName)
+            .reviews__like
+              i.material-icons.reviews__icon="favorite_border"
+              span.reviews__like-num= item.count
+          .reviews__main
+            h3.reviews__name= item.customerName
+            span.reviews__ago= item.wrightAgo
+            p.reviews__p= item.paragraph 

@@ -1,0 +1,38 @@
+mixin pieChart(perfect, good, satisfactorily, bad)
+  .details__chart.chart
+    h2.chart__h2 Впечатления от номера
+    - let position = {good, bad, perfect, satisfactorily}
+    - let totalCount = perfect + good + satisfactorily + bad
+    - let legend = {perfect:"Великолепно",good:"Хорошо",satisfactorily:"Удовлетворительно",bad:"Разочарован"}
+    .chart__pie-chart
+      .chart__group
+        svg(width="124" height="124" viewbox="0 0 34 34" fill="none" stroke-width="1")
+          defs
+            linearGradient(id="perfect" x1="0%" y1="0%" x2="0%" y2="100%")
+              stop(offset="0%" stop-color="#FFE39C")
+              stop(offset="100%" stop-color="#FFBA9C")
+            linearGradient(id="good" x1="0%" y1="0%" x2="100%" y2="0%")
+              stop(offset="0%" stop-color="#66D2EA")
+              stop(offset="100%" stop-color="#6FCF97")
+            linearGradient(id="satisfactorily" x1="0%" y1="0%" x2="0%" y2="100%")
+              stop(offset="0%" stop-color="#BC9CFF")
+              stop(offset="100%" stop-color="#8BA4F9")
+            linearGradient(id="bad" x1="0%" y1="0%" x2="0%" y2="100%")
+              stop(offset="0%" stop-color="#919191")
+              stop(offset="100%" stop-color="#3D4975")
+          - let previosOffset = 0
+          each value, voteColor in position
+            if value !== 0
+              - let gap = 1
+              - let dash = value * 100 / totalCount - gap
+              circle(r="15.9" stroke=`url(#${voteColor})` stroke-dasharray=`${dash} 100` stroke-dashoffset= previosOffset cx="50%" cy="50%")
+              - previosOffset = previosOffset - dash - gap   
+        p.chart__info
+          span.chart__count= totalCount 
+          +declOfNum(totalCount, ["голос", "голоса", "голосов"])
+      ul.chart__legend 
+        each item, voteColor in legend
+          li.chart__legend-item
+            svg(width=10 height=10)
+              circle(r=5 cx='50%' cy='50%' fill=`url(#${voteColor})`)
+            = item
