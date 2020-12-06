@@ -2,9 +2,11 @@
 import noUiSlider from 'nouislider'
 import $ from 'jquery'
 
-  var rangeSlider = $('#unconstrained');
-  var sliderValues = $('#unconstrained-values');
-$(document).ready(function(){
+$( document ).ready(function() {
+
+  $('#unconstrained').each(function(){
+    var rangeSlider =  $('#unconstrained');
+    var sliderValues =  $('#unconstrained-values');
   noUiSlider.create(rangeSlider[0], {
   start: [5000, 10000],
   behaviour: 'unconstrained-tap',
@@ -26,4 +28,7 @@ $(document).ready(function(){
   rangeSlider[0].noUiSlider.on('update', function (values) {
     sliderValues[0].innerHTML = values.join(' - ');
   });
+});
+
+
 });
