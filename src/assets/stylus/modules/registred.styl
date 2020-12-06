@@ -1,6 +1,9 @@
 .registred
   background url('/assets/img/background/intro-for-reg.png') -45px -70px no-repeat 
   height 684px 
+  @media screen and (max-width: 360px)
+    height 764px 
+    background url('/assets/img/background/intro-for-reg.png') no-repeat 
   &__wrap
     padding-top 19px
   &__window
@@ -12,22 +15,25 @@
     height 646px
     border 1px solid rgba(0, 0, 0, 0.12)
     box-shadow 0 0 25px rgba(0,0,0,.2)
+    @media $phone
+      width 100%
+    @media screen and (max-width: 360px)
+      height 700px 
   &__h1
     margin-bottom 20px
-  &__input
-    &-name, 
-    &-surname,
-    &-mail
-      margin-bottom 10px
-    &-gender
-      padding 0
-      margin-bottom 19px
-    &-birthday
-      margin-bottom 16px
-    &-password
-      margin-bottom 6px
-    &-toggle
-      margin-bottom 22px
+  &__input-name, 
+  &__input-surname,
+  &__input-mail
+    margin-bottom 10px
+  &__input-gender
+    padding 0
+    margin-bottom 19px
+  &__input-birthday
+    margin-bottom 16px
+  &__input-password
+    margin-bottom 6px
+  &__input-toggle
+    margin-bottom 22px
   &__pay
     margin-bottom 31px
   &__after
@@ -44,7 +50,9 @@
   &__label 
     margin -3px 20px 0 10px
     cursor pointer
-  &__input
+    @media $phone
+      margin 0 10px 0 5px
+  &__dot
     appearance none
     border-radius 50%
     cursor pointer
@@ -61,13 +69,15 @@
       & + .radio__label
         color dark_75 
 .togglebox
-  &__input
+  &__handle
     display none
     & + .togglebox__label 
       position: relative;
       padding-left 50px
       cursor: pointer;
       color dark_75
+      @media $phone
+        display block
       &::before 
         content: '';
         position: absolute;

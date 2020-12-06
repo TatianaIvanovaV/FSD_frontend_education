@@ -15,9 +15,9 @@ block content
               .registred__input-surname
                 +dataInput("", "Фамилия", "input-surname", "signin__input--surname")
               .registred__input-gender.radio
-                input.radio__input(type="radio" id="choice1"  name="gender" value="male" checked)
+                input.radio__dot(type="radio" id="choice1"  name="gender" value="male" checked)
                 label.radio__label(for="choice1") Мужчина 
-                input.radio__input(type="radio" id="choice2"  name="gender" value="female")
+                input.radio__dot(type="radio" id="choice2"  name="gender" value="female")
                 label.radio__label(for="choice2") Женщина
               .registred__input-birthday
                 +dataInput("дата рождения", "ДД.ММ.ГГГГ", "input-surname", "signin__input--surname")
@@ -26,7 +26,7 @@ block content
               .registred__input-password
                 +dataInput("", "Пароль", "password", "signin__input--password")
               .registred__input-toggle.togglebox
-                input.togglebox__input(type="checkbox" id="toggle")
+                input.togglebox__handle(type="checkbox" id="toggle")
                 label.togglebox__label(for="toggle") Получать спецпредложения
             .registred__pay
               +buttons("btn--arrow", "перейти к оплате", "")
@@ -34,5 +34,4 @@ block content
               span.registred__span Уже есть аккаунт на Toxin
               +buttons("btn--border registred__btn-create", "войти", "sign-in.html")
   include ../includes/modules/footer.pug
-  //-title, placeholder, name, className
     
