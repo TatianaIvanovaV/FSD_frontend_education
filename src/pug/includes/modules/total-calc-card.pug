@@ -1,0 +1,56 @@
+mixin hint(text)
+  .hint 
+    span.hint__inner i
+    .hint__buble= text
+mixin totalCalc(dailyCost,days,roomNum,isLux,servicesCost, add)
+  .details__total.total
+    - let summCost = dailyCost * days
+    - let total = summCost + servicesCost + add
+    .total__identi
+      p.total__room № 
+        span.total__room-num= roomNum
+          if isLux
+            span.total__room-status= "люкс"
+      p.total__room-cost
+        span.total__room-price
+          +numWithSpaces(dailyCost)
+        |  в сутки
+    form.total__form(action="" method="")
+      .total__date
+        +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "start-one "+"total__input--date","","19.08.2019")
+        +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "start-end "+"total__input--date","","23.08.2019")
+      .total__guests
+        - let guestItems = [{title: "Взрослые", count: 2, countWord: "Гости"},{title: "Дети", count: 1, countWord: "Гости"},{title: "Младенцы", count: 0}]
+        +dropdownSelect(guestItems,true,"гости","Сколько гостей", "3 гостя")
+      .total__count
+        ul.total__list
+          li.total__item
+            .total__description
+              +numWithSpaces(dailyCost)
+              =" x " + days + " "
+              +declOfNum(days, ["сутки", "суток", "суток"])
+            .total__price
+              +numWithSpaces(summCost)
+          li.total__item
+            .total__description Сбор за услуги
+              if servicesCost < 0 
+                | : скидка&nbsp;
+                +numWithSpaces(-servicesCost)
+            +hint("Скидка за подписку") 
+            .total__price
+              if servicesCost > 0
+                +numWithSpaces(servicesCost)
+              else
+                | 0₽
+          li.total__item
+            .total__description Сбор за дополнительные<br> услуги
+            if add > 0
+              +hint("Дополнительные удобства")
+            .total__price
+              +numWithSpaces(add)
+        .total__foot
+          .total__final  Итого
+          .total__dashed 
+          .total__final-price
+            +numWithSpaces(total)
+      +buttons("btn--arrow", "забронировать", "")

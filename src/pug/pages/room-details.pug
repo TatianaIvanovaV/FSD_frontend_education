@@ -1,5 +1,6 @@
 extends ../layout/index.pug
 include ../includes/modules/dropdown-select-counters.pug
+include ../includes/modules/total-calc-card.pug
 block content
   include ../includes/modules/header.pug
   - var roomDetails = [{className:"details__gallery--main",name:"room-exemple1",alt:""},{className:"details__gallery--up",name:"room-exemple2",alt:""},{className:"details__gallery--low",name:"room-exemple3",alt:""}]
@@ -103,59 +104,5 @@ block content
                   h2.details__cancel-h2 Отмена
                   .details__cancel-p Бесплатная отмена в течение 48 ч. После <br>этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
             .details__columns-right
-              .details__total.total
-                mixin totalCalc(dailyCost,days,roomNum,isLux,servicesCost, add)
-                  - let summCost = dailyCost * days
-                  - let total = summCost + servicesCost + add
-                  .total__identi
-                    p.total__room № 
-                      span.total__room-num= roomNum
-                        if isLux
-                          span.total__room-status= "люкс"
-                    p.total__room-cost
-                      span.total__room-price
-                        +numWithSpaces(dailyCost)
-                      |  в сутки
-                  form.total__form(action="" method="")
-                    .total__date
-                      +dataInput("прибытие", "ДД.ММ.ГГГГ", "input-dropdown", "start-one "+"total__input--date","","19.08.2019")
-                      +dataInput("выезд", "ДД.ММ.ГГГГ","input-dropdown", "start-end "+"total__input--date","","23.08.2019")
-                    .total__guests
-                      - let guestItems = [{title: "Взрослые", count: 2, countWord: "Гости"},{title: "Дети", count: 1, countWord: "Гости"},{title: "Младенцы", count: 0}]
-                      +dropdownSelect(guestItems,true,"гости","Сколько гостей", "3 гостя")
-                    .total__count
-                      table.total__count-table
-                        tbody.total__count-tbody
-                          tr.total__count-tr
-                            td.total__count-td
-                              +numWithSpaces(dailyCost)
-                              =" x " + days + " "
-                              +declOfNum(days, ["сутки", "суток", "суток"])
-                            td.total__count-td
-                              +numWithSpaces(summCost)
-                          tr.total__count-tr
-                            td.total__count-td Сбор за услуги
-                              if servicesCost < 0 
-                                | : скидка&nbsp;
-                                +numWithSpaces(-servicesCost)
-                                +hint("Скидка за подписку") 
-                            td.total__count-td
-                              if servicesCost > 0
-                                +numWithSpaces(servicesCost)
-                              else
-                                | 0₽
-                          tr.total__count-tr
-                            td.total__count-td Сбор за дополнительные<br> услуги
-                              if add > 0
-                                +hint("Дополнительные удобства")
-                            td.total__count-td
-                              +numWithSpaces(add)
-                        tfoot.total__count-tfoot
-                          tr.total__count-tr
-                            td.total__count-td  Итого
-                              .total__count-dashed 
-                            td.total__count-td
-                              +numWithSpaces(total)
-                    +buttons("btn--arrow", "забронировать", "")
-                +totalCalc(9990,4,888,true,-2179, 300)           
+              +totalCalc(9990,4,888,true,-2179, 300)           
   include ../includes/modules/footer.pug 

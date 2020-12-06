@@ -1,0 +1,132 @@
+.total
+  width: 380px;
+  height: 511px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding 28px 29px 0 30px
+  @media screen and (min-width: 769px) and (max-width: 992px)
+    height 540px
+  @media screen and (min-width: 321px) and (max-width: 420px)
+    height 540px
+  @media screen and (max-width: 360px)
+    width 100%
+  @media screen and (min-width: 361px)
+    width: 380px;
+  &__identi
+    display flex
+    justify-content space-between
+    align-items center
+  &__room
+    font-family font-Quicksand
+    color dark_100
+    font-size 14px
+    font-weight 700
+    text-transform: uppercase
+  &__room-num
+    font-size 24px
+  &__room-status
+    font-family font-Montserrat
+    color perple
+    font-size 12px
+    margin-left 7px
+  &__room-cost
+    font-size 12px
+    padding-top 4px
+  &__room-price
+    font-weight 700
+    font-size 14px
+  &__date
+    display flex
+    justify-content space-between  
+    margin-bottom 16px
+  &__input--date
+    max-width 150px 
+    font-size 14px
+  &__input--guests
+    font-size 14px
+  &__guests
+    margin-bottom 12px
+  &__list
+    width 100%
+    padding 10px 0 0
+  &__item
+    display flex
+    justify-content space-between
+    margin-bottom 16px
+    line-height 18px
+    position relative
+  &__description
+    @media screen and (min-width: 769px) and (max-width: 992px)
+      max-width 170px
+    @media screen and (min-width: 321px) and (max-width: 420px)
+      max-width 170px
+  &__foot
+    padding 13px 0 20px
+    display flex
+    justify-content space-between
+    flex-wrap no-wrap
+    align-items baseline
+    font-size 19px
+    color dark_100
+    font-weight 700
+  &__final
+    font-family font-Sans
+    margin-right 8px
+  &__final-price
+    font-family font-Quicksand
+    margin-left 8px
+  &__dashed 
+    flex-grow: 1;
+    border-bottom 1px dotted dark_25
+.hint
+  width 20px
+  height 20px
+  border 1px solid dark_25
+  border-radius 50%
+  color dark_25
+  position absolute
+  right 25%
+  cursor pointer
+  &:hover,
+  &:active,
+  &:focus
+    color perple
+    border solid 1px transparent
+    background linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), perple-gradient
+    background-origin border-box
+    background-clip content-box, border-box
+    box-shadow 0px 1000px 0px #fff inset
+    > .hint__buble
+      display block
+      position absolute
+      background white
+      color dark_50
+      text-align center
+      padding 6px
+      bottom 28px
+      right -17px
+      display block
+      min-width 160px
+      height auto
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2)
+      border-radius 4px
+      &:before
+        content: ''
+        position absolute
+        bottom -5px
+        right 20px
+        width 10px
+        height 10px
+        background white
+        border-radius 2px
+        transform rotate(45deg)
+        border-right 1px solid rgba(0, 0, 0, 0.12)
+        border-bottom 1px solid rgba(0, 0, 0, 0.12)
+        box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.14)     
+  &__inner
+    font-weight 700
+    padding-left 6px
+  &__buble
+    display none
