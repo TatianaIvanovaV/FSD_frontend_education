@@ -1,0 +1,29 @@
+mixin paginator(countOnPage,countTotal, currentPage)
+  .paginator
+    - let roundCount = (countTotal >= 100) ? '100+' : countTotal
+    - let pagesCount = Math.ceil(countTotal / countOnPage)
+    .paginator__wrap
+      ul.paginator__list
+        if currentPage !== 1
+          li.paginator__item
+            a.paginator__page.paginator__arrow(href="javascript:void(0)")
+              i.material-icons arrow_back
+        - for (var i = 1; i <= pagesCount; i++)
+          - let utmostPage = (i === 1 || i === pagesCount)
+          - let neighborPage = (i <= currentPage + 2 && i >= currentPage - 2)
+            if i === currentPage
+              li.paginator__item
+                span.paginator__page.paginator__page--active(href="javascript:void(0)")= i
+            else if utmostPage || neighborPage
+              li.paginator__item
+                a.paginator__page.paginator__page--inactive(href="javascript:void(0)")= i
+            else if i === currentPage + 3 || i === currentPage - 3
+              li.paginator__item
+                span.paginator__page ...
+        if currentPage !== pagesCount
+          li.paginator__item
+            a.paginator__page.paginator__arrow(href="javascript:void(0)")
+              i.material-icons arrow_forward
+      - let startCount = currentPage === 1 ? currentPage : currentPage * countOnPage
+      - let endCount = countOnPage * currentPage
+      p.paginator__caption= `${startCount} – ${endCount} из ${roundCount} вариантов аренды`

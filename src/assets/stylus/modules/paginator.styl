@@ -1,0 +1,32 @@
+.paginator
+  padding 20px 0 58px
+  display flex
+  justify-content center
+  text-align center
+  &__wrap
+    padding-right 13px
+  &__list
+    display flex
+    font-size 12px
+  &__page
+    display flex
+    align-items center
+    justify-content center
+    height 40px
+    width 40px
+    border-radius 50%
+    &--active
+      background perple-gradient  
+      color white
+      font-weight: 700
+    &--inactive
+      &:hover
+        transition .3s
+        border 1px solid perple
+  &__arrow
+    background green-gradient  
+    color white
+  &__caption 
+    font-size 14px
+    color dark_75
+    margin-top 8px

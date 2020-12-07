@@ -1,0 +1,26 @@
+include ./stars-rating
+mixin roomCard()
+  .rooms
+    each room in roomsList
+      .rooms__card
+        .rooms__photos
+          each img in room.imgList
+            mixin pictureRoom(img)  
+              img(src="./assets/img/search-rooms/" + img + '.png', class="rooms__img", alt="photo interier")
+            +pictureRoom(img)
+        a.rooms__details(href="room-details.html")
+          .rooms__details--wrap
+            .rooms__value
+              p.rooms__appartment  № 
+                span.rooms__num= room.number
+                if room.isLux 
+                  span.rooms__status= 'люкс'
+              p.rooms__cost
+                span.rooms__price
+                  +numWithSpaces(room.cost)
+                |  в сутки
+            .rooms__rating
+              +starsRating(room.rate)
+              p.rooms__reviews 
+                span.rooms__reviews-amount!= room.reviewCount
+                  +declOfNum(room.reviewCount, [" Отзыв", " Отзыва", " Отзывов"])

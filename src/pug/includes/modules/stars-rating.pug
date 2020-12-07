@@ -1,0 +1,7 @@
+mixin starsRating(rate)
+  .stars-rating
+    - for (let i=0; i<5; i++)
+      if rate>i
+        i.material-icons star
+      else 
+        i.material-icons star_border

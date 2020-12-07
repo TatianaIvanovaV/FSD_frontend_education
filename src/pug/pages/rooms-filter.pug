@@ -3,6 +3,9 @@ extends ../layout/index.pug
 include ../includes/modules/dropdown-select-counters.pug
 include ../includes/modules/filter-button.pug
 include ../includes/modules/buttons.pug
+include ../includes/modules/range-slider.pug
+
+include ../includes/modules/display-rooms.pug
 
 block content
   include ../includes/modules/header.pug
@@ -22,12 +25,7 @@ block content
               .filter__guests
                 - var guestItems = [{title: "Взрослые", count: 2, countWord: "Гости"},{title: "Дети", count: 1, countWord: "Гости"},{title: "Младенцы", count: 1}]
                 +dropdownSelect(guestItems, false, "гости", "Сколько гостей", '3 гостя, 1 младенец')
-              .filter__range
-                .filter__range-title
-                  h3 Диапазон цены
-                  span#unconstrained-values
-                #unconstrained
-                p.filter__range-subtitle Стоимость за сутки пребывания в номере
+              +rangeSlider()
               .filter__rules
                 h3.filter__rules-h3 правила дома
                 ul.filter__rules-list
@@ -74,69 +72,5 @@ block content
                           checked= item.checked
                           )
                         label.checkbox__label.filter__access-label(for= item.id)=item.title       
-          section.catalog__rooms.rooms
-            h1.rooms__h1 Номера<span class="quicksand">,</span> которые мы для вас подобрали
-            .rooms__list
-              mixin roomCard()
-                each room in roomsList
-                  .rooms__card
-                    .rooms__photos
-                      each img in room.imgList
-                        mixin pictureRoom(img)  
-                          img(src="./assets/img/search-rooms/" + img + '.png', class="rooms__img", alt="photo interier")
-                        +pictureRoom(img)
-                    a.rooms__details(href="room-details.html")
-                      .rooms__details--wrap
-                        .rooms__value
-                          p.rooms__appartment  № 
-                            span.rooms__num= room.number
-                            if room.isLux 
-                              span.rooms__status= 'люкс'
-                          p.rooms__cost
-                            span.rooms__price
-                              +numWithSpaces(room.cost)
-                            |  в сутки
-                        .rooms__rating
-                          mixin starsRating(rate)
-                            .stars-rating
-                              - for (let i=0; i<5; i++)
-                                if rate>i
-                                  i.material-icons star
-                                else 
-                                  i.material-icons star_border
-                          +starsRating(room.rate)
-                          p.rooms__reviews 
-                            span.rooms__reviews-amount!= room.reviewCount
-                              +declOfNum(room.reviewCount, [" Отзыв", " Отзыва", " Отзывов"]) 
-              +roomCard()
-            .rooms__paginator
-              mixin paginator(countOnPage,countTotal, currentPage)
-                - let roundCount = (countTotal >= 100) ? '100+' : countTotal
-                - let pagesCount = Math.ceil(countTotal / countOnPage)
-                .paginator
-                  ul.paginator__list
-                    if currentPage !== 1
-                      li.paginator__item
-                        a.paginator__page.paginator__arrow(href="javascript:void(0)")
-                          i.material-icons arrow_back
-                    - for (var i = 1; i <= pagesCount; i++)
-                      - let utmostPage = (i === 1 || i === pagesCount)
-                      - let neighborPage = (i <= currentPage + 2 && i >= currentPage - 2)
-                        if i === currentPage
-                          li.paginator__item
-                            span.paginator__page.paginator__page--active(href="javascript:void(0)")= i
-                        else if utmostPage || neighborPage
-                          li.paginator__item
-                            a.paginator__page.paginator__page--inactive(href="javascript:void(0)")= i
-                        else if i === currentPage + 3 || i === currentPage - 3
-                          li.paginator__item
-                            span.paginator__page ...
-                    if currentPage !== pagesCount
-                      li.paginator__item
-                        a.paginator__page.paginator__arrow(href="javascript:void(0)")
-                          i.material-icons arrow_forward
-                  - let startCount = currentPage === 1 ? currentPage : currentPage * countOnPage
-                  - let endCount = countOnPage * currentPage
-                  p.paginator__caption= `${startCount} – ${endCount} из ${roundCount} вариантов аренды`
-              +paginator(12,180,1)
+          +display-rooms()
   include ../includes/modules/footer.pug 

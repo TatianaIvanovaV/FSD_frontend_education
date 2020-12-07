@@ -1,0 +1,7 @@
+include ./room-card
+include ./paginator
+mixin display-rooms()
+  section.display-rooms
+    h1.display-rooms__h1 Номера<span class="quicksand">,</span> которые мы для вас подобрали
+    +roomCard()
+    +paginator(12,180,1)
