@@ -1,24 +1,8 @@
-
 'use strict';
-
 import $ from 'jquery'
-import 'slick-carousel'
-
 import 'air-datepicker'
 
 
-
-  /*--- carousel-in-cards  --*/
-  $('.rooms__photos').slick({
-    dots: true,
-    speed: 200,
-    arrows: true
-  });
-
-
-
-
-/*--- air-datepicker calendar --*/
 $('.date').datepicker({
   multipleDates: 2,
   inline: false,
@@ -61,8 +45,6 @@ $('.start-one').datepicker({
 let applyButton = '<span class="datepicker--button apply-button" data-action="hide">Применить</span>';
 $('.datepicker--button[data-action="clear"]').each(function( index ) { $(applyButton).insertAfter($(this)); 
 });
-
-
 /*let applyButtons = document.querySelectorAll('.apply-button');
 let datepickers = document.querySelectorAll('.datepicker');
 let dateDropdowns = document.querySelectorAll('.datedropdown__container');

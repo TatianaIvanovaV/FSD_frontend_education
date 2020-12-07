@@ -1,0 +1,6 @@
+mixin buttons(className, text, link)
+  if (className === "btn--arrow")
+    a.btn(class=className href="/"+ link)= text
+      i.material-icons arrow_forward
+  else
+    a.btn(class=className href="/"+ link)= text
