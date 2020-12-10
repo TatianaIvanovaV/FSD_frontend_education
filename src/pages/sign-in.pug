@@ -1,7 +1,9 @@
 extends ../layout/index.pug
-include ../includes/modules/buttons.pug
+include ../layout/mixins.pug
+include ../modules/buttons/buttons.pug
+include ../modules/input/input.pug
 block content
-  include ../includes/modules/header.pug
+  include ../modules/header/header.pug
   
   main.main
     .signin
@@ -18,5 +20,5 @@ block content
             .signin__after
               span.signin__span Нет аккаунта на Toxin?
               +buttons("btn--border signin__btn-create", "создать", "registred.html")
-  include ../includes/modules/footer.pug
+  include ../modules/footer/footer.pug
   

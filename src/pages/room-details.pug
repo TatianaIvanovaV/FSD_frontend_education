@@ -1,11 +1,13 @@
 extends ../layout/index.pug
-include ../includes/modules/dropdown-select-counters.pug
-include ../includes/modules/total-calc-card.pug
-include ../includes/modules/donut-chart.pug
-include ../includes/modules/reviews.pug
-include ../includes/modules/buttons.pug
+include ../layout/mixins.pug
+include ../modules/dropdown-select-counters/dropdown-select-counters.pug
+include ../modules/total-calc-card/total-calc-card.pug
+include ../modules/donut-chart/donut-chart.pug
+include ../modules/reviews/reviews.pug
+include ../modules/buttons/buttons.pug
+include ../modules/input/input.pug
 block content
-  include ../includes/modules/header.pug
+  include ../modules/header/header.pug
   - var roomDetails = [{className:"details__gallery--main",name:"room-exemple1",alt:""},{className:"details__gallery--up",name:"room-exemple2",alt:""},{className:"details__gallery--low",name:"room-exemple3",alt:""}]
 
   - var intelligenceItems = [{icon: "tag_faces", descrTitle: "Комфорт", descrParagraph: "Шумопоглощающие стены"},{icon: "location_city", descrTitle: "Удобство", descrParagraph: "Окно в каждой из спален"}, {icon: "whatshot", descrTitle: "Уют", descrParagraph: "Номер оснащён камином"}]
@@ -51,4 +53,4 @@ block content
                   .details__cancel-p Бесплатная отмена в течение 48 ч. После <br>этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
             .details__columns-right
               +totalCalc(9990,4,888,true,-2179, 300)           
-  include ../includes/modules/footer.pug 
+  include ../modules/footer/footer.pug 

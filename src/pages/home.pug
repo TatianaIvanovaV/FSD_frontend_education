@@ -1,8 +1,10 @@
 extends ../layout/index.pug
-include ../includes/modules/dropdown-select-counters.pug
-include ../includes/modules/buttons.pug
+include ../layout/mixins.pug
+include ../modules/dropdown-select-counters/dropdown-select-counters.pug
+include ../modules/buttons/buttons.pug
+include ../modules/input/input.pug
 block content
-  include ../includes/modules/header.pug
+  include ../modules/header/header.pug
   
   main.main
     .intro
@@ -19,4 +21,4 @@ block content
                 +dropdownSelect(guestItems, true, "гости","Сколько гостей")
               +buttons("btn--arrow", "подобрать номер", "rooms-filter.html") 
           .intro__subtitle Лучшие номера для вашей работы,<br> отдыха и просто вдохновения  
-  include ../includes/modules/footer.pug
+  include ../modules/footer/footer.pug
