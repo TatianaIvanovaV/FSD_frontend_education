@@ -3,9 +3,11 @@ include ../layout/mixins.pug
 include ../modules/dropdown-select-counters/dropdown-select-counters.pug
 include ../modules/buttons/buttons.pug
 include ../modules/input/input.pug
+block head
+  title= "Бронирование номерoв в отеле Toxin"  
 block content
   include ../modules/header/header.pug
-  
+
   main.main
     .intro
       .container

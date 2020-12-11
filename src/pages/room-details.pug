@@ -6,6 +6,11 @@ include ../modules/donut-chart/donut-chart.pug
 include ../modules/reviews/reviews.pug
 include ../modules/buttons/buttons.pug
 include ../modules/input/input.pug
+
+block head
+  -var roomNum = 800
+  title= "Номер " + roomNum + " в отеле Toxin" 
+  
 block content
   include ../modules/header/header.pug
   - var roomDetails = [{className:"details__gallery--main",name:"room-exemple1",alt:""},{className:"details__gallery--up",name:"room-exemple2",alt:""},{className:"details__gallery--low",name:"room-exemple3",alt:""}]
@@ -52,5 +57,5 @@ block content
                   h2.details__cancel-h2 Отмена
                   .details__cancel-p Бесплатная отмена в течение 48 ч. После <br>этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
             .details__columns-right
-              +totalCalc(9990,4,888,true,-2179, 300)           
+              +totalCalc(9990,4,roomNum,true,-2179, 300)           
   include ../modules/footer/footer.pug 
