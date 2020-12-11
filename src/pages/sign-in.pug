@@ -18,7 +18,8 @@ block content
                 +dataInput("", "Email", "signin-email", "signin__input-mail")
               .signin__password
                 +dataInput("", "Пароль", "password", "signin__input-password")
-            +buttons("btn--arrow signin__btn-enter", "войти", "")  
+            .signin__btn-enter
+              +buttons("btn--arrow", "войти", "")  
             .signin__after
               span.signin__span Нет аккаунта на Toxin?
               +buttons("btn--border signin__btn-create", "создать", "registred.html")
