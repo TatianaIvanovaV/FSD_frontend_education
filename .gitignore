@@ -1,5 +1,5 @@
-/node_modules
-/dist
+node_modules
+dist
 # Файлы и папки операционной системы
 .DS_Store
 Thumbs.db
