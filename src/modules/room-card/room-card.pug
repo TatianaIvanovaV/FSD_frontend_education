@@ -23,4 +23,4 @@ mixin roomCard()
               +starsRating(room.rate)
               p.rooms__reviews 
                 span.rooms__reviews-amount!= room.reviewCount
-              +declOfNum(room.reviewCount, [" Отзыв", " Отзыва", " Отзывов"])
+                +declOfNum(room.reviewCount, [" Отзыв", " Отзыва", " Отзывов"])

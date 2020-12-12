@@ -1,5 +1,5 @@
 
-mixin dropdownSelect(items=[], withButtons, inputTitle, inputPlaceholder, inputValue)
+mixin dropdownSelect(items, withButtons, inputTitle, inputPlaceholder, inputValue)
   - var isEachCountNull = true
   for item, index in items
     if item.count > 0
