@@ -3,7 +3,7 @@ const fs = require('fs')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const PATHS = { // объект PATHS для более удобного обращения с путями, да и краткости записей
+const PATHS = { 
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
     assets: 'assets/'
@@ -14,14 +14,13 @@ module.exports = {
     externals: {
         paths: PATHS
     },
-    entry: {    // app == [name] - ярлык точки входа
-        app: PATHS.src // т.к. точка входа одна (index.js), то можно не указывать конкретный файл '/index.js'
+    entry: {   
+        app: PATHS.src 
     },
-    output: {
-        // filename: '[name].js', //[name] == ярлыку из entry, т.е. каждой точке входа будет соответствовать свой файл
-        filename: `${PATHS.assets}js/[name].[hash].js`, // используя синтаксис ES6, определяем новый путь для названия результирующего файла
-        path: PATHS.dist,    // указываем каталог для создания output
-        publicPath: '/' // каталог для webpack-dev-server, где он ищет index.html
+    output: { 
+        filename: `${PATHS.assets}js/[name].[hash].js`, 
+        path: PATHS.dist,    
+        publicPath: '/'
     },
     optimization: {
         splitChunks: {
@@ -36,11 +35,11 @@ module.exports = {
         }
       },
     module: {
-        rules: [ // на каждое расширение файла по правилу в виде объекта
+        rules: [ 
             {
-                test: /\.js$/,  // регулярка для всех js-файлов
-                loader: 'babel-loader', // обработчик 'babel-loader' для всех файлов из регулярки в test
-                exclude: '/node_modules/'   // исключить папку node_modules из ока лоадера
+                test: /\.js$/,  
+                loader: 'babel-loader', 
+                exclude: '/node_modules/'   
             },{
                 test: /\.pug$/,
                 loader: 'pug-loader',
