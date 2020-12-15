@@ -18,7 +18,7 @@ module.exports = {
         app: PATHS.src 
     },
     output: { 
-        filename: `${PATHS.assets}js/[name].[hash].js`, 
+        filename: `js/[name].[hash].js`, 
         path: PATHS.dist,    
         publicPath: './'
     },
@@ -100,7 +100,7 @@ module.exports = {
     },
     plugins: [ 
         new MiniCssExtractPlugin({
-            filename: `${PATHS.assets}css/[name].[hash].css`,
+            filename: `[name].[hash].css`,
         }),
         new CopyWebpackPlugin([
             {
