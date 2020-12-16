@@ -1,6 +1,6 @@
 'use strict';
 import 'air-datepicker'
-import $ from 'jquery'
+
 
 $( document ).ready(function() {
 

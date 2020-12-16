@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -20,7 +21,7 @@ module.exports = {
     output: { 
         filename: `js/[name].min.js`, 
         path: PATHS.dist,    
-        publicPath: '/'
+        publicPath: './'
     },
     optimization: {
         splitChunks: {
@@ -116,6 +117,11 @@ module.exports = {
                 to: 'favicons'
             }
         ]),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+          }),
         ...PAGES.map(page => new HtmlWebpackPlugin({
             template: `${PAGES_DIR}/${page}`,
             filename: `./${page.replace(/\.pug/,'.html')}` 
