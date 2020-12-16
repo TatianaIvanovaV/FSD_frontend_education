@@ -25,7 +25,7 @@ block content
         mixin fotoRoomDetails()
           each photo in roomDetails
             .details__gallery(class=photo.className)
-              img(src="/assets/img/background/" + photo.name + '.png', alt=photo.alt)
+              img(src="./assets/img/background/" + photo.name + '.png', alt=photo.alt)
         +fotoRoomDetails()
       .details__info
         .container
