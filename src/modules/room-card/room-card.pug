@@ -6,7 +6,7 @@ mixin roomCard()
         .rooms__photos
           each img in room.imgList
             mixin pictureRoom(img)  
-              img(src="./assets/img/search-rooms/" + img + '.png', class="rooms__img", alt="photo interier")
+              img(src="../assets/img/search-rooms/" + img + '.png', class="rooms__img", alt="photo interier")
             +pictureRoom(img)
         a.rooms__details(href="room-details.html")
           .rooms__details--wrap
