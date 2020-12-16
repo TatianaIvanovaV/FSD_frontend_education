@@ -1,18 +1,6 @@
-mixin dataInput(title, placeholder, name, className, type, value)
+mixin textInput(title, placeholder, name, className, type, value) 
   label
-    h3= title
-    if (name == "input-dropdown")
-      .input__area
-        span.input__icon-down
-          i.material-icons expand_more
-        input(
-          class=className
-          type=type
-          placeholder=placeholder
-          name=name
-          value=value
-          autocomplete="off")          
-    else 
+    h3= title   
       input(
         class=className
         type=type

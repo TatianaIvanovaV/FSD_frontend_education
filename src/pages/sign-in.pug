@@ -15,9 +15,9 @@ block content
             h1.signin__h1 Войти
             form.signin__form(action="" method="")
               .signin__mail
-                +dataInput("", "Email", "signin-email", "signin__input-mail")
+                +textInput("", "Email", "signin-email", "signin__input-mail")
               .signin__password
-                +dataInput("", "Пароль", "password", "signin__input-password")
+                +textInput("", "Пароль", "password", "signin__input-password")
             .signin__btn-enter
               +buttons("btn--arrow", "войти", "index.html")  
             .signin__after
