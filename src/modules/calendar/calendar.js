@@ -1,7 +1,7 @@
 'use strict';
 import $ from 'jquery'
 import 'air-datepicker'
-
+jQuery(function($) {
 $('.date').datepicker({
   multipleDates: 2,
   inline: false,
@@ -43,4 +43,5 @@ $('.start-one').datepicker({
 });
 let applyButton = '<span class="datepicker--button apply-button" data-action="hide">Применить</span>';
 $('.datepicker--button[data-action="clear"]').each(function( index ) { $(applyButton).insertAfter($(this)); 
+});
 });
