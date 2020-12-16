@@ -1,4 +1,5 @@
-
+'use strict';
+import $ from 'jquery'
 const $selects = $('.input__select');
 [...$selects].forEach((select) => {initSelectCounter(select)})
 

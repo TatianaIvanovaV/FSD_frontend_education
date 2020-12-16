@@ -1,4 +1,5 @@
-
+'use strict';
+import $ from 'jquery'
 $('.hamburger__menu').on('click', function (e) {
   $(e.currentTarget).closest('.header')
     .find('.header__sidebar')

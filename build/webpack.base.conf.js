@@ -18,7 +18,7 @@ module.exports = {
         app: PATHS.src 
     },
     output: { 
-        filename: `js/[name].[hash].js`, 
+        filename: `[name].[hash].js`, 
         path: PATHS.dist,    
         publicPath: './'
     },
