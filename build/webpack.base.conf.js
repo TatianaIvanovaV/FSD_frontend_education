@@ -108,7 +108,7 @@ module.exports = {
                 to: `${PATHS.assets}img`
             },
             {
-                from: `${PATHS.src}/fonts`,
+                from: `${PATHS.src}/${PATHS.assets}fonts`,
                 to: `${PATHS.assets}fonts`
             },
             {
