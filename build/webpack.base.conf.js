@@ -21,7 +21,7 @@ module.exports = {
     output: { 
         filename: `js/[name].min.js`, 
         path: PATHS.dist,    
-        publicPath: './'
+        publicPath: '/'
     },
     optimization: {
         splitChunks: {
