@@ -1,7 +1,9 @@
 'use strict';
-import $ from 'jquery'
 import 'air-datepicker'
-jQuery(function($) {
+import $ from 'jquery'
+
+$( document ).ready(function() {
+
 $('.date').datepicker({
   multipleDates: 2,
   inline: false,
