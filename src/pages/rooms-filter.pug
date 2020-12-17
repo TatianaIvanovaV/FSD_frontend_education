@@ -29,8 +29,8 @@ block content
             +filterButton()
             .filter__wrapper
               form.filter__form(action="" method="")
-              .filter__date
-                +dataInput("даты пребывания в отеле", "ДД.ММ.ГГГГ", "input-dropdown", "date", "", '19 авг - 23 авг')
+              .filter__date#dates
+                +dataInput("даты пребывания в отеле", "dataFilter", "ДД.ММ.ГГГГ", "input__date", '19 авг - 23 авг')
               .filter__guests
                 - var guestItems = [{title: "Взрослые", count: 2, countWord: "Гости"},{title: "Дети", count: 1, countWord: "Гости"},{title: "Младенцы", count: 1}]
                 +dropdownSelect(guestItems, false, "гости", "Сколько гостей", '3 гостя, 1 младенец')
