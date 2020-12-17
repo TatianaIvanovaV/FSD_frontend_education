@@ -1,0 +1,27 @@
+mixin checkList(checkList,liClassName)
+  each item in checkList
+    li.checkbox__item(class=liClassName)
+      input.checkbox__input(
+        class="" 
+        type="checkbox"
+        id= item.id
+        checked= item.checked
+        )
+      label.checkbox__label(for= item.id)
+        if checkList == inputAccess
+          h3.checkbox__lebel-title=item.title
+          p.checkbox__sublabel.checkbox__sublabel--access !{item.subtitle}
+        else
+          p.checkbox__sublabel !{item.title}   
+mixin checkBlock(idBox, checkboxTitle, checkList, liClassName)
+  .checkbox(id=idBox)
+    if checkList == inputAdd
+      details.checkbox__details
+        summary.checkbox__summary 
+          h3.checkbox__h3= checkboxTitle
+        ul.checkbox__list
+          +checkList(checkList,liClassName)
+    else 
+      h3.checkbox__h3= checkboxTitle
+      ul.checkbox__list 
+        +checkList(checkList,liClassName)

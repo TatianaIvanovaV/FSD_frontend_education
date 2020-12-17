@@ -7,12 +7,19 @@ include ../modules/range-slider/range-slider.pug
 include ../modules/display-rooms/display-rooms.pug
 include ../modules/input/input.pug
 include ../modules/calendar/calendar.pug
+include ../modules/checkbox/checkbox.pug
 block head
   title= "Поиск номерoв в отеле Toxin"   
 block content
   include ../modules/header/header.pug
 
   - var roomsList = [{imgList:["888", "888", "888", "888"],number: 888, isLux: true, cost: 9990, rate: 5, reviewCount: 145},{imgList:["840", "840", "840", "840"],  number: 840, isLux: false, cost: 9900, rate: 4, reviewCount: 65},{imgList: ["980", "980", "980", "980"], number: 980, isLux: true, cost: 8500, rate: 3, reviewCount: 35},{imgList: ["856", "856", "856", "856"], number: 856, isLux: false, cost: 7300, rate: 5, reviewCount: 19},{imgList: ["740", "740", "740", "740"], number: 740, isLux: false, cost: 6000, rate: 4, reviewCount: 44},{imgList: ["982", "982", "982", "982"], number: 982, isLux: false, cost: 5800, rate: 3, reviewCount: 56},{imgList: ["678", "678", "678", "678"], number: 678, isLux: false, cost: 5500, rate: 5, reviewCount: 45},{imgList: ["450", "450", "450", "450"], number: 450, isLux: false, cost: 5300, rate: 4, reviewCount: 39},{imgList: ["350", "350", "350", "350"], number: 350, isLux: false, cost: 5000, rate: 3, reviewCount: 77},{imgList: ["666", "666", "666", "666"], number: 666, isLux: false, cost: 5000, rate: 5, reviewCount: 25},{imgList: ["444", "444", "444", "444"], number: 444, isLux: false, cost: 5000, rate: 3, reviewCount: 15},{imgList: ["352", "352", "352", "352"], number: 352, isLux: false, cost: 5000, rate: 3, reviewCount: 55}]
+
+  - let inputAccess = [{id:"access1",title:"Широкий коридор", subtitle:"Ширина коридоров в номере <br>не менее 91 см."}, {id:"access2",title:"Помощник для инвалидов", subtitle:"На 1 этаже вас встретит специалист <br>и проводит до номера."}]
+
+  - let inputRules = [{id:"rule1",title:"Можно курить"}, {id:"rule2",title: "Можно с питомцами",checked:"true"}, {id:"rule3",title: "Можно пригласить гостей (до&nbsp;10&nbsp;человек)", checked:"true"}]
+
+  - let inputAdd = [{id:"add1",title:"Завтрак"}, {id:"add2",title:"Письменный стол",checked:"true"},{id:"add3",title:"Стул для кормления",checked:"true"},{id:"add4",title:"Кроватка",checked:"true"},{id:"add5",title:"Телевизор"},{id:"add6",title:"Шампунь"}]
 
   main.main
     .catalog
@@ -29,50 +36,13 @@ block content
                 +dropdownSelect(guestItems, false, "гости", "Сколько гостей", '3 гостя, 1 младенец')
               +rangeSlider()
               .filter__rules
-                h3.filter__rules-h3 правила дома
-                ul.filter__rules-list
-                  - let inputRules = [{id:"rule1",title:"Можно курить"}, {id:"rule2",title: "Можно с питомцами",checked:"true"}, {id:"rule3",title: "Можно пригласить гостей (до&nbsp;10&nbsp;человек)", checked:"true"}]
-                    each item in inputRules
-                      li.checkbox.filter__rules-item
-                        input.checkbox__input(
-                          class="" 
-                          type="checkbox"
-                          id= item.id
-                          checked= item.checked
-                          )
-                        label.checkbox__label.filter__rules-label(for= item.id) !{item.title}
+                +checkBlock("checkboxRules", "правила дома",inputRules, "checkbox__item--rules")
               .filter__access
-                h3.filter__access-h3 доступность
-                ul.filter__access-list
-                  - let inputAccess = [{id:"access1",title:"Широкий коридор", subtitle:"Ширина коридоров в номере <br>не менее 91 см."}, {id:"access2",title:"Помощник для инвалидов", subtitle:"На 1 этаже вас встретит специалист <br>и проводит до номера."}]
-                    each item in inputAccess
-                      li.checkbox.filter__access-item
-                        input.checkbox__input.filter__access-input(
-                          class="" 
-                          type="checkbox"
-                          id= item.id
-                          checked= item.checked
-                          )
-                        label.checkbox__label.filter__access-label(for= item.id)
-                          h3.filter__access-title=item.title
-                          p.filter__access-sublabel !{item.subtitle}
+                +checkBlock("checkboxAccess", "доступность", inputAccess, "checkbox__item--access")
               .filter__value
                 - var comfortItems = [{title: "Спальни", count: 2},{title: "Кровати", count: 2},{title: "Ванные комнаты", count: 0}]
                 +dropdownSelect(comfortItems,false, "удобства номера", "Выберите удобства", '2 спальни, 2 кровати...') 
               .filter__add
-                details.filter__add-details
-                  summary.filter__add-summary 
-                    h3 дополнительные удобства
-                  ul.filter__add-list
-                    - let inputAdd = [{id:"add1",title:"Завтрак"}, {id:"add2",title:"Письменный стол",checked:"true"},{id:"add3",title:"Стул для кормления",checked:"true"},{id:"add4",title:"Кроватка",checked:"true"},{id:"add5",title:"Телевизор"},{id:"add6",title:"Шампунь"}]
-                    each item in inputAdd
-                      li.checkbox.filter__add-item
-                        input.checkbox__input.filter__add-input(
-                          class="" 
-                          type="checkbox"
-                          id= item.id
-                          checked= item.checked
-                          )
-                        label.checkbox__label.filter__access-label(for= item.id)=item.title       
+                +checkBlock("checkboxAdd", "дополнительные удобства",inputAdd, "checkbox__item--add")    
           +display-rooms()
   include ../modules/footer/footer.pug
