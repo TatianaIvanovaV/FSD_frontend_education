@@ -7,7 +7,7 @@
     <meta name="description" content="TOXIN, бронирование номеров, лучший отель 2019 года">
     <meta name="keywords" content="TOXIN, бронирование номеров, отель, токсин, toxin, забронировать номер, в лучшем отеле, отельные взгляды, бронирование отеля">
     <link rel="shortcut icon" href="./favicons/favicon.ico">
-  <link href="./vendors.a37fd060d0ba85cd8d9b.css" rel="stylesheet"><link href="./app.a37fd060d0ba85cd8d9b.css" rel="stylesheet"></head>
+  <link href="./vendors.6757761b740799274efc.css" rel="stylesheet"><link href="./app.6757761b740799274efc.css" rel="stylesheet"></head>
   <title>Бронирование номерoв в отеле Toxin</title>
   <body>
     <header class="header">
@@ -125,18 +125,20 @@
             <div class="intro__booking-form">
               <h1 class="intro__h1">Найдём номера под ваши пожелания</h1>
               <form class="intro__form" action="" method="">
-                <div class="intro__block-date">
+                <div class="intro__block-date" id="dates">
                   <label>
-                    <h3>прибытие</h3>
-                    <div class="input__area"><span class="input__icon-down"><i class="material-icons">expand_more</i></span>
-                      <input class="start-one intro__input--date" placeholder="ДД.ММ.ГГГГ" name="input-dropdown" autocomplete="off">
-                    </div>
+                    <h3>прибытие
+                      <div class="input__area"><span class="input__icon-down"><i class="material-icons">expand_more</i></span>
+                        <input class="input__datepickers" id="start" placeholder="ДД.ММ.ГГГГ" value="" autocomplete="off">
+                      </div>
+                    </h3>
                   </label>
                   <label>
-                    <h3>выезд</h3>
-                    <div class="input__area"><span class="input__icon-down"><i class="material-icons">expand_more</i></span>
-                      <input class="end-one intro__input--date" placeholder="ДД.ММ.ГГГГ" name="input-dropdown" autocomplete="off">
-                    </div>
+                    <h3>выезд
+                      <div class="input__area"><span class="input__icon-down"><i class="material-icons">expand_more</i></span>
+                        <input class="input__datepickers" id="end" placeholder="ДД.ММ.ГГГГ" value="" autocomplete="off">
+                      </div>
+                    </h3>
                   </label>
                 </div>
                 <div class="intro__block-guests">

@@ -7,7 +7,7 @@
     <meta name="description" content="TOXIN, бронирование номеров, лучший отель 2019 года">
     <meta name="keywords" content="TOXIN, бронирование номеров, отель, токсин, toxin, забронировать номер, в лучшем отеле, отельные взгляды, бронирование отеля">
     <link rel="shortcut icon" href="./favicons/favicon.ico">
-  <link href="./vendors.a37fd060d0ba85cd8d9b.css" rel="stylesheet"><link href="./app.a37fd060d0ba85cd8d9b.css" rel="stylesheet"></head>
+  <link href="./vendors.6757761b740799274efc.css" rel="stylesheet"><link href="./app.6757761b740799274efc.css" rel="stylesheet"></head>
   <title>Поиск номерoв в отеле Toxin</title>
   <body>
     <header class="header">
@@ -126,12 +126,13 @@
               <button class="filter__button btn" type="button"> <i class="fas fa-sliders-h filter__icon"></i></button>
               <div class="filter__wrapper">
                 <form class="filter__form" action="" method=""></form>
-                <div class="filter__date">
+                <div class="filter__date" id="dates">
                   <label>
-                    <h3>даты пребывания в отеле</h3>
-                    <div class="input__area"><span class="input__icon-down"><i class="material-icons">expand_more</i></span>
-                      <input class="date" type="" placeholder="ДД.ММ.ГГГГ" name="input-dropdown" value="19 авг - 23 авг" autocomplete="off">
-                    </div>
+                    <h3>даты пребывания в отеле
+                      <div class="input__area"><span class="input__icon-down"><i class="material-icons">expand_more</i></span>
+                        <input class="input__date" id="dataFilter" placeholder="ДД.ММ.ГГГГ" value="19 авг - 23 авг" autocomplete="off">
+                      </div>
+                    </h3>
                   </label>
                 </div>
                 <div class="filter__guests">
@@ -175,40 +176,50 @@
                   <p class="range-slider__subtitle">Стоимость за сутки пребывания в номере</p>
                 </div>
                 <div class="filter__rules">
-                  <h3 class="filter__rules-h3">правила дома</h3>
-                  <ul class="filter__rules-list">
-                    <li class="checkbox filter__rules-item">
-                      <input class="checkbox__input" type="checkbox" id="rule1">
-                      <label class="checkbox__label filter__rules-label" for="rule1">Можно курить</label>
-                    </li>
-                    <li class="checkbox filter__rules-item">
-                      <input class="checkbox__input" type="checkbox" id="rule2" checked="true">
-                      <label class="checkbox__label filter__rules-label" for="rule2">Можно с питомцами</label>
-                    </li>
-                    <li class="checkbox filter__rules-item">
-                      <input class="checkbox__input" type="checkbox" id="rule3" checked="true">
-                      <label class="checkbox__label filter__rules-label" for="rule3">Можно пригласить гостей (до&nbsp;10&nbsp;человек)</label>
-                    </li>
-                  </ul>
+                  <div class="checkbox" id="checkboxRules">
+                    <h3 class="checkbox__h3">правила дома</h3>
+                    <ul class="checkbox__list"> 
+                      <li class="checkbox__item checkbox__item--rules">
+                        <input class="checkbox__input" type="checkbox" id="rule1">
+                        <label class="checkbox__label" for="rule1">
+                          <p class="checkbox__sublabel">Можно курить   </p>
+                        </label>
+                      </li>
+                      <li class="checkbox__item checkbox__item--rules">
+                        <input class="checkbox__input" type="checkbox" id="rule2" checked="true">
+                        <label class="checkbox__label" for="rule2">
+                          <p class="checkbox__sublabel">Можно с питомцами   </p>
+                        </label>
+                      </li>
+                      <li class="checkbox__item checkbox__item--rules">
+                        <input class="checkbox__input" type="checkbox" id="rule3" checked="true">
+                        <label class="checkbox__label" for="rule3">
+                          <p class="checkbox__sublabel">Можно пригласить гостей (до&nbsp;10&nbsp;человек)   </p>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="filter__access">
-                  <h3 class="filter__access-h3">доступность</h3>
-                  <ul class="filter__access-list">
-                    <li class="checkbox filter__access-item">
-                      <input class="checkbox__input filter__access-input" type="checkbox" id="access1">
-                      <label class="checkbox__label filter__access-label" for="access1">
-                        <h3 class="filter__access-title">Широкий коридор</h3>
-                        <p class="filter__access-sublabel">Ширина коридоров в номере <br>не менее 91 см.</p>
-                      </label>
-                    </li>
-                    <li class="checkbox filter__access-item">
-                      <input class="checkbox__input filter__access-input" type="checkbox" id="access2">
-                      <label class="checkbox__label filter__access-label" for="access2">
-                        <h3 class="filter__access-title">Помощник для инвалидов</h3>
-                        <p class="filter__access-sublabel">На 1 этаже вас встретит специалист <br>и проводит до номера.</p>
-                      </label>
-                    </li>
-                  </ul>
+                  <div class="checkbox" id="checkboxAccess">
+                    <h3 class="checkbox__h3">доступность</h3>
+                    <ul class="checkbox__list"> 
+                      <li class="checkbox__item checkbox__item--access">
+                        <input class="checkbox__input" type="checkbox" id="access1">
+                        <label class="checkbox__label" for="access1">
+                          <h3 class="checkbox__lebel-title">Широкий коридор</h3>
+                          <p class="checkbox__sublabel checkbox__sublabel--access">Ширина коридоров в номере <br>не менее 91 см.</p>
+                        </label>
+                      </li>
+                      <li class="checkbox__item checkbox__item--access">
+                        <input class="checkbox__input" type="checkbox" id="access2">
+                        <label class="checkbox__label" for="access2">
+                          <h3 class="checkbox__lebel-title">Помощник для инвалидов</h3>
+                          <p class="checkbox__sublabel checkbox__sublabel--access">На 1 этаже вас встретит специалист <br>и проводит до номера.</p>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <div class="filter__value">
                   <div class="input__select">
@@ -243,37 +254,51 @@
                   </div>
                 </div>
                 <div class="filter__add">
-                  <details class="filter__add-details">
-                    <summary class="filter__add-summary"> 
-                      <h3>дополнительные удобства</h3>
-                    </summary>
-                    <ul class="filter__add-list">
-                      <li class="checkbox filter__add-item">
-                        <input class="checkbox__input filter__add-input" type="checkbox" id="add1">
-                        <label class="checkbox__label filter__access-label" for="add1">Завтрак</label>
-                      </li>
-                      <li class="checkbox filter__add-item">
-                        <input class="checkbox__input filter__add-input" type="checkbox" id="add2" checked="true">
-                        <label class="checkbox__label filter__access-label" for="add2">Письменный стол</label>
-                      </li>
-                      <li class="checkbox filter__add-item">
-                        <input class="checkbox__input filter__add-input" type="checkbox" id="add3" checked="true">
-                        <label class="checkbox__label filter__access-label" for="add3">Стул для кормления</label>
-                      </li>
-                      <li class="checkbox filter__add-item">
-                        <input class="checkbox__input filter__add-input" type="checkbox" id="add4" checked="true">
-                        <label class="checkbox__label filter__access-label" for="add4">Кроватка</label>
-                      </li>
-                      <li class="checkbox filter__add-item">
-                        <input class="checkbox__input filter__add-input" type="checkbox" id="add5">
-                        <label class="checkbox__label filter__access-label" for="add5">Телевизор</label>
-                      </li>
-                      <li class="checkbox filter__add-item">
-                        <input class="checkbox__input filter__add-input" type="checkbox" id="add6">
-                        <label class="checkbox__label filter__access-label" for="add6">Шампунь</label>
-                      </li>
-                    </ul>
-                  </details>
+                  <div class="checkbox" id="checkboxAdd">
+                    <details class="checkbox__details">
+                      <summary class="checkbox__summary"> 
+                        <h3 class="checkbox__h3">дополнительные удобства</h3>
+                      </summary>
+                      <ul class="checkbox__list">
+                        <li class="checkbox__item checkbox__item--add">
+                          <input class="checkbox__input" type="checkbox" id="add1">
+                          <label class="checkbox__label" for="add1">
+                            <p class="checkbox__sublabel">Завтрак   </p>
+                          </label>
+                        </li>
+                        <li class="checkbox__item checkbox__item--add">
+                          <input class="checkbox__input" type="checkbox" id="add2" checked="true">
+                          <label class="checkbox__label" for="add2">
+                            <p class="checkbox__sublabel">Письменный стол   </p>
+                          </label>
+                        </li>
+                        <li class="checkbox__item checkbox__item--add">
+                          <input class="checkbox__input" type="checkbox" id="add3" checked="true">
+                          <label class="checkbox__label" for="add3">
+                            <p class="checkbox__sublabel">Стул для кормления   </p>
+                          </label>
+                        </li>
+                        <li class="checkbox__item checkbox__item--add">
+                          <input class="checkbox__input" type="checkbox" id="add4" checked="true">
+                          <label class="checkbox__label" for="add4">
+                            <p class="checkbox__sublabel">Кроватка   </p>
+                          </label>
+                        </li>
+                        <li class="checkbox__item checkbox__item--add">
+                          <input class="checkbox__input" type="checkbox" id="add5">
+                          <label class="checkbox__label" for="add5">
+                            <p class="checkbox__sublabel">Телевизор   </p>
+                          </label>
+                        </li>
+                        <li class="checkbox__item checkbox__item--add">
+                          <input class="checkbox__input" type="checkbox" id="add6">
+                          <label class="checkbox__label" for="add6">
+                            <p class="checkbox__sublabel">Шампунь   </p>
+                          </label>
+                        </li>
+                      </ul>
+                    </details>
+                  </div>
                 </div>
               </div>
             </aside>
