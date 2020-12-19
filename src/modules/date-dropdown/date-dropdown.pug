@@ -1,0 +1,23 @@
+include ../calendar/calendar.pug
+mixin dataInput(title,classModify, value)
+  label
+    h3= title
+      .input__area
+        span.input__icon-down
+          i.material-icons expand_more
+        input(
+          class="input__datepickers " + classModify
+          placeholder="ДД.ММ.ГГГГ"
+          value=value
+          autocomplete="off") 
+mixin dateDropdown(value)
+  .date-picker
+    if value.length == 2 
+      .date-picker__twofields
+        +dataInput("прибытие", "input__datepickers--minwidth", value[0])
+        +dataInput("выезд", "input__datepickers--minwidth", value[1])
+    else 
+      .date-picker__onefield
+        +dataInput("даты пребывания в отеле", "input__datepickers--maxwidth", value[0])
+    +calendar()
+      

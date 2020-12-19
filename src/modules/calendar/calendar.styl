@@ -2,11 +2,13 @@
   font-family font-Montserrat
   font-size 12px
   font-weight 400
+  
   border: 1px solid rgba(31, 32, 65, 0.25);
   box-sizing: border-box;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   color dark_50
   padding 20px
+  width 100%
   &--pointer
    visibility hidden
   &--nav-action,
@@ -25,7 +27,7 @@
     font-weight 700
     text-transform uppercase
     justify-content flex-start
-  &--button[data-action="hide"]
+  &--button[data-action="apply"]
     justify-content flex-end
   &--nav-title,
   &--nav-title i
@@ -76,4 +78,11 @@
   &--cell-day.-other-month-, 
   &--cell-year.-other-decade- 
     color dark_25
- 
+.calendar 
+  position: absolute;
+  z-index: 100
+  top: 75px;
+  left: 0;
+  width: 100%;
+  @media $tablet 
+    max-width 320px

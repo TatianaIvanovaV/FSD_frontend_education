@@ -6,7 +6,7 @@ include ../modules/buttons/buttons.pug
 include ../modules/range-slider/range-slider.pug
 include ../modules/display-rooms/display-rooms.pug
 include ../modules/input/input.pug
-include ../modules/calendar/calendar.pug
+include ../modules/date-dropdown/date-dropdown.pug
 include ../modules/checkbox/checkbox.pug
 block head
   title= "Поиск номерoв в отеле Toxin"   
@@ -29,8 +29,8 @@ block content
             +filterButton()
             .filter__wrapper
               form.filter__form(action="" method="")
-              .filter__date#dates
-                +dataInput("даты пребывания в отеле", "dataFilter", "ДД.ММ.ГГГГ", "input__date", '19 авг - 23 авг')
+              .filter__date
+                +dateDropdown(['19 авг - 23 авг'])
               .filter__guests
                 - var guestItems = [{title: "Взрослые", count: 2, countWord: "Гости"},{title: "Дети", count: 1, countWord: "Гости"},{title: "Младенцы", count: 1}]
                 +dropdownSelect(guestItems, false, "гости", "Сколько гостей", '3 гостя, 1 младенец')

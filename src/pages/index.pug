@@ -3,7 +3,7 @@ include ../layout/mixins.pug
 include ../modules/dropdown-select-counters/dropdown-select-counters.pug
 include ../modules/buttons/buttons.pug
 include ../modules/input/input.pug
-include ../modules/calendar/calendar.pug
+include ../modules/date-dropdown/date-dropdown.pug
 block head
   title= "Бронирование номерoв в отеле Toxin"  
 block content
@@ -16,9 +16,8 @@ block content
           .intro__booking-form
             h1.intro__h1 Найдём номера под ваши пожелания
             form.intro__form(action="" method="")
-              .intro__block-date#dates
-                +dataInput("прибытие", "start", "ДД.ММ.ГГГГ", "input__datepickers", "")
-                +dataInput("выезд", "end", "ДД.ММ.ГГГГ", "input__datepickers", "")
+              .intro__block-date
+                +dateDropdown(["",""])
               .intro__block-guests
                 - let guestItems = [{title: "Взрослые", count: 0, countWord: "Гости"},{title: "Дети", count: 0, countWord: "Гости"},{title: "Младенцы", count: 0}]
                 +dropdownSelect(guestItems, true, "гости","Сколько гостей")
