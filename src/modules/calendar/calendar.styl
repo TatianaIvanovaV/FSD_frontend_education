@@ -1,3 +1,12 @@
+round-cell =
+  background perple-gradient__25
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
 .calendar 
   position: absolute;
   z-index: 100
@@ -10,7 +19,6 @@
   font-family font-Montserrat
   font-size 12px
   font-weight 400
-  
   border: 1px solid rgba(31, 32, 65, 0.25);
   box-sizing: border-box;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
@@ -54,35 +62,53 @@
     font-weight 700
     color perple
     text-transform none
-  &--cell
-    border-radius 22px
-    &.-current-
-      font-weight 700
-      color white/*background perple-gradient*/
-      background green-gradient
-    &.-current-.-in-range-.-focus-
-      color white
-    &.-in-range-
-      background linear-gradient(180deg,rgba(188,156,255,.25),rgba(139,164,249,.25))
-      color dark_50
-      border-radius 0
-    &.-in-range-.-focus-
-      background linear-gradient(180deg,rgba(188,156,255,.5),rgba(139,164,249,.5))
+  &--cell 
+    border-radius: 50%
     &.-range-from-,
-    &.-range-to-
-      border-radius: 22px 0 0 22px
-      background perple-gradient
-      font-weight 700
-      &:hover
-        background perple-gradient
-    &.-range-to-
-      border-radius: 0 22px 22px 0
-    &.-selected-.-current- 
+    &.-range-to- 
+      background perple-gradient__50
+      border-radius: 50%;
+      border: none;
+      color: white
+    &.-range-from-::after 
+      {round-cell}
+      border-radius: 50% 0 0 50%;
+    &.-range-to-::before 
+      {round-cell}
+      border-radius: 0 50% 50% 0;
+    &.-current- 
+      background: green-gradient
+      border-radius: 50%;
       color white
-      background perple-gradient
-
-
-
-  &--cell-day.-other-month-, 
-  &--cell-year.-other-decade- 
-    color dark_25
+      &.-focus- 
+        background: green-gradient
+        color white
+      &.-in-range- 
+        background green-gradient
+        color: white
+        position: relative;
+        &::after 
+          {round-cell}
+    &.-selected- 
+      background: perple-gradient;
+      border-radius: 50%;
+      position: relative;
+      &.-range-from-::after,
+      &.-range-to-::before 
+        {round-cell}  
+      &.-focus- 
+        background: perple-gradient
+    &.-in-range- 
+      background: perple-gradient__25
+      &.-focus- 
+        background: perple-gradient__50
+  &--cell-day        
+    &.-other-month- 
+      &.-selected- 
+        background: perple-gradient
+        &.-focus- 
+          background: green
+      &.-in-range- 
+        background: perple-gradient__25
+        &.-focus- 
+          background: perple-gradient__50
