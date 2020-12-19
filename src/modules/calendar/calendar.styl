@@ -1,3 +1,11 @@
+.calendar 
+  position: absolute;
+  z-index: 100
+  top: 75px;
+  left: 0;
+  width: 100%;
+  @media $tablet 
+    max-width 320px
 .datepicker
   font-family font-Montserrat
   font-size 12px
@@ -78,11 +86,3 @@
   &--cell-day.-other-month-, 
   &--cell-year.-other-decade- 
     color dark_25
-.calendar 
-  position: absolute;
-  z-index: 100
-  top: 75px;
-  left: 0;
-  width: 100%;
-  @media $tablet 
-    max-width 320px

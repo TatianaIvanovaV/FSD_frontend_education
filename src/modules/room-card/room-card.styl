@@ -3,7 +3,9 @@
   justify-content space-between
   margin-top 20px
   flex-wrap wrap
-  @media screen and (min-width: 540px) and (max-width: 833px)
+  @media $tablet
+    justify-content space-around
+  @media screen and (min-width: 769px) and (max-width: 850px)
     justify-content center
   &__card
     position relative
