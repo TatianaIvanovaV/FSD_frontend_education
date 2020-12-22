@@ -1,0 +1,13 @@
+mixin headNavigation()
+  ul.nav-head__list
+    for item in navList
+      li.nav-head__item 
+        if item.children
+          a.nav-head__link(href= item.href)= item.title 
+            i.material-icons.nav-head__icon--down expand_more
+          ul.nav-head__sub-list
+            for child in item.children
+              li.nav-head__sub-item
+                a.nav-head__sub-link(href= child.href)= child.title
+        else
+          a.nav-head__link(href= item.href )= item.title  

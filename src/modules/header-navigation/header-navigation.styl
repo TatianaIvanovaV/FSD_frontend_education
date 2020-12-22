@@ -1,0 +1,71 @@
+.nav-head
+  &__list 
+    display flex
+    font-size font-size
+    padding-top 5px
+    @media screen and (max-width: 851px)
+      display flex
+      flex-direction column
+  &__item
+    margin-right 20.6px
+    @media screen and (max-width: 851px)
+      margin 5px 0
+  &__link
+    @media screen and (max-width: 851px)  
+      text-transform uppercase
+      font-weight 700
+  &__link,
+  &__sub-link
+    &:hover,
+    &:active,
+    &:focus
+      color dark_75
+  &__icon--down
+    float right
+    transition: .3s ease;
+    &.rotate
+      transform: rotate(180deg)
+      transition: .3s ease;
+    @media screen and (max-width: 851px)
+      float left
+  &__sub-list
+    position absolute
+    top 25px
+    left -10px
+    min-width 150px
+    padding 10px
+    background white
+    border-radius 0 0 4px 4px
+    box-shadow 0px 10px 20px rgba(31, 32, 65, 0.05)
+    display none
+    &.open
+      display block
+    @media screen and (max-width: 851px)
+      position relative
+      top 5px
+      left 5px
+      max-width 300px
+      box-shadow none
+      text-transform uppercase
+      font-weight 700
+  &__sub-item
+    border-bottom 1px solid dark_5
+    line-height 20px
+    margin-bottom 5px
+    @media screen and (max-width: 851px)
+      border-bottom none
+  &__sub-item:last-of-type  
+    border-bottom none
+    margin-bottom 0px 
+body
+  &.mouse
+    & .nav-head__item
+      &:hover
+        >.nav-head__sub-list
+          display block
+        & .nav-head__icon--down
+          transform: rotate(180deg)
+          transition: .3s ease;
+    
+    
+     
