@@ -1,26 +1,48 @@
 .header
   box-shadow 0px 10px 20px rgba(31, 32, 65, 0.05)
-  z-index: 5;
+  z-index: 50;
   position sticky
   top: 0;
+  left 0
   width 100%
-  background white
-  &__content
+  &:before
+    content ""
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    z-index: 2
+    background white
+  &__body
+    position relative
     height 70px
     width 100%
     display flex
     justify-content space-between
     flex-wrap wrap
     align-items center
-    
-    @media screen and (min-width: 852px) and (max-width: 921px)
-      height 120px
   &__logo
     padding-top 4px
-  &__nav
+    z-index: 3
+  &__menu
     display flex
-    @media screen and (max-width: 851px)
-      display none
+    flex-wrap wrap
+    z-index: 2
+    @media $tablet
+      position fixed
+      top 0
+      left 0 
+      width 100%
+      height 100%
+      overflow auto
+      background white
+      padding 80px 0 0 20px
+      top -100%
+      transition 0.3s
+      &.active
+        top 0
+        transition 0.3s    
   &__buttons
     display flex
     justify-content space-between 
@@ -28,46 +50,47 @@
       height 34px 
       &:first-of-type
         margin-right 20px 
-    &--user
-      display none
-  &__menu-head
-    display flex
-    justify-content space-between
-  &__close-button
-    font-size 40px
-    background: perple-gradient
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  &__sidebar
-    position absolute
-    top 0
-    left 0
-  &__side-menu,
-  &__overlay
-    position fixed
-    height 100%
-    background-color white
+        @media screen and (max-width: 992px)
+          margin-right 3px
+      @media screen and (min-width: 769px) and (max-width: 992px)
+        width auto
+        padding 0 3px
+  &__burger
     display none
-  &__side-menu
-    z-index 20
-    width 60%
-    padding 20px
-    @media $phone
-      width 100%
-  &__overlay
-    z-index 10
-    width 100%
-    background-color rgba(0, 0, 0, .5)
-  &__sidebar-nav 
-    >.header__buttons
-      display flex
-      justify-content space-around
-      >a
-        margin 10px 0    
-  &__sidebar--visible
-    >.header__overlay, .header__side-menu
-      display block  
-  
-  &__close-button
-    cursor pointer
+    position relative
+    width 44px
+    height 44px
+    z-index 3
+    border-radius 22px
+    background perple-gradient
+    &:before,
+    &:after,
+    & span 
+      content ""
+      background white
+      position absolute
+      width 24px 
+      height 2px
+      left 10px
+      transition 0.3s
+    &:before
+      top 12px  
+    &:after 
+      bottom 12px
+    >span
+      top 21px
+    @media $tablet
+      display block
+    &.active
+      &:before
+        transform rotate(45deg)
+        transition 0.3s
+        top 21px
+      &:after 
+        transform rotate(-45deg)
+        bottom 21px
+        transition 0.3s
+      >span
+        transform scale(0)
+        transition 0.3s
 

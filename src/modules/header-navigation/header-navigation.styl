@@ -3,15 +3,18 @@
     display flex
     font-size font-size
     padding-top 5px
-    @media screen and (max-width: 851px)
+    @media $tablet
       display flex
       flex-direction column
   &__item
+    position relative
     margin-right 20.6px
-    @media screen and (max-width: 851px)
+    @media screen and (min-width: 769px) and (max-width: 992px)
+      margin-right 5px
+    @media $tablet
       margin 5px 0
   &__link
-    @media screen and (max-width: 851px)  
+    @media $tablet
       text-transform uppercase
       font-weight 700
   &__link,
@@ -26,7 +29,7 @@
     &.rotate
       transform: rotate(180deg)
       transition: .3s ease;
-    @media screen and (max-width: 851px)
+    @media $tablet
       float left
   &__sub-list
     position absolute
@@ -40,7 +43,7 @@
     display none
     &.open
       display block
-    @media screen and (max-width: 851px)
+    @media $tablet
       position relative
       top 5px
       left 5px
@@ -52,7 +55,7 @@
     border-bottom 1px solid dark_5
     line-height 20px
     margin-bottom 5px
-    @media screen and (max-width: 851px)
+    @media $tablet
       border-bottom none
   &__sub-item:last-of-type  
     border-bottom none

@@ -1,33 +1,22 @@
-include ../hamburger-menu/hamburger-menu.pug
 include ../header-navigation/header-navigation.pug 
 
 - let foo = "javascript:void(0);"
-- let navList = [{ title: "О нас", href: foo },{ title: "Услуги", href: foo, children: [{ title: "Баня и сауна", href: foo },{ title: "SPA-программа", href: foo },{ title: "Массаж", href: foo },{ title: "Бассейн", href: foo }] },{ title: "Вакансии", href: foo },{ title: "Новости", href: foo },{ title: "Соглашения", href: foo, children: [{ title: "Соглашение об обработке персональных данных", href: foo },{ title: "Публичная оферта", href: foo }] },]
+- let navList = [{ title: "О нас", href: foo },{ title: "Услуги", href: foo, children: [{ title: "Баня и сауна", href: foo },{ title: "SPA-программа", href: foo },{ title: "Массаж", href: foo },{ title: "Бассейн", href: foo }] },{ title: "Вакансии", href: foo },{ title: "Новости", href: foo },{ title: "Соглашения", href: foo, children: [{ title: "Соглашение об обработке персональных данных", href: foo },{ title: "Публичная оферта", href: foo }] }]
   
  
 header.header
   .container 
-    .header__content
+    .header__body
       +logoGroup("header__logo")
-      nav.header__nav.nav-head
+      .header__burger
+        span
+      nav.header__menu
         +headNavigation()
         .header__buttons
           +buttons("btn--border", "войти", "sign-in.html")
           +buttons("", "зарегистрироваться", "registred.html") 
-        .header__buttons.header__buttons--user
+        //-.header__buttons.header__buttons--user
           .header__user
             a.header__user-link(href="#") | Юлий Цезарь
-      +hamburger-menu
-      .header__sidebar
-        .header__overlay
-        .header__side-menu
-          .header__menu-head
-            +logoGroup("header__logo")
-            .header__close
-              span.header__close-button.material-icons clear
-          nav.header__sidebar-nav
-            +headNavigation()
-            .header__buttons
-              +buttons("btn--border", "войти", "sign-in.html")
-              +buttons("", "зарегистрироваться", "registred.html") 
+       
         
