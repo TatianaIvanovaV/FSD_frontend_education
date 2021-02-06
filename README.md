@@ -1,5 +1,6 @@
 # FSD_frontend_education. Website for booking.
-<a href="https://tatianaivanovav.github.io/FSD_frontend_education/"></a>
+
+<a href="https://tatianaivanovav.github.io/FSD_frontend_education/">Toxin. Website for booking.</a>
 
 Flexbox, BEM-metodology, pug, stylus, jquery, air-datepicker, webpack-4
 
